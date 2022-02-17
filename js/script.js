@@ -30,15 +30,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 // map over & return data.url
                 // console.log("data", data)
                 urls = data.map((img) => {
-                    return img.data.url
+                    // return img.data.url
+                    const imgDisplay = document.createElement('img')
+                    imgDisplay.className = 'imgShow'
+                    imgDisplay.src = img.data.url
+                    console.log(img.data.url)
+                    imgDisplay.style.width = "300px"
+                    console.log(imgDisplay)
+                    container.appendChild(imgDisplay)
+
+
                 })
-                for (let i = 0; i = urls.length; i++)
-                    const imgDisplay
+
+                // for (let i = 0; i = urls.length; i++) {
+                //     const imgDisplay = document.createElement('img')
+                //     imgDisplay.className = 'imgShow'
+                //     imgDisplay.src = urls[i]
+                //     console.log(urls[i])
+                //     imgDisplay.style.width = "300px"
+                //     console.log(imgDisplay)
+                //     return container.appendChild(imgDisplay)
+                // }
             })
 
             .catch(err => console.log("error!", err))
     })
 })
+
 // Create an array of image URLs (tip: use filter and map).
 // Make the form / title / description hide
 // Cycle through images
