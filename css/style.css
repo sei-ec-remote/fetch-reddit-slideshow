@@ -1,0 +1,40 @@
+body {
+    font-family: Cambria;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+}
+
+h1 { 
+    margin-top: 10px; 
+    font-size: 38px; 
+    font-weight: 300; 
+    color: darkblue;
+    line-height: 50px; 
+    font-style: Cambria; }
+
+input[type=text] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+}
+
+.top-container .container { 
+    width: 100%; 
+    padding: 60px 0 120px 0; 
+}
+
+.top-container h1 { 
+    padding-top: 60px; 
+}
+
+.top-container .description { 
+    margin: 30px 0 0 0; 
+    padding-bottom: 30px; 
+}
+
+#stop-button {
+    visibility: hidden;
+}
