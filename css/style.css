@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    background-color: grey;
+    
+    align-items: center;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    flex-direction: column;
+
+}
+
+img {
+    height: 200px;
+}
+form, #stopButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    flex-direction: column;
+}
+
+#textInput {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#stopButton, #formSubmit {
+    display: block;
+    width: 25%;
+    margin: 0 auto;
+    text-align: center;
+}
