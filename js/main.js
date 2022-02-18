@@ -1,30 +1,22 @@
+// URL References:
+const url = 'http://www.reddit.com/search.json?q='
+
 // global references to html elements
 const body = document.getElementsByTagName('body')[0]
 const bodyElements = body.children
 const buttonSearch = document.getElementById('buttonSearch')
 
 //function to hide content after form has been submitted
-
-console.log("bodyElements.length, ",bodyElements.length)
-console.log("bodyElements, ", bodyElements)
-console.log("bodyElements[0],", bodyElements[0])
-bodyElements[0].remove
-console.log(bodyElements.length)
-
 const hideForm = () => {
     for(let i=0; i < bodyElements.length; i++){
         bodyElements[i].style.display = "none"
     }
 }
 
-// create an empty variable to hold the resultUrl after submit has been clicked
-const resultUrl = ""
-
 // create a function that will put the search term into the request url
 const pulledSearchTerm = () =>{
     const searchInput =  document.getElementById('inputSearch').value
-    console.log("searchInput ", searchInput)
-    const resultUrl = `http://www.reddit.com/search.json?q=${searchInput}+nsfw:no`
+    const resultUrl = `${url}${searchInput}+nsfw:no`
     return resultUrl
 }
 
@@ -36,7 +28,11 @@ const fetchRedditPics = (requestUrl) => {
             return responseData.json();
         })
         .then((jsonData)=>{
-            console.log("this is the returned json data, ",jsonData)
+            const dataChildren = jsonData['data']['children']
+            for(let i =0; i< dataChildren.length; i ++){
+            const imageUrl = dataChildren[i]['data']['thumbnail']
+            console.log('imageUrl, ', imageUrl)
+            }
         })
         .catch((error)=>{
             console.log("shoot there is an error..", error)
