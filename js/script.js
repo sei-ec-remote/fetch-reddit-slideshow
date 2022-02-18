@@ -1,22 +1,55 @@
 // Use AJAX to make a request. Show data in console
+const imgDisplay = document.createElement('img')
+const submitButton = document.querySelector('#submitButton')
+const searchBar = document.querySelector('#searchBar')
+const stopButton = document.createElement('button')
+const textDisplay = document.querySelector('#feels')
+const title = document.querySelector("#title")
+
 document.addEventListener("DOMContentLoaded", () => {
     const requestURL = "https://www.reddit.com/search.json?q=cats+nsfw:no"
-    const submitButton = document.querySelector('#submitButton')
-    const searchBar = document.querySelector('#searchBar')
     let urls = []
+    let intervalID;
 
+    submitButton.addEventListener('mouseover', function () {
+        submitButton.style.color = 'gray';
+    })
+    submitButton.addEventListener('mouseout', function () {
+        submitButton.style.color = 'white';
+    })
+
+    const loopStart = () => {
+        let i = 0;
+        const imgLoop = () => {
+            imgDisplay.src = urls[i]
+            container.appendChild(imgDisplay)
+            imgDisplay.style.width = "300px"
+            imgDisplay.style.height = "400px"
+            i++
+            if (i === urls.length) {
+                i = 0
+            }
+        }
+
+        intervalID = setInterval(imgLoop, 2000)
+    }
 
     submitButton.addEventListener('click', (event) => {
         const removeInput = document.getElementById('searchBar')
         removeInput.remove()
 
+        const removeTitle = document.getElementById('title')
+        removeTitle.remove()
+
         const removeButton = document.getElementById('submitButton')
         removeButton.remove()
 
-        const stopButton = document.createElement('button')
         stopButton.className = 'stopButton'
         stopButton.innerText = "stop"
         container.appendChild(stopButton)
+
+        const removeFeels = document.getElementById('feels')
+        removeFeels.remove()
 
 
         fetch(`${requestURL}`)
@@ -30,32 +63,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 // map over & return data.url
                 // console.log("data", data)
                 urls = data.map((img) => {
-                    // return img.data.url
-                    const imgDisplay = document.createElement('img')
-                    imgDisplay.className = 'imgShow'
-                    imgDisplay.src = img.data.url
-                    console.log(img.data.url)
-                    imgDisplay.style.width = "300px"
-                    console.log(imgDisplay)
-                    container.appendChild(imgDisplay)
-
-
+                    return img.data.url
                 })
 
-                // for (let i = 0; i = urls.length; i++) {
-                //     const imgDisplay = document.createElement('img')
-                //     imgDisplay.className = 'imgShow'
-                //     imgDisplay.src = urls[i]
-                //     console.log(urls[i])
-                //     imgDisplay.style.width = "300px"
-                //     console.log(imgDisplay)
-                //     return container.appendChild(imgDisplay)
-                // }
+                loopStart()
+
+                stopButton.addEventListener('click', function () {
+                    clearInterval(intervalID)
+                    container.appendChild(title)
+                    container.appendChild(textDisplay)
+                    container.appendChild(searchBar)
+                    container.appendChild(submitButton)
+                    imgDisplay.remove()
+                    stopButton.remove()
+                })
+                stopButton.addEventListener('mouseover', function () {
+                    stopButton.style.color = 'gray';
+                })
+                stopButton.addEventListener('mouseout', function () {
+                    stopButton.style.color = 'white';
+                })
             })
 
             .catch(err => console.log("error!", err))
+
     })
+
 })
+
 
 // Create an array of image URLs (tip: use filter and map).
 // Make the form / title / description hide

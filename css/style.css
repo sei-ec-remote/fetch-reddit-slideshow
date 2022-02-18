@@ -5,8 +5,9 @@ body {
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 60px;
     color: black;
+    background: white;
 }
 
 h3 {
@@ -28,5 +29,7 @@ h3 {
     background-color: black;
     color: white;
     border: 2px solid white;
+    font-size: 30px;
     font-family: 'Shadows Into Light', cursive; 
+    display: flex;
 }
