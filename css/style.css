@@ -1,3 +1,10 @@
 body{
-    background-color: blue;
+    background-color: peachpuff;
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+}
+
+#divInstructions{
+    text-align: center;
 }
