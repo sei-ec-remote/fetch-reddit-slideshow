@@ -1,0 +1,17 @@
+#gallery {
+    width: 70%;
+    margin: 100px auto;
+}
+
+#imageTag {
+    display: block;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+#stopButton {
+    display: block;
+    width: 25%;
+    margin: 0 auto;
+}
