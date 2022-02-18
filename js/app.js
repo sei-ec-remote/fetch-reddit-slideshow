@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(stopButton)
         stopButton.addEventListener('click', () => {
             clearInterval(interval)
+            stopButton.style.display = 'none'
+            title.style.display = 'block'
+            description.style.display = 'block'
+            fetchDataForm.style.display = 'block'
+            const img = document.querySelector('img')
+            gallery.removeChild(img)
+            textInput.value = ''
         })
 
         // create image tag and append to div (id = gallery)
@@ -53,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         thumbnails.push(images[i].data.thumbnail)
                     }
                 }
-                
+                console.log(thumbnails)
                 // To change the src of the image at each interval
                 let counter = 0
                 interval = setInterval( () => {
@@ -62,11 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(counter === thumbnails.length - 1)
                     {
                         counter = 0
-                        // clearInterval(interval)
                     }
                 } ,1000)
             })
             .catch( err => console.log('Error with API request.', err))
     })
-
 })
