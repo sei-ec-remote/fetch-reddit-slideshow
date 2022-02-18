@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&family=Pacifico&display=swap');
+
+.hide {
+    visibility: hidden;
+}
+
+body {
+    background: linear-gradient(left, rgb(134, 196, 154), rgb(59, 122, 138));
+    background: -webkit-linear-gradient(left, rgb(134, 196, 154), rgb(59, 122, 138));
+    background: -moz-linear-gradient(left, rgb(134, 196, 154), rgb(59, 122, 138));
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+h1 {
+    margin-bottom: 50px;
+    font-size: 40px;
+    font-family: 'Pacifico', cursive;
+    color: rgb(85, 58, 94);
+}
+
+.slideshow-container {
+    height: 300px;
+    width: 300px;
+}
+
+.tempPic {
+    border: white 5px solid;
+}
+
+#message {
+    margin-top: 15px;
+    font-family: 'Pacifico', cursive;
+    color: rgb(85, 58, 94);
+}
+
+#submitButton,#stopShow,input {
+    font-family: 'Pacifico', cursive;
+    color: rgb(85, 58, 94);
+    background-color: white;
+    border: 2px rgb(85, 58, 94); solid;
+    border-radius: 25px;
+}
+
