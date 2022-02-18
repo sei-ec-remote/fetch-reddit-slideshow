@@ -8,10 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         hold.textContent = 
     }
 
-
-
-
-
     form.addEventListener('submit', (e) => {
         e.preventDefault
     })
