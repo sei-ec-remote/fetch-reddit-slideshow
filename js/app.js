@@ -14,41 +14,33 @@ const getImages = () => {
         .then((data) => {
             const arrayData = data.data.children
             // console.log('this should log an array of fromt he json', photoArray)
-            const imageMap = arrayData.map((element) => {
-                if (element.data.url.includes('.jpg' || '.png')) {
-                    // console.log('These are the images', element.data.url)
-                  photoArray.push(element.data.url);
-                  console.log('this should log all photos when submitted', photoArray)
+            for(let i = 0; i < arrayData.length; i++) {
+                if (arrayData[i].data.url.includes('.jpg'))
+                photoArray.push(arrayData[i].data.url);
+                // console.log('these are the photos', photoArray[i])
                 }
                 //need to now get images from array and link to DOM
-              for (let i = 0; i<photoArray.length;i++) {
                 const imgElement = document.createElement('img')
-                  imgElement.id = `#img${[i]}`
-                //   console.log('should show images ',imgElement.id)
-                  imgElement.src = photoArray[i]
-                //   console.log('this should load all images', photoArray)
                   imageList.appendChild(imgElement) 
-                  let imageTime = 0
-                     //need to now shove images into a 'slide show'
-                     
-              } 
+                  //need to show show different images 
+                     let timer = 0
+                    pictureTimer = setInterval( () => {
+                      imgElement.src = photoArray[timer]
+                      timer++
+                    if(timer === photoArray.length - 1)
+                    {
+                      timer = 0
+                    }
+                } ,3000)
             })
           
-        })
         .catch((err) => console.log('error!', err));
 }
-
-// if (imageTime < photoArray[i].length -1) {
-//     imageTime++
-//     } else {
-//     imageTime= 0
-//     } 
-//need to remove photos when stop button is clicked
 
 
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('submit', (event) => {
-        
+
         event.preventDefault();
         const pictureTimer =  setInterval(getImages, 3000);
         const headerone = document.querySelector('#headerone')
@@ -56,8 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         headerone.remove()
         headertwo.remove()
         stopButton.addEventListener('click', () => {
-            clearInterval(pictureTimer)
+            location.reload()
         }) 
     })
 });
-
