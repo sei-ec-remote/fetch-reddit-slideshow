@@ -1,25 +1,45 @@
 
-//test that example link
+const testImage = document.getElementById("testImage")
+const input = document.getElementById("imgSearch")
+const search = document.getElementById("searchButton")
+const stopButton = document.getElementById("stopButton")
+const intro = document.getElementById("intro")
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", ()=>{
     console.log("hello")
     console.log('Script is running');
+    const defaultView = () =>{
+        testImage.src = ""
+        testImage.style.display = "none"
+            stopButton.style.display = "none"
+            search.style.display = "inline"
+            intro.style.display = "block"
+            input.style.display = "block"
+    }
 
-    const input = document.getElementById("imgSearch")
-    const search = document.getElementById("searchButton")
     // const addImage = (image) =>{
     //     const redditImage = document.getElementById("testImage")
     //     redditImage.src = `${imageUrl}`
         // document.getElementById("images").appendChild(image)
     // }
     search.addEventListener("click", (event)=>{
-        const requestURL = `http://www.reddit.com/search.json?q=${input.value}+nsfw:no`
+        const searchTerm = input.value.replace(/\s/g, "")
+        console.log(searchTerm)
+        const requestURL = `http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`
         event.preventDefault()
         console.log(requestURL)
         let i = 0
         // remove the search bar, start button and h1
         search.style.display = "none"
-        document.getElementById("intro").style.display = "none"
-        document.getElementById("imgSearch").style.display = "none"
+        intro.style.display = "none"
+        input.style.display = "none"
         // let's me know it's running because it was taking awhile
         console.log("searching")
         // this gets the data from the API and sets an img src equal to it
@@ -33,26 +53,26 @@ document.addEventListener("DOMContentLoaded", ()=>{
             let redditChildren = jsonData.data.children
             let arr = []
             let thumbnails = redditChildren.filter(obj =>{
-               arr.push(obj.data.thumbnail)
+                if(obj.data.thumbnail_height !== null && obj.data.thumbnail !== "default"){
+               arr.push(obj.data.thumbnail)}
             })
                     console.log("hello")
-                    document.getElementById("testImage").src = arr[i]
-                    document.getElementById("testImage").style.display = "block"
-                    document.getElementById("stopButton").style.display = "block"
+                    testImage.src = arr[i]
+                    testImage.style.display = "block"
+                    stopButton.style.display = "block"
                     i++
                     if(i===arr.length){i = 0}
                     // wait one second then do it again
             
-        })} 
+        })
+        .catch(err => console.log("error!", err))
+    } 
         
-        const refresh = setInterval(updateImage, 2000)
-        document.getElementById("stopButton").addEventListener("click", ()=>{
-            document.getElementById("testImage").style.display = "none"
-            document.getElementById("stopButton").style.display = "none"
+        const refresh = setInterval(updateImage, 4000)
+        stopButton.addEventListener("click", ()=>{
             clearInterval(refresh)
-            search.style.display = "block"
-            document.getElementById("intro").style.display = "block"
-            document.getElementById("imgSearch").style.display = "block"
+            defaultView()
+            
         })
 
         
