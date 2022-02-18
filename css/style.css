@@ -6,8 +6,19 @@ body{
 #stopButton {
     text-align: center ;
     position: absolute ;
-    bottom: 40% ;
+    top: 10% ;
     left: auto;
     right: auto;
+    width: 100px;
     background-color: palevioletred;
+}
+
+#imgBox {
+    position: absolute ;
+    top: 25%;
+    left: 30%;
+    height: 1000px;
+    width: 1000px;
+    
+    
 }
