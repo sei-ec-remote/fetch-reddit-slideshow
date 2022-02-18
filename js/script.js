@@ -4,10 +4,12 @@ const submitButton = document.querySelector('#submitButton')
 let setInt = null
 
 document.addEventListener("DOMContentLoaded", ()=>{
-      
+    imgSpace.style['display'] = 'none'
+    
     submitButton.addEventListener('click', (event) => {
         event.preventDefault()
         formSubmit.style['display'] = 'none'
+        imgSpace.style['display'] = 'block'
 
         const stopButton = document.createElement('button')
         stopButton.innerHTML = "stop"
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         stopButton.addEventListener('click', () => {
             stopButton.style['display'] = 'none'
             formSubmit.style['display'] = 'block'
+            imgSpace.style['display'] = 'none'
             })
         })
        
