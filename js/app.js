@@ -62,15 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert("No image URLs found. Please try a different query")
                 }
                     
-                // for (let i = 0; i < imagesArr.length; i++ ) {
-                //     let imgDestination = document.getElementsByClassName('carousel-inner')
-                //     let createImgHTML = document.createElement('div')
-                //     createImgHTML.className = ('carousel-item')
-                //     createImgHTML.innerHTML = (`<img src="${imagesArr[i]}" class="d-block w-100" data-bs-interval="3000" id=${i}`)
-                //     imgDestination.appendChild(createImgHTML)
-                //     createImgHTML.appendChild(createImgHTML)
-                
-                // }
 
                 for (let i = 0; i < imagesArr.length; i++) {
 
