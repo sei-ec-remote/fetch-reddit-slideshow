@@ -62,32 +62,49 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert("No image URLs found. Please try a different query")
                 }
                     
-                for (let i = 0; i < 6; i++ ) {
-                    let imgDestination = document.getElementsByClassName('carousel-inner')
-                    let createImgHTML = document.createElement('div')
-                    createImgHTML.className = ('carousel-item')
-                    createImgHTML.innerHTML = (`<img src="${imagesArr[i]}" class="d-block w-100" data-bs-interval="3000"`)
+                // for (let i = 0; i < imagesArr.length; i++ ) {
+                //     let imgDestination = document.getElementsByClassName('carousel-inner')
+                //     let createImgHTML = document.createElement('div')
+                //     createImgHTML.className = ('carousel-item')
+                //     createImgHTML.innerHTML = (`<img src="${imagesArr[i]}" class="d-block w-100" data-bs-interval="3000" id=${i}`)
+                //     imgDestination.appendChild(createImgHTML)
+                //     createImgHTML.appendChild(createImgHTML)
+                
+                // }
+
+                for (let i = 0; i < imagesArr.length; i++) {
+
+
+                    
+                    let imageSrc = document.createElement("IMG")
+                    imageSrc.src= (imagesArr[i])
+
+
+                    let carouselItem = document.createElement('div')
+                    carouselItem.className = ('carousel-item')
+
+                    let carouselLocation = document.getElementById('carousel-inner')
+
+                    carouselItem.innerHTML = (`<img src="${imageSrc.src}" class ="d-block w-100" data-bs-interval="5000" id=img${i} >`)
+                    carouselLocation.appendChild(carouselItem)
+              
                 
                 }
-            
-                
             })
+        })
+                
 
-        .catch(err => console.log('error!', err))
 
-
-    })
-
-    stopButton.addEventListener('click', () => {
-      //preventing page refresh on press of submit
-      event.preventDefault()
-      // console.log('clicky', event)
-      hideElement()
-      imagesArr = []
-      console.log('is imagesArr empty?', imagesArr)
+    // stopButton.addEventListener('click', () => {
+    //   //preventing page refresh on press of submit
+    //   event.preventDefault()
+    //   // console.log('clicky', event)
+    //   hideElement()
+    //   imagesArr = []
+    //   console.log('is imagesArr empty?', imagesArr)
     
 
-    })
+    // })
 
 
 })
