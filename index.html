@@ -1,16 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reptiles with Hats: A Slideshow</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Righteous&display=swap" rel="stylesheet">
+  <title>We All Want Pictures</title>
 </head>
 <body>
-  <h1>Reptiles with Hats: A Slideshow</h1>
-
-  <p>Click the button for a series of delightful pictures of reptiles, with hats!</p>
+  <div class="container">
+      <div class="head-text">
+          <h1>GET SOME PICS</h1>
+          <h2>Hey, you! Wanna see some pictures?<br />
+          Just type what you want to see in the box below!</h2>
+      </div>
+          <div id="gallery">
+              <img id="user-img" src="" alt="">
+              <div id="form-block">
+                  <form id="form-submit">
+                      <p><label form="submit" id="form-label">What are you looking for?</label>
+                          <input type="text" id="form-input"></p>
+                      <p><button id="button-submit">Bring me pics!</button></p>
+                  </form>
+              </div>
+          </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
 </html>
+
