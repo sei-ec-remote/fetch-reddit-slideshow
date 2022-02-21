@@ -1,4 +1,5 @@
-body{
+
+.basicSetup{
     background-color: peachpuff;
     display: flex;
     flex-direction: column;
@@ -7,4 +8,12 @@ body{
 
 #divInstructions{
     text-align: center;
+}
+
+#slideshowPlaceHolder{
+    border-style: dashed;
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
 }
