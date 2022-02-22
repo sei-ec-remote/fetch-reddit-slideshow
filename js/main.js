@@ -5,6 +5,7 @@ const url = 'http://www.reddit.com/search.json?q='
 const header = document.getElementsByTagName('header')[0]
 const headerElements = header.children
 const buttonSearch = document.getElementById('buttonSearch')
+const body = document.getElementsByTagName('body')[0]
 
 //reference to an empty list to hold images from the fetch
 const slideshowImages = []
@@ -27,6 +28,9 @@ const pulledSearchTerm = () =>{
 // image array reference
 let imageArrayRef = 1
 
+// variable to store our intervalID
+let intervalForSlides;
+
 // create a function to transition the images in the slideshow
 const loopThroughImages = (slideshow, slideshowImages) => {
         slideshow.src = slideshowImages[imageArrayRef]
@@ -43,16 +47,30 @@ const createSlideshow = (slideshowImages) => {
     slideshow.style.width = "500px"
     slideshow.style.height = "500px"
     // append slide show to the document
-    // first let's make a reference to what we want to append it to
-    const body = document.getElementsByTagName('body')[0]
-    console.log('this is the body reference to append the pic: ', body)
     body.appendChild(slideshow)
-    //now that the slideshow is appended let's add a pic to the slide to test it out
-    //slideshow.src = slideshowImages[1]
+    // add stop button too
+    createStopSlideButton()
     //loopThroughImages caller function
     const loopImages = () => loopThroughImages(slideshow, slideshowImages)
     // let's try and loop through the images every 1 second aka 1000 ms
-    setInterval(loopImages,1000)
+    intervalForSlides  = setInterval(loopImages,1000)
+}
+
+const createStopSlideButton = () => {
+    const stopButton = document.createElement('button')
+    stopButton.style.width = '250px'
+    stopButton.style.height = '100px'
+    stopButton.textContent = "STOP"
+    body.appendChild(stopButton)
+    stopButton.addEventListener('click', () => {
+        clearInterval(intervalForSlides)
+    })  
+}
+
+//create a function to stop the slideshow and return back to the original header which will let user input a new image search
+const stopSlideshow = () => {
+
+
 }
 
 
