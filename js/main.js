@@ -24,14 +24,15 @@ const pulledSearchTerm = () =>{
     return resultUrl
 }
 
+// image array reference
+let imageArrayRef = 1
+
 // create a function to transition the images in the slideshow
 const loopThroughImages = (slideshow, slideshowImages) => {
-    for (let i = 1; i < slideshowImages.length; i ++){
-        slideshow.src = slideshowImages[i]
-        console.log('now displaying the image found here, ', slideshowImages[i])
-    }
+        slideshow.src = slideshowImages[imageArrayRef]
+        console.log('now displaying the image found here, ', slideshowImages[imageArrayRef])
+        imageArrayRef += 1
 }
-
 
 
 //create a function to add image element to add the pics from the fetch
@@ -48,8 +49,10 @@ const createSlideshow = (slideshowImages) => {
     body.appendChild(slideshow)
     //now that the slideshow is appended let's add a pic to the slide to test it out
     //slideshow.src = slideshowImages[1]
+    //loopThroughImages caller function
+    const loopImages = () => loopThroughImages(slideshow, slideshowImages)
     // let's try and loop through the images every 1 second aka 1000 ms
-    setInterval(loopThroughImages(slideshow, slideshowImages),1000)
+    setInterval(loopImages,1000)
 }
 
 
