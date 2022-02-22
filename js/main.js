@@ -11,15 +11,22 @@ const body = document.getElementsByTagName('body')[0]
 const slideshowImages = []
 
 //function to hide content after form has been submitted
-const hideForm = () => {
+const showAndHideHeader = () => {
     for(let i=0; i < headerElements.length; i++){
-        headerElements[i].style.display = "none"
-        console.log('hiding this element,', headerElements[i])
+        console.log('this is the default display type,', headerElements[i].style.display.value)
+        if(headerElements[i].style.display === "none"){
+            headerElements[i].style.display = "block"
+            console.log('showing this element,', headerElements[i])
+        }
+        else {
+            headerElements[i].style.display = "none"
+            console.log('hiding this element,', headerElements[i])
+        }
     }
 }
 
 // create a function that will put the search term into the request url
-const pulledSearchTerm = () =>{
+const urlWithSearchString = () =>{
     const searchInput =  document.getElementById('inputSearch').value
     const resultUrl = `${url}${searchInput}+nsfw:no`
     return resultUrl
@@ -56,21 +63,29 @@ const createSlideshow = (slideshowImages) => {
     intervalForSlides  = setInterval(loopImages,1000)
 }
 
+//remove slide show
+const removeSlideshow = () =>{
+    const slideShow = document.getElementsByTagName('img')[0]
+    console.log('removing this slideshow element, ', slideShow )
+    slideShow.remove()
+    const stopButton = document.getElementById("stopButton")
+    stopButton.remove()
+    const inputField = document.getElementById('inputSearch')
+    inputField.value = ''
+}
+
 const createStopSlideButton = () => {
     const stopButton = document.createElement('button')
+    stopButton.id = "stopButton"
     stopButton.style.width = '250px'
     stopButton.style.height = '100px'
     stopButton.textContent = "STOP"
     body.appendChild(stopButton)
     stopButton.addEventListener('click', () => {
         clearInterval(intervalForSlides)
+        showAndHideHeader()
+        removeSlideshow()
     })  
-}
-
-//create a function to stop the slideshow and return back to the original header which will let user input a new image search
-const stopSlideshow = () => {
-
-
 }
 
 
@@ -105,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //console.log("DOM Content Loaded")
     buttonSearch.addEventListener("click",(event) => { 
         event.preventDefault()
-        hideForm()
-        fetchRedditPics(pulledSearchTerm())
+        showAndHideHeader()
+        fetchRedditPics(urlWithSearchString())
     }
     )
 })
