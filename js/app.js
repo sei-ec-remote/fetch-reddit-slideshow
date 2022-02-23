@@ -6,7 +6,7 @@ let photoArray = [];
 
 //need to fetch images from json link 
 const getImages = () => {
-   
+
     const searchButton = document.querySelector('#searchButton').value;
     const searchResult = `http://www.reddit.com/search.json?q=${searchButton}+nsfw:no`;
     fetch(searchResult)
@@ -25,24 +25,25 @@ const getImages = () => {
                   //need to show show different images 
                      let timer = 0
                     pictureTimer = setInterval( () => {
-                      imgElement.src = photoArray[timer]
+                        imageList.src = photoArray[timer]
                       timer++
                     if(timer === photoArray.length - 1)
                     {
                       timer = 0
+                      
                     }
                 } ,3000)
             })
-          
+
         .catch((err) => console.log('error!', err));
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('submit', (event) => {
-
+        
         event.preventDefault();
-        const pictureTimer =  setInterval(getImages, 3000);
+        const pictureTimer =  setInterval(getImages, 5000);
         const headerone = document.querySelector('#headerone')
         const headertwo = document.querySelector('#headertwo')
         headerone.remove()
@@ -51,4 +52,4 @@ document.addEventListener('DOMContentLoaded', () => {
             location.reload()
         }) 
     })
-});
+}); 

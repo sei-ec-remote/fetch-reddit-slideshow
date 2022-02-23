@@ -1,16 +1,10 @@
 body {
   background-color: salmon;
-
-  display: flex;
-  justify-content: center;
 }
-.container {
-margin-top: 10em;
 
-}
 
 img {
 width: 30vw;
-display: inline;
+display: flex;
+justify-content: center;
 }
-
