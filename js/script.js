@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // map over & return data.url
                 // console.log("data", data)
                 urls = data.map((img) => {
-                    return img.data.url
+                    return img.data.thumbnail
                 })
 
                 loopStart()
