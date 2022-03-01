@@ -1,7 +1,18 @@
 body {
-    background-color: tan
+  background-color: tan;
+  align-items: center;
 }
 
-.content {
-    text-align: center;
+#stop-button {
+  display: none;
+}
+
+#slideshow {
+  display: none;
+}
+
+#slideshow {
+  width: 500px;
+  height: 500px;
+  margin: auto;
 }

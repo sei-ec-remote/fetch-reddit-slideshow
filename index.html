@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <title>Hello Front-End</title>
-</head>
-<body>
-  <div class = "content">
-    <h1>Slideshow!</h1>
-    <form id = "form">
-      <p>Search for images here</p>
-      <input type="text" id="numberInput">
-      <button id="submitButton">Submit</button>
-      <button id="stop-button">Stop Slideshow</button>
-    </div>
-      <div>
-      <img id = "slideshow" src="" alt="">
-    </div>
-</form>
-  <script src="js/script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Hello Front-End</title>
+  </head>
+  <body>
+    <h1 id = "title">Slideshow!</h1>
+      <p id="message">
+        Enter a search term. Once you click submit, a slideshow of images
+        relating to your search will start.
+      </p>
+      <input type="search" id="search">
+      <button type="submit" id="submitButton">Submit</button>
+      <img id="slideshow" src="" alt="" />
+      <button type="submit" id="stop-button">Stop Slideshow</button>
+    </form>
+    <script src="js/script.js"></script>
+  </body>
 </html>
