@@ -1,61 +1,85 @@
-const requestUrl = "http://www.reddit.com/search.json?q=cats+nsfw:no"
+const requestUrl = "http://www.reddit.com/search.json?q="
 const imgSpace = document.querySelector('#imgSpace')
 const submitButton = document.querySelector('#submitButton')
+const formSubmit = document.querySelector('#formSubmit')
+const textInput = document.querySelector('#textInput')
+const stopButton = document.querySelector('#stopButton')
+
+// variable for our interval
 let setInt = null
+// container for the images
+let images = []
+// index of the current image being shown 
+let imageIndex = 0
+// interval speed
+const timerSpeed = 1000
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    imgSpace.style['display'] = 'none'
-    
-    submitButton.addEventListener('click', (event) => {
-        event.preventDefault()
-        formSubmit.style['display'] = 'none'
-        imgSpace.style['display'] = 'block'
+// stop button not shown on load
+stopButton.style.display = 'none'
 
-        const stopButton = document.createElement('button')
-        stopButton.innerHTML = "stop"
-        stopButton.id = 'stopButton'
-        document.body.appendChild(stopButton)
+const fetchReddit = (e) => {
+    //stops page from reloading on submit
+    e.preventDefault()
+    formSubmit.style.display = 'none'
+    imgSpace.style.display = 'block'
 
-        stopButton.addEventListener('click', () => {
-            stopButton.style['display'] = 'none'
-            formSubmit.style['display'] = 'block'
-            imgSpace.style['display'] = 'none'
-            })
+    // console.log ('fetch the value', textInput.value )
+    fetch(requestUrl + textInput.value)
+    // console.log('this is the e value', e.value)
+    .then( res => res.json())
+    .then((apiResponse) => {
+        console.log(apiResponse.data.children)
+        images = apiResponse.data.children 
+        .map(p => {
+            return {
+                url: p.data.url,
+                subreddit: p.data.subreddit,
+                author: p.data.subreddit
+            }
         })
-       
 
-        //stops page from reloading on submit
-        event.preventDefault()
-        // console.log('clicky!')
-
-        fetch(requestUrl)
-        // handle the response that we receive (convert it to JSON)
-            .then(apiResponse => {
-                return apiResponse.json()
-            })
-            // locate our data and store it so we can render
-            .then(jsonData => {
-                let source = jsonData.data.children
-                let newArray = []
-                for (let i = 0; i < 12; i++){
-                    newArray.push(source[i].data.thumbnail)   
-                }
-                
-                const pictures = () => {
-                    imgSpace.src = newArray[0]
-                }
-                let counter = 0
-                setInterval(() => {
-                    imgSpace.src = newArray[counter]
-                    counter++
-                    if (newArray.length-1 === counter){
-                        counter = 0
-                    }
-                }, 4000)
-            })
-                .catch(err => console.log('error!', err))
-      
+        .filter(image => {
+            const imgFile = image.url.slice(-4)
+            if (imgFile === '.jpg' || imgFile === '.png') return true
+            return false
+        })
+        // interval for the slideshow
+        setInt = setInterval(changeSlide, timerSpeed)
+        stopButton.style.display = 'inline'
+        // invoke the slideshow
+        changeSlide()
     })
+    .catch(err => console.log(err))
+}
 
-   
+
+const changeSlide = () => {
+    // incremet the slideshow index
+    imageIndex++
+    // reset the image index if its out of bounds
+    if(imageIndex >= images.length) imageIndex = 0
+    console.log(images[imageIndex])
+    // empty out the div of any elements
+    while(imgSpace.firstChild) {
+        imgSpace.removeChild(imgSpace.firstChild)
+    }
+    // update the DOM
+    const imageSlide = document.createElement('img')
+    imageSlide.src = images[imageIndex].url
+    imageSlide.alt = images[imageIndex].author
+    imageSlide.width = '400'
+    
+    imgSpace.appendChild(imageSlide)
+}
+
+
+const stopSlideshow = () => {
+    stopButton.style.display = 'none'  
+    formSubmit.style.display = 'block' 
+    clearInterval(setInt) 
+    imgSpace.style.display = 'none'
+}
+
+formSubmit.addEventListener('submit', fetchReddit)
+stopButton.addEventListener('click', stopSlideshow)
 
