@@ -12,15 +12,18 @@ h1 {
     margin-top: 50px; 
 }
 
-#imageSpace {
+#imageSpace, div {
     margin-top: 50px;
     display: block;
     margin: 0 auto;
     text-align: center;
+    font-family: arial;
+    font-weight: bold;
 }
 
 img {
-    height: 200px;
+    max-width: 300px; 
+    max-height: 300px;
 }
 
 #textInput {
@@ -29,20 +32,21 @@ img {
     padding: 10px;
     background-color: rgb(60, 60, 60);
     text-align: center;
-    color: red;
+    color: coral;
     font-size: 16px;
     border: none;
     border-bottom: 2px solid burlywood;
+    font-family: arial;
+    font-weight: bold;
 }
-
 
 #formSubmit {
     display: block;
-    width: 25%;
+    width: 40%;
     margin: 0 auto;
     text-align: center;
     font-family: 'Shizuru', cursive;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 #stopButton, #submitButton {
@@ -55,7 +59,6 @@ img {
     font-size: 16px;
     padding: 10px; 
 }
-
 
 #stopButton {
     display: block;

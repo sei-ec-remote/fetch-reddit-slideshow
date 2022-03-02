@@ -16,19 +16,18 @@ const timerSpeed = 1000
 
 // stop button not shown on load
 stopButton.style.display = 'none'
+imgSpace.style.display = 'none'
 
 const fetchReddit = (e) => {
     //stops page from reloading on submit
     e.preventDefault()
-    formSubmit.style.display = 'none'
-    imgSpace.style.display = 'block'
-
+    
     // console.log ('fetch the value', textInput.value )
     fetch(requestUrl + textInput.value)
     // console.log('this is the e value', e.value)
     .then( res => res.json())
     .then((apiResponse) => {
-        console.log(apiResponse.data.children)
+        // console.log(apiResponse.data.children)
         images = apiResponse.data.children 
         .map(p => {
             return {
@@ -37,7 +36,7 @@ const fetchReddit = (e) => {
                 author: p.data.subreddit
             }
         })
-
+        
         .filter(image => {
             const imgFile = image.url.slice(-4)
             if (imgFile === '.jpg' || imgFile === '.png') return true
@@ -45,11 +44,18 @@ const fetchReddit = (e) => {
         })
         // interval for the slideshow
         setInt = setInterval(changeSlide, timerSpeed)
-        stopButton.style.display = 'inline'
+        stopButton.style.display = 'block'
         // invoke the slideshow
         changeSlide()
     })
-    .catch(err => console.log(err))
+    
+    .catch((err) = () => { 
+        console.log(err)
+    })
+
+    formSubmit.style.display = 'none'
+    imgSpace.style.display = 'block'
+    
 }
 
 
