@@ -9,8 +9,13 @@
 <body>
   <h1 id="pageTitle">Stuff & Things!</h1>
   <div id="description">Search some photos of stuff or things here by typing in your search term in the provided field and clicking the button labeled "Search"!</div>
-  <input id="searchField">
-  <button id="searchButton">Search</button>
+  <form id="searchField" type="text" type="submit">
+    <label>Search term(s):
+      <input id="search">
+    </label>
+    <button id="submitButton">Submit</button>
+  </form>
+  
   <script src="js/app.js"></script>
 </body>
 </html>

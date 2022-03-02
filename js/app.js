@@ -5,68 +5,113 @@ console.log('script linked')
 
 // * Some sort of title
 const titleH1 = document.getElementById('pageTitle')
+
 // * A short description telling the user what to do
 const description = document.getElementById('description')
+
 // * A blank text field
 const searchField = document.getElementById('searchField')
+const search = document.getElementById('search')
+
 // * A Button ("start" or "go" or "search")
-const searchButton = document.getElementById('searchButton')
+const submitButton = document.getElementById('submitButton')
+
 
 // * Show a button to stop slideshow
+
 // button that is created when results return and disappears when clicked (default page state should return on stop)
 const createStopButton = () => {
     const stopButton = document.createElement('button')
     stopButton.id = 'stop-button'
     stopButton.innerText = 'Stop slideshow'
 }
+
 // #### When the user enters a search term and presses enter
 
-// * The form / title / description should hide
-// maybe removeChild on those elements?
-const removeFormTitleDescription = () => {
-    document.querySelector('body').removeChild(titleH1)
-    document.querySelector('body').removeChild(description)
-    document.querySelector('body').removeChild(searchField)
-    document.querySelector('body').removeChild(searchButton)
-}
+// declaring imgArray globally so it can be used outside of below function
+let imgArray = []
 
-// * Show a loading message (optional)
-// a div that is added on search button click and removed when results return
-const createLoadMsgDiv = () => {
-    const loadMsg = document.createElement('div')
-    loadMsg.id = 'loading'
-    loadMsg.innerText = 'Loading your search results'
-}
+// event listener for what to happen on submitButton click
+submitButton.addEventListener('click', () => {
 
-// * Fetch related posts from reddit (with `fetch`)
-// implement fetch
+    // * The form / title / description should hide
+    // maybe removeChild on those elements?
+    const removeFormTitleDescription = () => {
+        document.querySelector('body').removeChild(titleH1)
+        document.querySelector('body').removeChild(description)
+        document.querySelector('body').removeChild(searchField)
+        // document.querySelector('body').removeChild(searchButton)
+    }
 
-const requestURL = `http://www.reddit.com/search.json?q=${searchField.textContent}+nsfw:no`
+    createStopButton()
+    // * Fetch related posts from reddit (with `fetch`)
+    // implement fetch
+    const redditFetch = () => {
+        const requestURL = `http://www.reddit.com/search.json?q=${searchField}+nsfw:no`
+        fetch(requestURL)
 
-fetch(requestURL)
-    .then((responseData)=>{
-        // Fetch will package the response into an object with some methods that allow us to do some useful things with the response.
-        // Use the .json() method to return the data in JSON format
-            return responseData.json();
-    })
-    .then((jsonData)=>{
-        // whatever we return in the first .then promise will be passed into this callback function
-        // do some stuff with the jsonData here
-    })
-    .catch((error)=>{
-        // any errors encountered in the request or the .then promises above will be passed into this callback
-        console.log("Oh no, there's been an error!", error);
-    })
+        .then((responseData)=>{
+            // Fetch will package the response into an object with some methods that allow us to do some useful things with the response.
+            // Use the .json() method to return the data in JSON format
+            return responseData.json()
+        })
 
-// * Display animation / slideshow of images (with DOM manipulation)
-// a div displaying different images that change at different intervals
-const createImgDivContainer = () => {
-    const imgDivContainer = document.createElement('div')
-    imgDivContainer.id = 'img-container'
-    imgDivContainer.innerText = 'slideshow goes here!'
-    document.querySelector('body').appendChild(imgDivContainer)
-    // imgDivContainer.innerHTML = the array containing the image search results
-}
+        .then((jsonData)=>{
+            // whatever we return in the first .then promise will be passed into this callback function
+            // do some stuff with the jsonData here
+            
+            // for (let i = 0; i < 10; i++){
+            //     if (jsonData[i].includes('.png') || jsonData[i].includes('.jpeg') || jsonData[i].includes('.jpg')){
+            //     imgArray.push(jsonData[i])
+            //     }
+            // }
+
+            // for (let i = 0; i < 10; i++){
+            //     let createImg = document.createElement('img')
+            //     createImg.className = 'image'
+            //     imgDivContainer.appendChild()
+            // }
+            console.log(jsonData)
+            console.log(jsonData.results)
+        })
+        .catch((error)=>{
+
+            // any errors encountered in the request or the .then promises above will be passed into this callback
+            console.log("Oh no, there's been an error!", error)
+        })
+    }
+
+    redditFetch()
+
+    removeFormTitleDescription()
+
+    // call redditFetch to get associated images
+    
+    // * Display animation / slideshow of images (with DOM manipulation)
+    // a div displaying different images that change at different intervals
+    const createImgDivContainer = () => {
+
+        const imgDivContainer = document.createElement('div')
+
+        imgDivContainer.id = 'img-container'
+
+        imgDivContainer.innerText = 'slideshow goes here!'
+
+        document.querySelector('body').appendChild(imgDivContainer)
+
+        
+    }
+
+    // call createImgDivContainer to create div the img array will be stored in
+    // createImgDivContainer()
+
+    // call createStopButton to create the stop button
+    createStopButton()
+
+})
+
+
+
 
 
 // * Repeat animation until user clicks "stop", then redisplay the original form/title/description
@@ -86,7 +131,6 @@ const addFormTitleDescription = () => {
     document.querySelector('body').appendChild(titleH1)
     document.querySelector('body').appendChild(description)
     document.querySelector('body').appendChild(searchField)
-    document.querySelector('body').appendChild(searchButton)
 }
 // * User can enter a new search term
 // text form will be ready for another search
