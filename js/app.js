@@ -1,4 +1,4 @@
-const requestURL = 'http://www.reddit.com/search.json?q=cats+nsfw:no'
+
 const submitButton = document.querySelector('#submit-button')
 const description = document.getElementById("description")
 const imageSrc = document.getElementById('imageSource')
@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
           
 
         })
-        
-        
-        fetch(`${requestURL}`) 
+        const submitButtonValue = document.getElementById('userInput').value;
+        const search =  `http://www.reddit.com/search.json?q=${submitButtonValue}+nsfw:no` 
+        fetch(search) 
       
             .then(apiResponse => {
                 //these thens are what happen if promises happen
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
                 let newArr = []
 
                 for(let i = 0; i < dataChildren.length; i++) {
-                    if(dataChildren[i].data.thumbnail !== 'default')
+                    if(dataChildren[i].data.url.includes('.jpg'))
                     newArr.push(dataChildren[i].data.thumbnail);
                     console.log('this is the new array', newArr[i])
 
