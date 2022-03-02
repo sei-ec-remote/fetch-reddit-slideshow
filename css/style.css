@@ -42,7 +42,7 @@ img {
 
 #formSubmit {
     display: block;
-    width: 40%;
+    width: 30%;
     margin: 0 auto;
     text-align: center;
     font-family: 'Shizuru', cursive;
@@ -64,4 +64,10 @@ img {
     display: block;
     margin: 0 auto;
     text-align: center;
+}
+
+#imgSpace {
+    margin: 1em auto;
+    width: 382px;
+    height: 292px;
 }

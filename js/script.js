@@ -21,8 +21,8 @@ imgSpace.style.display = 'none'
 const fetchReddit = (e) => {
     //stops page from reloading on submit
     e.preventDefault()
-    
     // console.log ('fetch the value', textInput.value )
+    // fetches the reddit website + search value
     fetch(requestUrl + textInput.value)
     // console.log('this is the e value', e.value)
     .then( res => res.json())
@@ -36,7 +36,7 @@ const fetchReddit = (e) => {
                 author: p.data.subreddit
             }
         })
-        
+        // filter out the images with files that end with .jpg and .png
         .filter(image => {
             const imgFile = image.url.slice(-4)
             if (imgFile === '.jpg' || imgFile === '.png') return true
@@ -47,12 +47,11 @@ const fetchReddit = (e) => {
         stopButton.style.display = 'block'
         // invoke the slideshow
         changeSlide()
-    })
-    
+    })   
     .catch((err) = () => { 
         console.log(err)
     })
-
+    // hide the form and show the images
     formSubmit.style.display = 'none'
     imgSpace.style.display = 'block'
     
@@ -64,21 +63,21 @@ const changeSlide = () => {
     imageIndex++
     // reset the image index if its out of bounds
     if(imageIndex >= images.length) imageIndex = 0
-    console.log(images[imageIndex])
+    // console.log(images[imageIndex])
     // empty out the div of any elements
     while(imgSpace.firstChild) {
         imgSpace.removeChild(imgSpace.firstChild)
     }
     // update the DOM
     const imageSlide = document.createElement('img')
+    const a = document.createElement('a')
     imageSlide.src = images[imageIndex].url
     imageSlide.alt = images[imageIndex].author
     imageSlide.width = '400'
-    
     imgSpace.appendChild(imageSlide)
 }
 
-
+// slideshow stops and form/submit appears
 const stopSlideshow = () => {
     stopButton.style.display = 'none'  
     formSubmit.style.display = 'block' 
@@ -86,6 +85,8 @@ const stopSlideshow = () => {
     imgSpace.style.display = 'none'
 }
 
+// envoke fetch reddit upon submit
 formSubmit.addEventListener('submit', fetchReddit)
+// stop slideshow once stop button is clicked
 stopButton.addEventListener('click', stopSlideshow)
 
