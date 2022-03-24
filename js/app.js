@@ -1,28 +1,57 @@
+document.addEventListener('DOMContentLoaded', () => {
 // We want to make a request to the Random User API
+const requestUrl = 'https://www.reddit.com/search.json?q='
+const stopButton = document.getElementById('stawp')
+const catBox = document.getElementById('catBox')
+const get = document.getElementById('get')
+const input = document.getElementById('yeet')
+let images = []
 
-document.addEventListener("DOMContentLoaded", () => {
-    const requestURL = "https://www.reddit.com/search.json?q=overwatch+memes+nsfw:no"
-
-    const addPic = (pic) => {
-        let hold = document.getElementById('#photo')
-        hold.textContent = 
-    }
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault
-    })
-    
-    fetch(requestURL)
-        .then(apiResponse => {
-            return apiResponse.json()
-        })
-        .then(jsonData => {
-            console.log(jsonData)
-        })
-    .catch(err => console.log('error!', err))
-
+stopButton.addEventListener('click', () => {
+    clearInterval(time)
+    get.style.visibility = 'visible'
+    input.style.visibility = 'visible'
+    stopButton.style.visibility = 'hidden'
 })
-// handle the response that we receive (convert it to JSON)
-// locate our data and store it so we can render
-// use that data to create some HTML elements to display
-// render those elements
+
+let timer = 0
+
+get.addEventListener('click', (e) => {
+    e.preventDefault()
+    // hide()
+    fetch(`${requestUrl}${input.value}`)
+        .then((responseData) => {
+            return responseData.json()
+        })
+        .then((jsonData) => {
+            get.style.visibility = 'hidden'
+            input.style.visibility = 'hidden'
+            stopButton.style.visibility = 'visible'
+            console.log(jsonData)
+            console.log(jsonData.data.children)
+            let cats = jsonData.data.children
+            let catThumb = 0
+            for ( let i = 0; i < cats.length; i++) {
+                catThumb = cats[i].data.thumbnail
+                if (catThumb.includes('.png') || catThumb.includes('.jpg') ) {
+                    console.log(catThumb)
+                    images.push(catThumb)
+                }
+                console.log(images)
+            }
+            imageRotation = () => {
+                catBox.src = images[timer]
+                while (timer === images.length - 1) {
+                    timer =- 1
+                }
+                timer ++
+            }
+            let time = setInterval(imageRotation, 1000)
+            console.log(timer)
+            
+        })
+        .catch((error) => {
+            console.log('error', error)
+        })
+    })
+})

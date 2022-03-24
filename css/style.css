@@ -3,12 +3,18 @@ body {
     display: flex;
     flex-direction: column;
     align-content: center;
+    align-items: center;
+}
+#stopShow {
+    width: 45px;
+    height: 14px;
+
 }
 
-h1 {
-    text-align: center;
+#catBox {
+    height:  200px;
 }
 
-p {
-    text-align: center;
+#stawp {
+    visibility: hidden;
 }
