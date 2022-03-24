@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(38, 107, 148);
+    text-align: center;
+  }
+  #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+  }
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  form {
+    display: flex;
+    justify-content: center;
+  }
+  h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+  }
+  .buttons, input {
+      width: 150px;
+      height: 60px;
+      background-color: rgb(255, 255, 255);
+      color: rgb(17, 17, 17);
+      font-size: 25px;
+  }
+  #stopButton{
+      width: 300px;
+  }
