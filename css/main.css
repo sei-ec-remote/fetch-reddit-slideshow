@@ -1,0 +1,12 @@
+body {
+    display: flex;
+    height: 650px;
+    width: 650px;
+    margin: 0 auto;
+    background-color: wheat;
+}
+
+#images{
+    width: 250px;
+    height: 250px;
+}
