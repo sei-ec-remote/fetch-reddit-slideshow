@@ -1,8 +1,18 @@
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    align-items: center;
+}
+
+#image {
+    width: 50%;
+}
+
 h1 {
     text-align: center;
 }
 
-.container {
-    display: flex;
-    align-content: center;
+form {
+    text-align: center;
 }
