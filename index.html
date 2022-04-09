@@ -9,17 +9,14 @@
 <body>
   <h1>LOTS AND LOTS OF CATS</h1>
     <div id="form-container">
-      <form id="search-form">
-        <div>
-          <label for="query">Search</label>
-          <input id="query">
-        </div>
-        <input id="go-button" type="submit" value="Lets see Cats!" class="btn">
+      <form>
+        <input type="text" name="Enter Search" id="text">
+        <button type="submit" id="search">Lets see Cats!</button>
+        <button id="stop">Stop the cuteness</button>
       </form>
     </div>
-    <div id="slideshow-container">
-      <div id="'result"></div>
-      <input type="button" value="Stop the cuteness" id="stop-button" class="btn"> 
+    <div id="slideshow">
+      <img src="" id="pic">
     </div>
     <script src="./js/app.js"></script>
 </body>
