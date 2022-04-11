@@ -1,18 +1,21 @@
+body {
+    background-color: lightblue;
+}
 #images-slideshow {
     text-align: center;
-    color: blue;
 }
 #search {
     text-align: center;
 }
 #image {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
     height: 200px;
     overflow: hidden;
+    padding: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 10px;
 }
 #form {
     text-align: center;
+    
 }

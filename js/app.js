@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     images.push(thumbnail)
                 }
             }
+            //increment through the slideshow
            const slideshow = () => {
                image.src = images[cycle]
                while(cycle === images.length - 1) {
