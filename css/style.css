@@ -5,10 +5,14 @@
 #search {
     text-align: center;
 }
-#pictures {
+#image {
     display: flex;
     justify-content: center;
+    text-align: center;
     align-items: center;
     height: 200px;
     overflow: hidden;
+}
+#form {
+    text-align: center;
 }

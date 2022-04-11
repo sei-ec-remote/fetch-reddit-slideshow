@@ -4,11 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const requestUrl = "http://www.reddit.com/search.json?q="
     //search input value entered by the user
     const searchInputValue = document.querySelector('#search')
-    const image = document.getElementById('#image')
+    const image = document.getElementById('image')
     const submitButton = document.querySelector('#submitButton')
     const stopButton = document.querySelector('#stopButton')
     // Create an array of image URLs (tip: use filter and map)
     let images = []
+    //set the slideshow cycle to start at zero until we have images to manipulate the slideshow
+    let cycle = 0
     //Create button to stop animation (tip: use clearInterval)
     stopButton.addEventListener('click', (e) => {
         clearInterval()
@@ -29,11 +31,26 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(jsonData)
             let searchImages = jsonData.data.children
             console.log('this is the data returned from search:', searchImages)
-            
-           
             // Cycle through images
+            let thumbnail = 0
+            for (let i = 0; i < searchImages.length; i++) {
+                thumbnail = searchImages[i].data.thumbnail
+                console.log('thumbnail', thumbnail)
+                // Either add images, or change the src of a single image tag
+                //push the images into the empty images array established globally
+                if(thumbnail.includes('.png') || thumbnail.includes('.jpg')) {
+                    images.push(thumbnail)
+                }
+            }
+           const slideshow = () => {
+               image.src = images[cycle]
+               while(cycle === images.length - 1) {
+                   cycle =- 1
+               }
+               cycle++
+           }
             // tip: use setInterval
-            // Either add images, or change the src of a single image tag
+            let timeElapsed = setInterval (slideshow, 750)
         })
             .catch(err => console.log('error!', err))
         // console.log('number input value:', numberInput.value)
