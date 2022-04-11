@@ -1,0 +1,14 @@
+#images-slideshow {
+    text-align: center;
+    color: blue;
+}
+#search {
+    text-align: center;
+}
+#pictures {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    overflow: hidden;
+}
