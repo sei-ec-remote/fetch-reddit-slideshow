@@ -8,6 +8,7 @@ const form = document.getElementById('form');
 
 // create currentImageURL placeholder
 let currentImageURL;
+let currentDisplayURL;
 
 //create array for slideshow container
 const imageArray = [];
@@ -23,6 +24,7 @@ form.addEventListener('submit', (event) => {
         .then(res => res.json())
         .then(onGetImageSuccess)
         .catch(onGetImageFailure)
+    // update container background image
 })
 
 //code to run when image get success
@@ -45,8 +47,10 @@ const onGetImageSuccess = (resultArray) => {
         let imageURL = listing.data.preview.images[0].source.url;
         // this replaces the preview part of reddit to correct i.
         let correctURL = imageURL.replace(/preview.redd.it/, 'i.redd.it');
+        if (correctURL.includes('jpg') || correctURL.includes('png') || correctURL.includes('gif')) {
         // possible to filter out any urls not ending in jpg, gif, png
-        imageArray.push(correctURL);
+            imageArray.push(correctURL);
+        }
         return console.log(correctURL);
         }
     })
@@ -57,5 +61,9 @@ const onGetImageSuccess = (resultArray) => {
 }
 
 const onGetImageFailure = (resultArray) => {
-    console.log('on get image failure.')
+    console.log('on get image failure.');
 }
+
+container.addEventListener('DOMContentLoaded', () => {
+    container.innerText = 'hello, im loaded';
+})
