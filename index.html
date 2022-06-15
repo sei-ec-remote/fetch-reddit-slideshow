@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/index.js"></script>
+  <!-- some sort of title -->
+  <title>Reddit Slideshow</title>
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <div id="start-container">
+    <!-- another sort of title -->
+    <h1>Reddit Slideshow</h1>
+
+    <!-- A short description telling the user what to do -->
+    <h2>Enter a search term and let us do the rest.</h2>
+    
+    <!-- a blank text field -->
+    <form id="form">
+      <input id="input">
+      <input type="submit" value="Begin">
+    </form>
+  </div>
+  <div id="slide-container">
+    <!-- a button to stop the slideshow -->
+    <button id="stop-button">Stop Slideshow</button>
+  </div>
 </body>
 </html>
