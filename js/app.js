@@ -6,6 +6,17 @@ const container = document.querySelector('#container')
 // define form
 const form = document.getElementById('form');
 
+// //image iterator!
+// let interval = 1000;
+
+// imageArray.forEach(function (image, index) {
+//     setTimeout(function () {
+//         container.style = `background-image: url('${image}')`;
+//     }, index * interval);
+// });
+
+// console.log('loop finished')
+
 // create currentImageURL placeholder
 let currentImageURL;
 let currentDisplayURL;
@@ -25,12 +36,15 @@ form.addEventListener('submit', (event) => {
         .then(onGetImageSuccess)
         .catch(onGetImageFailure)
     // update container background image
-    setInterval(() => {
-        // we want to iterate through elements of imageArray on a set Interval
-        // and after each interval, change container.style.background-image = `url('${image')`
-            goThroughImages(imageArray)
-            //container.innerHTML += " Hello";
-        }, 5000);
+    //     setInterval(() => {
+    //         imageArray.forEach(function (image, index) {
+    //             console.log(index)
+    //             container.style = `background-image: url('${image}')`;
+    //     }, 1000);
+    // });
+    for (let i=0; i<10; i++) {
+        updateImage(i);
+    }
 })
 
 //code to run when image get success
@@ -42,7 +56,6 @@ const onGetImageSuccess = (resultArray) => {
         // EMPTY IT OUT
     // for each of the images, define it
     const listingArray = resultArray.data.children;
-    console.log(listingArray)
     // use map to pop out the URLs into an image array!
     listingArray.forEach(listing => {
         // check if it has a data.preview
@@ -57,7 +70,7 @@ const onGetImageSuccess = (resultArray) => {
         // possible to filter out any urls not ending in jpg, gif, png
             imageArray.push(correctURL);
         }
-        return console.log(correctURL);
+        //return console.log(correctURL);
         }
     })
     // and set that as the innerHTML of the containerDiv
@@ -74,10 +87,11 @@ container.addEventListener('DOMContentLoaded', () => {
     container.innerText = 'hello, im loaded';
 })
 
-
-//image iterator!
-const goThroughImages = (array) => {
-    array.forEach((image) => {
-        container.style = `background-image: url('${image}')`;
-    })
+function updateImage(i) {
+    setTimeout(function() {
+            console.log(`${i}`)
+            console.log(imageArray[i]);
+            container.style = `background-image: url('${imageArray[i]}')`;
+    }, 5000 * i);
 }
+
