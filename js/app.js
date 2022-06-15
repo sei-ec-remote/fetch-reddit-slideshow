@@ -6,6 +6,9 @@ const container = document.querySelector('#container')
 // define form
 const form = document.getElementById('form');
 
+// create currentImageURL placeholder
+let currentImageURL;
+
 // on click of submit button run this code
 form.addEventListener('submit', (event) => {
     // prevent default refresh
@@ -17,24 +20,33 @@ form.addEventListener('submit', (event) => {
         .then(res => res.json())
         .then(onGetImageSuccess)
         .catch(onGetImageFailure)
-    console.log('after Fetch')
 })
 
 //code to run when image get success
 const onGetImageSuccess = (resultArray) => {
     console.log('on get image success!');
-    console.log(resultArray);
+    //console.log(resultArray)
     // make a slideshow! 
     // to do that!!! iterate through array with forEach
         // IF THERE IS ALREADY CONTENT IN THE CONTAINER,
         // EMPTY IT OUT
     // for each of the images, define it
     const listingArray = resultArray.data.children;
-    console.log(listingArray);
+    console.log(listingArray)
+    // use map to pop out the URLs into an image array!
+    // only some of the listing have images
+    // and check the imageArray we've mapped to for ending in last 3 endings
     listingArray.forEach(listing => {
+        // possible to filter out any urls not ending in jpg, gif, png
         // check if it has a data.preview
         // check if it's external
-        return console.log(listing.data.preview);
+        // assign that img url to currentImageURL
+        // change preview.redd.it to i.redd.it
+        let image = listing.data.preview.images[0].source.url;
+        // returns an object with only one object
+        
+        // just need to tell it to look inside the only thing in there
+        return console.log(image);
     })
     // and set that as the innerHTML of the containerDiv
     // makeinterval so that every X amount of time, another image is changed out
