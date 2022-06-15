@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
 body {
-    font-family: 'Comic Sans MS', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 #container {
-    background-color: blue;
+    background-color: white;
     background-image: url('../zuke.jpg');
     background-size: cover;
-    height: 500px;
-    width: 500px;
+    height: 800px;
+    width: 800px;
+    border: 2px solid black;
+    margin: 0 auto;
 }

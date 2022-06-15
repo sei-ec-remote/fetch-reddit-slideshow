@@ -28,6 +28,11 @@ const imageArray = [];
 form.addEventListener('submit', (event) => {
     // prevent default refresh
     event.preventDefault();
+    if (!imageArray[0] === undefined) {
+        imageArray = [];
+        currentDisplayURL = undefined;
+        currentImageURL = undefined;
+    }
     // fetch is an interface of AJAX
     const inputText = input.value;
     console.log('submit')
@@ -35,16 +40,6 @@ form.addEventListener('submit', (event) => {
         .then(res => res.json())
         .then(onGetImageSuccess)
         .catch(onGetImageFailure)
-    // update container background image
-    //     setInterval(() => {
-    //         imageArray.forEach(function (image, index) {
-    //             console.log(index)
-    //             container.style = `background-image: url('${image}')`;
-    //     }, 1000);
-    // });
-    for (let i=0; i<10; i++) {
-        updateImage(i);
-    }
 })
 
 //code to run when image get success
@@ -66,6 +61,9 @@ const onGetImageSuccess = (resultArray) => {
         let imageURL = listing.data.preview.images[0].source.url;
         // this replaces the preview part of reddit to correct i.
         let correctURL = imageURL.replace(/preview.redd.it/, 'i.redd.it');
+        if (correctURL.includes('external')) {
+            return;
+        }
         if (correctURL.includes('jpg') || correctURL.includes('png') || correctURL.includes('gif')) {
         // possible to filter out any urls not ending in jpg, gif, png
             imageArray.push(correctURL);
@@ -73,6 +71,9 @@ const onGetImageSuccess = (resultArray) => {
         //return console.log(correctURL);
         }
     })
+    for (let i=0; i<imageArray.length; i++) {
+        updateImage(i);
+    }
     // and set that as the innerHTML of the containerDiv
     // makeinterval so that every X amount of time, another image is changed out
     // create setInterval for create showImage function
