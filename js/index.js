@@ -1,14 +1,17 @@
-// User Map
-// Type a search into fuild#input and hit #submit
-// computer fetches it with the #input field
-// updates the container with pictures
-// User hit a back button to start over.
-
+const p = (str) => {console.log(str)}
 //js ingredients
     //Message strArr for the submit button, when there no .backButton on it
-    //The button #submit //To request the search
+    // messageHolder = 
+    let buttonMessage = [
+        document.getElementById('submit').textContent, //Starting message
+        'back'
+    ]
+    //The button #submit //To request the search Or go back
+    const search = document.getElementById('submit')
     //the input #input //To get user search request
+    input = document.getElementById('#input')
     // div #container to hold the users answers
+    resaltsPanal = document.getElementById('container')
 
 // funct start search //arg searchItem
     //if !.backButton
