@@ -1,6 +1,11 @@
 
+// capture container for slides
 const slideContainer = document.querySelector('#slide-container')
+
+// capture form element
 const form = document.querySelector('#form')
+
+// initialize an empty array for storing image URLs
 const gallery = []
 
 // handle reddit fetch success
@@ -45,8 +50,13 @@ const onRedditFetchFailure = () => {
 // })
 
 form.addEventListener('submit', (event) => {
+    // prevent the default behavior of 'refresh page'
     event.preventDefault()
-    fetch(`https://www.reddit.com/r/pics/search.json?q=cats&limit=50&restrict_sr=1&sr_nsfw=`)
+
+    // capture user input
+    const userSearch = input.value
+
+    fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearch}&limit=50&restrict_sr=1&sr_nsfw=`)
         .then(response => response.json())
         .then(onRedditFetchSuccess)
         .catch(onRedditFetchFailure)
