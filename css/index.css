@@ -1,0 +1,27 @@
+body {
+    text-align: center;
+}
+
+#search-results-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: none;
+
+    grid-template: 4fr 1fr / 1fr;
+}
+
+#stop-button {
+    display: block;
+    margin: auto;
+}
+
+#slideshow {
+    display: flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    height: 75%;
+    width: 75%;
+    margin: auto;
+}
