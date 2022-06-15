@@ -25,6 +25,12 @@ form.addEventListener('submit', (event) => {
         .then(onGetImageSuccess)
         .catch(onGetImageFailure)
     // update container background image
+    setInterval(() => {
+        // we want to iterate through elements of imageArray on a set Interval
+        // and after each interval, change container.style.background-image = `url('${image')`
+            goThroughImages(imageArray)
+            //container.innerHTML += " Hello";
+        }, 5000);
 })
 
 //code to run when image get success
@@ -67,3 +73,11 @@ const onGetImageFailure = (resultArray) => {
 container.addEventListener('DOMContentLoaded', () => {
     container.innerText = 'hello, im loaded';
 })
+
+
+//image iterator!
+const goThroughImages = (array) => {
+    array.forEach((image) => {
+        container.style = `background-image: url('${image}')`;
+    })
+}
