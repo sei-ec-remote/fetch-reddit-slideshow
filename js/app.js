@@ -1,5 +1,12 @@
-// example of what to request?
-// https://www.reddit.com/search.json?q=cats+nsfw:no
+// TO DO
+// add in instructions on page
+// on click, title, form, description should display: none;
+// (opt) show loading message
+// add button to stop slideshow
+// onclip stopButton"
+    // images removed
+    // form title desc shown again
+    // user can enter new search term.
 
 //define container div
 const container = document.querySelector('#container')
