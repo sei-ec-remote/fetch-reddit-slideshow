@@ -9,6 +9,9 @@ const form = document.getElementById('form');
 // create currentImageURL placeholder
 let currentImageURL;
 
+//create array for slideshow container
+const imageArray = [];
+
 // on click of submit button run this code
 form.addEventListener('submit', (event) => {
     // prevent default refresh
@@ -25,7 +28,6 @@ form.addEventListener('submit', (event) => {
 //code to run when image get success
 const onGetImageSuccess = (resultArray) => {
     console.log('on get image success!');
-    //console.log(resultArray)
     // make a slideshow! 
     // to do that!!! iterate through array with forEach
         // IF THERE IS ALREADY CONTENT IN THE CONTAINER,
@@ -34,19 +36,20 @@ const onGetImageSuccess = (resultArray) => {
     const listingArray = resultArray.data.children;
     console.log(listingArray)
     // use map to pop out the URLs into an image array!
-    // only some of the listing have images
-    // and check the imageArray we've mapped to for ending in last 3 endings
     listingArray.forEach(listing => {
-        // possible to filter out any urls not ending in jpg, gif, png
         // check if it has a data.preview
         // check if it's external
+        if (!listing.data.preview) {
+            return;
+        } else {
         // assign that img url to currentImageURL
         // change preview.redd.it to i.redd.it
-        let image = listing.data.preview.images[0].source.url;
-        // returns an object with only one object
-        
-        // just need to tell it to look inside the only thing in there
-        return console.log(image);
+        let imageURL = listing.data.preview.images[0].source.url;
+        // this replaces the preview part of reddit to correct i.
+        let correctURL = imageURL.replace(/preview.redd.it/, 'i.redd.it');
+        // possible to filter out any urls not ending in jpg, gif, png
+        return console.log(correctURL);
+        }
     })
     // and set that as the innerHTML of the containerDiv
     // makeinterval so that every X amount of time, another image is changed out
