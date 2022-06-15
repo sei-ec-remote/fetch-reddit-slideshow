@@ -38,16 +38,15 @@ const onGetImageSuccess = (resultArray) => {
     // use map to pop out the URLs into an image array!
     listingArray.forEach(listing => {
         // check if it has a data.preview
-        // check if it's external
         if (!listing.data.preview) {
             return;
         } else {
         // assign that img url to currentImageURL
-        // change preview.redd.it to i.redd.it
         let imageURL = listing.data.preview.images[0].source.url;
         // this replaces the preview part of reddit to correct i.
         let correctURL = imageURL.replace(/preview.redd.it/, 'i.redd.it');
         // possible to filter out any urls not ending in jpg, gif, png
+        imageArray.push(correctURL);
         return console.log(correctURL);
         }
     })
