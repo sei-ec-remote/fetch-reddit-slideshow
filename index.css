@@ -1,0 +1,10 @@
+.button {
+    position: center;
+    text-align: center;
+    display: flex;
+}
+body {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
