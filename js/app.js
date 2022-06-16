@@ -1,6 +1,3 @@
-
-
-
 // page loads with search bar and submit
 
 // user gets a prompt and types in a term
@@ -21,121 +18,53 @@
 //     // USE INCLUDES
 // }
 
-
-
-
-const redditApiSucessObj = (redditArray) => {
-    const picAddress = (console.log(redditArray.data.children[0].data.url))
-
-    const slidePhoto = document.getElementById('slideshowContainer')
-
-    const metaElement = document.createElement('meta')
-
-    metaElement.content = picAddress
-    metaElement.property = "og:image"
-
-    slidePhoto.classList.add('single-image')
-    slidePhoto.metaElement.add()
-
-
-
+const photoLoop = (arrayObject) => {
     
-    slidePhoto.innerHTML = '<img src="'+ picAddress+ '" />'
+    // const image1 = "https://static4.depositphotos.com/1005353/308/i/950/depositphotos_3088768-stock-photo-handicap-bathtub.jpg" //testing
+    
 
-    document.querySelector('body').appendChild(slidePhoto) 
+    const slidePhotoDivGrab = document.querySelector('#imgDiv1')
+    const photoDiv = document.createElement('div')
 
-    document.querySelector('body').appendChild(metaElement) 
+    // console.log(arrayObject.data.children[0].data.url)
+
+    photoDiv.innerHTML = `<img src="${arrayObject.data.children[4].data.url}" + width=300 + height=300 /img>`  /// THIS WORKS
+
+
+    document.querySelector('body').appendChild(photoDiv)
+
 }
 
 
 
 
-// example API call https://www.reddit.com/search.json?q=cats+nsfw:no
+const form = document.querySelector('#form')
 
-const redditFetch = (requestUrl) => {
-    fetch(requestUrl)
+form.addEventListener('submit', (event) => {
 
-    .then(cleanIt => cleanIt.json())
+    event.preventDefault()
+
+    const userSearchTerm = input.value
+
+
+    fetch(`https://www.reddit.com/search.json?q="${userSearchTerm}"+nsfw:no+type:image`)
+
+    .then(response => response.json())
 
     .then(photoLoop)
     
-    // .then(redditApiSucessObj)
-
-    // .then(photoLoop)
-    
     .catch()
+})
+
     
-    
-}
-
-const photoLoop = (arrayObject) => {
-
-    const slidePhotoDiv = document.getElementById('slideshowContainer')
-    const redditImgElement = document.createElement('img')
-    redditImgElement.setAttribute('src','https://i.imgur.com/LRoLTlK.jpeg')
-
-
-   
-    // for(let i = 0,i < arrayObject.length; i++) {
-
-        // arrayObject.data.children[i].data.url
-
-        // grabs my slideshow container
-
-
-        // add classlist to that objt
-        // slidePhoto.classList.add('single-image')
-        
-                // let picaddress = console.log(arrayObject) // 
-        // arrayObject.data.children[10].data.url
-        
-        // let picaddress = arrayObject.data.children.map(child => {
-        //     // Downsize the object
-        //     return {
-        //       url: child.data.url,
-        //         subreddit: child.data.subreddit,
-        //     author: child.data.author
-        //     }
-        //   })
-
-        // console.log("picaddress:",picaddress[2].url)
-
-          
-        //   const redditImg = document.createElement('img')
-        //   redditImg.setAttribute('src','https://i.imgur.com/LRoLTlK.jpeg')
-        //   document.querySelector('body').appendChild(redditImg) 
- 
-
-        // slidePhotoDiv.innerHTML = "img src='https://i.imgur.com/LRoLTlK.jpeg'">
-
-        // slidePhotoDiv.innerHTML = '<img src="`${picaddress[2].url}`" >'
- 
-        // data.data.children
-
-        console.log(picaddress);
-    
-        
-        
-
-        document.querySelector('body').appendChild(slidePhotoDiv) 
-    
-
-    // }
-}
 
 // const redditApiUrl = 'https://www.reddit.com/r/pics/.json?jsonp+nsfw:no'
-const redditApiUrl1 =  https://www.reddit.com/r/aww.json
+// const redditApiUrl1 =  https://www.reddit.com/r/aww.json
 
-let imageSearch = "dogs"
-const redditApiUrl2 =  `https://www.reddit.com/search.json?q="${imageSearch}"+nsfw:no+type:image`
-//data.children.length
-
-https://www.reddit.com/r/aww.json
-
-redditFetch(redditApiUrl2)
+// let imageSearch = "dogs"   // THIS WORKED 
+// const redditApiUrl2 =  `https://www.reddit.com/search.json?q="${imageSearch}"+nsfw:no+type:image`  // THIS WORKED
 
 
+// https://www.reddit.com/r/aww.json
 
-
-
-
+// redditFetch(redditApiUrl2)
