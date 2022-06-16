@@ -1,8 +1,6 @@
 // TO DO
-// on click, title, form, description should display: none;
 // (opt) show loading message
-// add button to stop slideshow
-// onclip stopButton"
+// onclick stopButton"
     // images removed
     // form title desc shown again
     // user can enter new search term.
@@ -12,16 +10,10 @@ const container = document.querySelector('#container')
 // define form
 const form = document.getElementById('form');
 
-// //image iterator!
-// let interval = 1000;
+const textDiv = document.getElementById("text-box");
 
-// imageArray.forEach(function (image, index) {
-//     setTimeout(function () {
-//         container.style = `background-image: url('${image}')`;
-//     }, index * interval);
-// });
-
-// console.log('loop finished')
+//create stop button
+const stopButton = document.createElement('button');
 
 // create currentImageURL placeholder
 let currentImageURL;
@@ -45,7 +37,15 @@ form.addEventListener('submit', (event) => {
     fetch(`https://www.reddit.com/search.json?q=${inputText}+nsfw:no`)
         .then(res => res.json())
         .then(onGetImageSuccess)
-        .catch(onGetImageFailure)
+        .catch(onGetImageFailure);
+    // hide textDiv    
+    textDiv.style.display = 'none';
+
+    // set stopButton id
+    stopButton.setAttribute('id','stopButton');
+    // display it on page?
+    container.appendChild(stopButton);
+    stopButton.innerText = "STOP";
 })
 
 //code to run when image get success
@@ -71,7 +71,6 @@ const onGetImageSuccess = (resultArray) => {
             return;
         }
         if (correctURL.includes('jpg') || correctURL.includes('png') || correctURL.includes('gif')) {
-        // possible to filter out any urls not ending in jpg, gif, png
             imageArray.push(correctURL);
         }
         //return console.log(correctURL);
@@ -80,10 +79,6 @@ const onGetImageSuccess = (resultArray) => {
     for (let i=0; i<imageArray.length; i++) {
         updateImage(i);
     }
-    // and set that as the innerHTML of the containerDiv
-    // makeinterval so that every X amount of time, another image is changed out
-    // create setInterval for create showImage function
-    // interval time of 15000ms
 }
 
 const onGetImageFailure = (resultArray) => {
@@ -92,6 +87,15 @@ const onGetImageFailure = (resultArray) => {
 
 container.addEventListener('DOMContentLoaded', () => {
     container.innerText = 'hello, im loaded';
+})
+
+//need to add event listener to stop button
+stopButton.addEventListener('click', (e) => {
+    console.log('stop button clicked!');
+    // onclick stopButton"
+    // images removed
+    // form title desc shown again
+    // user can enter new search term.
 })
 
 function updateImage(i) {
