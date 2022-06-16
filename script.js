@@ -1,13 +1,24 @@
 const search = document.getElementById("search")
 const imageDisplay = document.getElementById("scuz")
+let goatArray = []
+let imageIndex = 0
+// goatArray[0] = "https://i.redd.it/onx6r8fd9tx81.jpg"
+// goatArray[1] = "https://i.redd.it/k2hrcfdkqqr81.jpg"
+const changeImage = () => {
+    imageDisplay.setAttribute('src', goatArray[imageIndex].data.url)
+    imageIndex = (imageIndex + 1) % goatArray.length
+    setTimeout(changeImage, 2000);
 
+}
 
 const onSucces = (stuff) => {
     
     children = stuff.data.children
     
     const imageArr = children.filter((datNew) => {
-        if(datNew.data.url.includes("jpg")){
+        if(datNew.data.url.includes("imgur")){
+            return false
+        }else if(datNew.data.url.includes("jpg")){
             return datNew
         }else if(datNew.data.url.includes("png")){
             return datNew
@@ -15,12 +26,10 @@ const onSucces = (stuff) => {
             return datNew
         }
     })
-    
-    console.log(imageIndex)
-
+    console.log(`${search.value}`)
+    goatArray = imageArr
     console.log(imageArr)
-
-    changeImage
+    changeImage()
 }
 
 const onFailure = () => {
@@ -40,18 +49,4 @@ search.addEventListener('keypress', e => {
     }
 });
 
-let goatArray = []
-let i = 0
-goatArray[0] = 'css/Dolos.jpg'
-goatArray[1] = "css/rain.jpg"
-const changeImage = () => {
-    imageDisplay.setAttribute('src', goatArray[i])
-    if (i < imageDisplay.length - 1){
-        i++
-    }else {
-        i = 0
-    }
-    setInterval(changeImage, 1000);
-
-}
 
