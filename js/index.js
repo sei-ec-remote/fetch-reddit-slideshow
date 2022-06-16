@@ -14,9 +14,9 @@ const form = document.querySelector('#form')
 
 const onShowRedditSuccess = (imageArray) => {
     
-    let img = document.querySelector('.item')
+    let img = document.querySelector('.carousel-item')
     for (let i=0; i < imageArray.data.children.length; i++){
-        img.innerHTML = `<img src="${imageArray.data.children[i].data.url}"+ width=300 + height=300/>`
+        img.innerHTML = `<img class= "d-block w-100 img-fluid" src="${imageArray.data.children[i].data.url}" />`
     }
 
     // console.log(imageArray.data.children[1].data.url)
@@ -94,9 +94,9 @@ const onShowRedditFailure = () => {
 
 const onGetRedditSearchSuccess = (redditArray) => {
 
-    let img = document.querySelector('.item')
+    let img = document.querySelector('.carousel-item')
     for (let i=0; i < redditArray.data.children.length; i++){
-        img.innerHTML = `<img src="${redditArray.data.children[i].data.url}" + width=300 + height=300 /img>`
+        img.innerHTML = `<img class="d-block w-100 img-fluid" src="${redditArray.data.children[i].data.url}" /img>`
     }
     console.log(redditArray.data.children[1].data.url)
 }
