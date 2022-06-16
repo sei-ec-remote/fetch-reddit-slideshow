@@ -2,7 +2,6 @@
 // (opt) show loading message
 // onclick stopButton"
     // images removed
-    // form title desc shown again
     // user can enter new search term.
 
 //define container div
@@ -10,8 +9,9 @@ const container = document.querySelector('#container')
 // define form
 const form = document.getElementById('form');
 
-const textDiv = document.getElementById("text-box");
+const textDiv = document.getElementById('text-box');
 
+const stopDiv = document.getElementById('stop');
 //create stop button
 const stopButton = document.createElement('button');
 // set stopButton id
@@ -43,7 +43,7 @@ form.addEventListener('submit', (event) => {
     // hide textDiv    
     textDiv.style.display = 'none';
     // display it on page?
-    container.appendChild(stopButton);
+    stopDiv.appendChild(stopButton);
     stopButton.innerText = "STOP";
 })
 
