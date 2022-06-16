@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+body {
+    /* background-image: url("Dolos.jpg");
+    background-size:cover;
+    background-repeat:repeat; */
+    font-family: lato, sans-serif;  
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#search {
+	border-radius: 25px;
+	border: 2px solid black;
+	background-color: transparent;
+	padding: .5rem;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	font-family: inherit;
+    color: goldenrod;
+}
+
+#search:focus {
+    outline: none;
+}
+#search:focus::placeholder {
+    color: transparent;
+  }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: grey;
+    opacity: 1; /* Firefox */
+  }
+
+h1 {
+    text-align: center;
+}
+
+#img {
+    margin-top: 150px;
+}
+
