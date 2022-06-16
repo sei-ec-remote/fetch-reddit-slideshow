@@ -31,23 +31,32 @@ const buildGallery = (array) => {
     slideTransition()
 }
 
+// function to manage slide transitions
 const slideTransition = () => {
+    // grab HTML collection of the divs with image
     const images = document.querySelectorAll('.image-slide')
     console.log(images)
+    // initialize a variable to keep track of index position in collection
     let step = 0
+    // set the first image to visible by adding visible class
     images[step].classList.add('visible')
+    // start interval for switching images
     setInterval(() => {
+        // remove visible class from previous image
         images[step].classList.remove('visible')
+        // if step exceeds the number of images in collection, go back to first
         if (step === images.length-1) {
             step = 0
         } else {
             step++
         }
         console.log(step)
+        // add visible class to image div at newly incremented index
         images[step].classList.add('visible')
     }, 1000)
 
 }
+
 // handle reddit fetch success
 const onRedditFetchSuccess = (redArray) => {
     // set display of start-container to none
@@ -79,15 +88,16 @@ const onRedditFetchSuccess = (redArray) => {
             gallery.push(imgURL)
         }
     })
-    console.log(gallery)
+    // console.log(gallery)
     buildGallery(gallery)
-
 }
 
+// display on reddit fetch failure
 const onRedditFetchFailure = () => {
     console.log('reddit fetch failed')
 }
 
+// add event listener to search bar to take user input
 form.addEventListener('submit', (event) => {
     // prevent the default behavior of 'refresh page'
     event.preventDefault()
@@ -95,12 +105,14 @@ form.addEventListener('submit', (event) => {
     // capture user input
     const userSearch = input.value
 
-    fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearch}&limit=5&restrict_sr=1&sr_nsfw=`)
+    // fetch from reddit API with user input
+    fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearch}&limit=10&restrict_sr=1&sr_nsfw=`)
         .then(response => response.json())
         .then(onRedditFetchSuccess)
         .catch(onRedditFetchFailure)
 })
 
+// event listener to return to search menu
 stopButton.addEventListener('click', () => {
     // clear interval on slideshow function
     clearInterval(slideTransition)
