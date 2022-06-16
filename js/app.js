@@ -27,15 +27,16 @@ const cycle = (urlArray) => {
     searchPage.style.display = 'none'
     let image1 = document.createElement('img')
     frame1.appendChild(image1)
-    image1.style.maxWidth = "150px"
-    image1.style.maxHeight = "200px"
+    image1.classList.add("img-fluid")
+    image1.setAttribute("alt", "Error 403: access forbidden")
     let image2 = document.createElement('img')
     frame2.appendChild(image2)
-    image2.style.maxWidth = "150px"
-    image2.style.maxHeight = "200px"
+    image2.classList.add("img-fluid")
+    image2.setAttribute("alt", "Error 403: access forbidden")
     let imageArray = [image1, image2]
 
-    let framerotate = setInterval(frameHandler, 500, urlArray, imageArray)
+    let framerotate = setInterval(frameHandler, 50000, urlArray, imageArray)
+    frameHandler(urlArray, imageArray)
     
     let endbutton=document.createElement('button')
 
@@ -57,6 +58,9 @@ const cycle = (urlArray) => {
 
 const onShowImagesSuccess = (body) => {
     resultsPage.style.display = "block"
+    after=body.data.after
+    console.log(body.data)
+    console.log("BODYDATAAFTER",body.data.after)
     let urlArray=[]
     //console.log(body.data.children)
     //console.log(typeof body.data.children)
@@ -102,7 +106,7 @@ form.addEventListener('submit', (event) => {
     //console.log(searchTerm)
 
     //fetch input
-    fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
+    fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no+limit=50`)
     .then(res=>res.json())
     .then(onShowImagesSuccess)
     .catch(onShowImagesFailure)
