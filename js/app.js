@@ -1,5 +1,4 @@
 // TO DO
-// add in instructions on page
 // on click, title, form, description should display: none;
 // (opt) show loading message
 // add button to stop slideshow
