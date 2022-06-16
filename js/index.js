@@ -13,36 +13,48 @@ const p = (str) => {console.log(str)}
     // div #container to hold the users answers
     resaltsPanal = document.getElementById('container')
 
-// funct start search //arg searchItem
-const search = (e) => (
-    //if !.backButton
-    if (submit.innerText === buttonMessage) {
-        // fetches 
-        // fill the container with <img>
-        // toggle my submit/backbutton add class name to .backButton
-        toggleSubmitButton()
-    }
-    //else
-        // remove content of div
-        // toggle my submit/backbutton remove class name to .backButton 
-
-)
-
 // funct toggle my submit/back button
 const toggleSubmitButton = () => {
     //if .backButton 
-    if (submit.getAttribute('class', 'backButton'))
+    if (submit.getAttribute('class', 'backButton')) {
         //remove .backButton
         submit.classList.toggle('back-button')
         //change innerText = message[0]
         submit.innerText = buttonMessage[1]
-    //else 
+    } 
+    else { //!.backButton 
         //add .backButton
         submit.classList.toggle('back-button')
         //change innerText = message[1]
         submit.innerText = buttonMessage[0]
+    }
 }
-
 //addEventL
-    // on #submit to start the search
-    submit.addEventListener('click', search)
+// on #submit to start the search
+submit.addEventListener('click',  (e) => {
+    //if !.backButton
+    e.preventDefault()
+    const picture = input.value
+
+    fetch()
+        .then(res => res.json())
+        
+        .then((pictures) => {
+        if (submit.innerText === buttonMessage) {
+            // fet`ches
+            //put an iff statement to clear out if need to.
+            
+            
+            // fill the container with <img>
+            
+
+            // toggle my submit/backbutton add class name to .backButton
+            toggleSubmitButton()
+        }
+        else
+            // remove content of div
+            // toggle my submit/backbutton remove class name to .backButton 
+        })
+
+    // //Not sure if this stay here.
+})
