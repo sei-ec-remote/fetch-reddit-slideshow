@@ -14,6 +14,8 @@ const textDiv = document.getElementById("text-box");
 
 //create stop button
 const stopButton = document.createElement('button');
+// set stopButton id
+stopButton.setAttribute('id','stopButton');
 
 // create currentImageURL placeholder
 let currentImageURL;
@@ -40,9 +42,6 @@ form.addEventListener('submit', (event) => {
         .catch(onGetImageFailure);
     // hide textDiv    
     textDiv.style.display = 'none';
-
-    // set stopButton id
-    stopButton.setAttribute('id','stopButton');
     // display it on page?
     container.appendChild(stopButton);
     stopButton.innerText = "STOP";
@@ -95,6 +94,7 @@ stopButton.addEventListener('click', (e) => {
     // onclick stopButton"
     // images removed
     // form title desc shown again
+    textDiv.style.display = 'block';
     // user can enter new search term.
 })
 
