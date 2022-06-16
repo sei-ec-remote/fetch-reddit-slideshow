@@ -2,8 +2,8 @@ const search = document.getElementById("search")
 const imageDisplay = document.getElementById("scuz")
 let goatArray = []
 let imageIndex = 0
-// goatArray[0] = "https://i.redd.it/onx6r8fd9tx81.jpg"
-// goatArray[1] = "https://i.redd.it/k2hrcfdkqqr81.jpg"
+//let url
+
 const changeImage = () => {
     imageDisplay.setAttribute('src', goatArray[imageIndex].data.url)
     imageIndex = (imageIndex + 1) % goatArray.length
@@ -26,7 +26,7 @@ const onSucces = (stuff) => {
             return datNew
         }
     })
-    console.log(`${search.value}`)
+    console.log(`${url}`)
     goatArray = imageArr
     console.log(imageArr)
     changeImage()
@@ -36,12 +36,11 @@ const onFailure = () => {
     console.log('failure')
 }
 
-const url = `http://www.reddit.com/r/pics/search.json?q=cats+nsfw:no`;
-
 search.addEventListener('keypress', e => {
     
     if (e.key === 'Enter'){
-       fetch(url) 
+        url = `http://www.reddit.com/r/pics/search.json?q=${search.value}+nsfw:no`
+        fetch(url) 
        .then(rep => rep.json())
        .then(onSucces)
        .catch(onFailure)
