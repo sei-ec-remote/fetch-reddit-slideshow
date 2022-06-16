@@ -10,11 +10,8 @@ const stopButton = document.querySelector('#stop-button')
 // capture form element
 const form = document.querySelector('#form')
 
-// initialize an empty array for storing image URLs
-// const gallery = []
-
 // function to initiate gallery view
-const showGallery = (array) => {
+const buildGallery = (array) => {
     array.forEach(picture => {
         // // check if a slide with class image-slide exists already
 
@@ -30,11 +27,27 @@ const showGallery = (array) => {
         // console.log(imgDiv.innerHTML)
         // append div with image to container
         slideContainer.appendChild(imgDiv)
-
-        // set timeout before moving to next photo
     })
+    slideTransition()
 }
 
+const slideTransition = () => {
+    const images = document.querySelectorAll('.image-slide')
+    console.log(images)
+    let step = 0
+    images[step].classList.add('visible')
+    setInterval(() => {
+        images[step].classList.remove('visible')
+        if (step === images.length-1) {
+            step = 0
+        } else {
+            step++
+        }
+        console.log(step)
+        images[step].classList.add('visible')
+    }, 1000)
+
+}
 // handle reddit fetch success
 const onRedditFetchSuccess = (redArray) => {
     // set display of start-container to none
@@ -67,7 +80,8 @@ const onRedditFetchSuccess = (redArray) => {
         }
     })
     console.log(gallery)
-    showGallery(gallery)
+    buildGallery(gallery)
+
 }
 
 const onRedditFetchFailure = () => {
@@ -88,6 +102,9 @@ form.addEventListener('submit', (event) => {
 })
 
 stopButton.addEventListener('click', () => {
+    // clear interval on slideshow function
+    clearInterval(slideTransition)
+
     // remove children of slide container
     while (slideContainer.firstChild) {
         slideContainer.removeChild(slideContainer.firstChild)

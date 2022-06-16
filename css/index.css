@@ -3,6 +3,18 @@ body {
     color: white;
 }
 
-#slide-container, #stop-button {
+#stop-button {
     display: none;
+}
+
+#slide-container {
+    display: none;
+}
+
+.image-slide {
+    display: none;
+}
+
+.visible {
+    display: block;
 }
