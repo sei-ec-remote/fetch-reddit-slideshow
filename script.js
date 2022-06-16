@@ -1,19 +1,6 @@
 const search = document.getElementById("search")
 const imageDisplay = document.getElementById("scuz")
-let goatArray = []
-let i = 0
-goatArray[0] = 'css/Dolos.jpg'
-goatArray[1] = "css/rain.jpg"
-const changeImage = () => {
-    imageDisplay.setAttribute('src', goatArray[i])
-    if (i < imageDisplay.length - 1){
-        i++
-    }else {
-        i = 0
-    }
-    setInterval(changeImage, 1000);
 
-}
 
 const onSucces = (stuff) => {
     
@@ -53,5 +40,18 @@ search.addEventListener('keypress', e => {
     }
 });
 
+let goatArray = []
+let i = 0
+goatArray[0] = 'css/Dolos.jpg'
+goatArray[1] = "css/rain.jpg"
+const changeImage = () => {
+    imageDisplay.setAttribute('src', goatArray[i])
+    if (i < imageDisplay.length - 1){
+        i++
+    }else {
+        i = 0
+    }
+    setInterval(changeImage, 1000);
 
+}
 
