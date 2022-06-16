@@ -1,3 +1,31 @@
 body {
     background-color: rgb(235, 226, 214);
 }
+
+#reddit-fetch {
+    display: none;
+}
+
+/* .reddit-thumb {
+    display: inline-block;
+    position: relative;
+}
+*/
+img {
+    position: absolute;
+    top:25%;
+    left: 40%;
+} 
+
+#reddit-fetch input {
+    height: 50px;
+    position: absolute;
+    margin: 0 auto;
+    vertical-align: top;
+    
+    left:49%;
+}
+
+.container {
+    padding-bottom: 1000px;
+}
