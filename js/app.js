@@ -35,7 +35,7 @@ const cycle = (urlArray) => {
     image2.setAttribute("alt", "Error 403: access forbidden")
     let imageArray = [image1, image2]
 
-    let framerotate = setInterval(frameHandler, 50000, urlArray, imageArray)
+    let framerotate = setInterval(frameHandler, 2000, urlArray, imageArray)
     frameHandler(urlArray, imageArray)
     
     let endbutton=document.createElement('button')
