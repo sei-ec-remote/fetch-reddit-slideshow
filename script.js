@@ -1,6 +1,19 @@
 const search = document.getElementById("search")
 const imageDisplay = document.getElementById("scuz")
-let imageIndex = 0
+let goatArray = []
+let i = 0
+goatArray[0] = 'css/Dolos.jpg'
+goatArray[1] = "css/rain.jpg"
+const changeImage = () => {
+    imageDisplay.setAttribute('src', goatArray[i])
+    if (i < imageDisplay.length - 1){
+        i++
+    }else {
+        i = 0
+    }
+    setInterval(changeImage, 1000);
+
+}
 
 const onSucces = (stuff) => {
     
@@ -20,13 +33,7 @@ const onSucces = (stuff) => {
 
     console.log(imageArr)
 
-    imageDisplay.setAttribute('src', imageArr[imageIndex].data.url)
-
-    const increment = () => {
-        imageIndex++;
-    }
-    
-    setInterval(increment, 1000);
+    changeImage
 }
 
 const onFailure = () => {
