@@ -1,0 +1,45 @@
+html {
+    background-image: black;
+}
+
+body {
+    background-size: 100% 65em;
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/825/660/996/alien-background-carbon-grey-wallpaper-preview.jpg)
+}
+
+#input-box {
+    width: 40%;
+    height: 50px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background-color: rgba(246, 246, 246, 0.759);
+    font-size: 1em;
+}
+
+#search-button {
+    width: 85px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(66, 69, 71);
+    color: aliceblue;
+    font-size: 1.25em;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 30px;
+    border-width: 3px;
+    border-color: rgb(172, 46, 46)
+}
+
+@media (max-width: 600px) {
+    #input {
+        font-size: 1em;
+    }
+}
+
+@media (min-width: 1000px) {
+    #input {
+        width: 30%;
+    }
+}
