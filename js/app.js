@@ -96,13 +96,14 @@ stopButton.addEventListener('click', (e) => {
     // user can enter new search term.
 })
 
+let loopInterval;
 
 function loopThroughImageArray(imageArray) {
     for (let i = 0; i < imageArray.length; i++) {
         // for each iteration console.log a word
         // and make a pause after it
         (function (i) {
-            setTimeout(function () {
+            loopInterval = setTimeout(function () {
                 console.log(imageArray[i]);
                 //container.style.backgroundImage = `url(imageArray[i])`;
                 slide.src = imageArray[i];
