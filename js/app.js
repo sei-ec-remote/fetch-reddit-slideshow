@@ -5,6 +5,7 @@
 
 //define container div
 const container = document.querySelector('#container')
+const slide = document.querySelector('#slide');
 // define form
 const form = document.getElementById('form');
 
@@ -20,7 +21,7 @@ stopButton.setAttribute('id','stopButton');
 let currentImageURL;
 let currentDisplayURL;
 
-
+let imageArray = [];
 
 // on click of submit button run this code
 form.addEventListener('submit', (event) => {
@@ -77,18 +78,6 @@ const onGetImageSuccess = (resultArray) => {
     // for (let i=0; i<imageArray.length; i++) {
     //     updateImage(i);
     // }
-    function loopThroughImageArray(imageArray) {
-        for (let i = 0; i < imageArray.length; i++) {
-            // for each iteration console.log a word
-            // and make a pause after it
-            (function (i) {
-                setTimeout(function () {
-                    // thing to happen on timer
-                    console.log(imageArray[i]);
-                }, 2000 * i);
-            })(i);
-        };
-    }
     loopThroughImageArray(imageArray);
 
 }
@@ -105,39 +94,34 @@ container.addEventListener('DOMContentLoaded', () => {
 stopButton.addEventListener('click', (e) => {
     console.log('stop button clicked!');
     // images removed
-    //imageArray = [];
+    // imageArray = [];
     // form title desc shown again
     textDiv.style.display = 'block';
     // user can enter new search term.
 })
 
-//
-function updateImage(i) {
-    setTimeout(function() {
-            console.log(`${i}`)
-            console.log(imageArray[i]);
-            container.style = `background-image: url('${imageArray[i]}')`;
-    }, 4000 * i);
-    console.log(setTimeout());
+// not working as of 20.05 june 6
+// function updateImage(i) {
+//     setTimeout(function() {
+//             console.log(`${i}`)
+//             console.log(imageArray[i]);
+//             container.style = `background-image: url('${imageArray[i]}')`;
+//     }, 4000 * i);
+//     console.log(setTimeout());
+// }
+
+function loopThroughImageArray(imageArray) {
+    for (let i = 0; i < imageArray.length; i++) {
+        // for each iteration console.log a word
+        // and make a pause after it
+        (function (i) {
+            setTimeout(function () {
+                // thing to happen on timer
+                console.log(imageArray[i]);
+                container.style.backgroundImage = `url(imageArray[i])`;
+                slide.src = imageArray[i];
+            }, 2000 * i);
+        })(i);
+    };
 }
-
-let i = 0;
-//create array for slideshow container
-const imageArray = [];
-// time between switch
-let time = 3000;
-
-//function to change the image
-function changeImg() {
-    document.querySelector('#slide').src = imageArray[i];
-
-    if (i < imageArray.length - 1){
-        i++;
-    } else {
-        i = 0;
-    }
-
-    setTimeout(changeImg(), time);
-}
-
 
