@@ -45,33 +45,16 @@ form.addEventListener('submit', (event) => {
 //code to run when image get success
 const onGetImageSuccess = (resultArray) => {
     console.log('on get image success!');
-    // make a slideshow! 
-    // to do that!!! iterate through array with forEach
-        // IF THERE IS ALREADY CONTENT IN THE CONTAINER,
-        // EMPTY IT OUT
-    // for each of the images, define it
+    // define array of listings
     const listingArray = resultArray.data.children;
-    // use map to pop out the URLs into an image array!
     listingArray.forEach(listing => {
-        // check if it has a data.preview
-        if (!listing.data.preview) {
-            return;
-        } else {
-        // assign that img url to currentImageURL
-        let imageURL = listing.data.preview.images[0].source.url;
-        // this replaces the preview part of reddit to correct i.
-        let correctURL = imageURL.replace(/preview.redd.it/, 'i.redd.it');
-        if (correctURL.includes('external')) {
-            return;
-        }
-        if (correctURL.includes('jpg') || correctURL.includes('png') || correctURL.includes('gif')) {
-            imageArray.push(correctURL);
-        }
-        //return console.log(correctURL);
+        let shortURL = listing.data.url;
+        console.log(shortURL);
+        if (shortURL.includes('jpg') || shortURL.includes('png') || shortURL.includes('gif')) {
+            imageArray.push(shortURL);
         }
     })
     loopThroughImageArray(imageArray);
-
 }
 
 const onGetImageFailure = (resultArray) => {
@@ -104,7 +87,7 @@ function loopThroughImageArray(imageArray) {
         // and make a pause after it
         (function (i) {
             loopInterval = setTimeout(function () {
-                console.log(imageArray[i]);
+                //console.log(imageArray[i]);
                 slide.src = imageArray[i];
             }, 2000 * i);
         })(i);
