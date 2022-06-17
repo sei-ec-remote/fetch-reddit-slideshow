@@ -1,7 +1,8 @@
 
-let globalImgUrlsArray = []
+let globalImgUrlsArray = [] // global
 
-const form = document.querySelector('#form')
+const form = document.querySelector('#form')  //global
+
 
 // submit event kicks off the fetch
 form.addEventListener('submit', (event) => {
@@ -14,20 +15,28 @@ form.addEventListener('submit', (event) => {
 
     .then(res => res.json())  // formates redditqueryobject to json 
 
-    .then(photoLoopSuccess,photoLoopFail)
+    .then(photoLoopSuccess,photoLoopFail) // WORKING
+
     
     .catch(console.log("FAIL:HIT CATCH"))
 })
+
+///////////////////////******************************************** */
+
 
 
 
 
 const photoLoopSuccess = (arrayObject) => {
+
+    //////////////////////////***************** working below */
     console.log('in:photoLoopSuccess') //testing
 
 
     const x = 3
-    const urlPath = arrayObject.data.children[x].data.url  // WORKS
+    const urlPath = arrayObject.data.children[x].data.url
+    const urlPathThumbnail = arrayObject.data.children[x].data.thumbnail
+    
     console.log("urlPath:"+urlPath);
 
 
@@ -58,45 +67,15 @@ const slideLoop = (arrayOfImgUrlsParam) => {
         const slidePhotoDivGrab = document.querySelector("#slideshowContainer")
 
         let slideUrlPath = arrayOfImgUrlsParam[iterator]
-        let slideUrlPath2 = arrayOfImgUrlsParam[5] //alt for testing
-        let slideUrlPath3 = arrayOfImgUrlsParam[8] //alt for testing
 
         // THIS IS WHERE IT FORKS
 
         // set the photo with the img
         slidePhotoDivGrab.innerHTML = `<img src="${slideUrlPath}" + width=300 + height=300 /img>`
-
+        
         //adds image to page
         document.querySelector('body').appendChild(slidePhotoDivGrab)
 
-        console.log('post-photol1');
-
-        //TEST
-        setTimeout((slideUrlPath1,iterator) => {
-            iterator++
-            // want the code to grab the div and replae the image
-            
-            // do a new grab
-            const slidePhotoDivGrab2 = document.querySelector("#slideshowContainer")
-            slidePhotoDivGrab2.innerHTML = `<img src="${slideUrlPath1}" + width=300 + height=300 /img>`
-
-        }, 3000)
-
-
-        console.log('post-photol2');
-
-        // DO IT AGAIN for testing
-        setTimeout((slideUrlPath3) => {
-
-            // want the code to grab the div and replae the image
-            
-            // do a new grab
-            const slidePhotoDivGrab2 = document.querySelector("#slideshowContainer")
-            slidePhotoDivGrab2.innerHTML = `<img src="${slideUrlPath3}" + width=300 + height=300 /img>`
-
-        }, 3000)
-
-        console.log('post-photol3');
 
 
 
@@ -197,10 +176,8 @@ const photoLoopFail = () => {
 
 
 
-
-
-
-
+////////////////////********************** */
+//  testing photo get
 
 
 
@@ -248,3 +225,6 @@ const photoLoopFail = () => {
 // }
 
 // ticker()
+
+
+
