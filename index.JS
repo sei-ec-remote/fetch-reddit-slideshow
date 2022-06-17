@@ -5,23 +5,28 @@
 // Div to store images
 const photoLoop = (arrayObject) => {    
     const slidePhotoDivGrab = document.querySelector('#slideshow')
-    
+// have the pictures iterate through
+    // let arrayObject = 0
+    // for (let i = 0; i < 15; i++)
+    let imageArray = arrayObject.data.children
+    console.log(imageArray)
+
     const photoDiv = document.createElement('div')
 
     // console.log(arrayObject.data.children[0].data.url)
 
-    photoDiv.innerHTML = `<img src="${arrayObject.data.children[1].data.url}" + width=300 + height=300 /img>` 
-
+    photoDiv.innerHTML = `<img src="${arrayObject.data.children[1].data.url}" + width=600 + height=600 /img>` 
+    const x = 1
+    const previewPath = data.children[x].data.preview.image[x].source.url
 
     document.querySelector('body').appendChild(photoDiv)
     console.log(arrayObject)
 }
 
-
 // Search bar and results
-const form = document.querySelector('#form')
-
-form.addEventListener('searchbutton', (event) => {
+const form = document.getElementById('inputform')
+console.log(form)
+form.addEventListener('submit', (event) => {
 
     event.preventDefault()
 
