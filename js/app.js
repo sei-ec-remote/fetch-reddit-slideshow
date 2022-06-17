@@ -11,8 +11,6 @@ const stopDiv = document.getElementById('stop');
 const stopButton = document.createElement('button');
 // set stopButton id
 stopButton.setAttribute('id','stopButton');
-// define container div for carousel
-const containerDiv = document.querySelector(".carousel-inner")
 // creates empty array in which to put useable images
 let imageArray = [];
 //this will let us get a solid number for the array length
@@ -68,24 +66,6 @@ stopButton.addEventListener('click', (e) => {
     location.reload();
 })
 
-
-// THIS NEEDS WORK!
-// 23.10 notes: for whatever reason, it's looping through the array infinitely....why???
-function loopThroughImageArray(imageArray) {
-    for (let i = 0; i < arrayLength; i++) {
-        //console.log(imageArray[i]);
-        //const carousel = document.createElement('div');
-        //containerDiv.appendChild(carousel);
-        // if (i = 0) {
-        //     carousel.setAttribute('class', 'carousel-item active');
-        // } else {
-        //     const carousel = document.createElement('div');
-        //     carousel.setAttribute('class', 'carousel-item');
-        // }
-        //carousel.innerHTML = `testing!`
-        };
-}
-
 // test timing interval functionality
 let curArrayIndex = -1;
 function advanceInterval() {
@@ -102,6 +82,18 @@ function advanceInterval() {
     //setImage(imageArray[curArrayIndex]);
     // console.log functionality!
     console.log(imageArray[curArrayIndex]);
+    // this sets up the slideshow for the img tag
+    slide.src = imageArray[curArrayIndex];
+    // this block is for setting up the carousel
+    // const carousel = document.createElement('div');
+    //     containerDiv.appendChild(carousel);
+    //     if (i = 0) {
+    //         carousel.setAttribute('class', 'carousel-item active');
+    //     } else {
+    //         const carousel = document.createElement('div').setAttribute('class', 'carousel-item');
+    //         //carousel.setAttribute('class', 'carousel-item');
+    //     }
+    //     carousel.innerHTML = `<img class="d-block w-100" src="${imageArray[curArrayIndex]}" alt="${curArrayIndex} slide">`
     }
 }
 // ok! this is working!
