@@ -1,8 +1,3 @@
-// TO DO
-// onclick stopButton"
-    // images removed
-    // user can enter new search term.
-
 //define container div
 const container = document.querySelector('#container')
 const slide = document.querySelector('#slide');
@@ -88,12 +83,16 @@ container.addEventListener('DOMContentLoaded', () => {
 
 //need to add event listener to stop button
 stopButton.addEventListener('click', (e) => {
-    console.log('stop button clicked!');
-    // images removed
+    // console.log('stop button clicked!');
+    // // images removed
+    // clearInterval(loopInterval);
+    // slide.src = '';
     // imageArray = [];
-    // form title desc shown again
-    textDiv.style.display = 'block';
+    // // form title desc shown again
+    // textDiv.style.display = 'block';
     // user can enter new search term.
+    // STUPID FIX - RELOAD WHOLE PAGE
+    location.reload();
 })
 
 let loopInterval;
@@ -105,7 +104,6 @@ function loopThroughImageArray(imageArray) {
         (function (i) {
             loopInterval = setTimeout(function () {
                 console.log(imageArray[i]);
-                //container.style.backgroundImage = `url(imageArray[i])`;
                 slide.src = imageArray[i];
             }, 2000 * i);
         })(i);
