@@ -1,18 +1,17 @@
 
-//define container div
-const container = document.querySelector('#container')
+// define DOM elements
 const slide = document.querySelector('#slide');
 // define form
 const form = document.getElementById('form');
-
+// define instructions text area
 const textDiv = document.getElementById('text-box');
-
+// define div where stop button populates
 const stopDiv = document.getElementById('stop');
 //create stop button
 const stopButton = document.createElement('button');
 // set stopButton id
 stopButton.setAttribute('id','stopButton');
-
+// creates empty array in which to put useable images
 let imageArray = [];
 
 // on click of submit button run this code
@@ -47,12 +46,8 @@ const onGetImageSuccess = (resultArray) => {
 }
 
 const onGetImageFailure = (resultArray) => {
-    console.log('on get image failure.');
+    console.log('On get image failure.');
 }
-
-container.addEventListener('DOMContentLoaded', () => {
-    container.innerText = 'hello, im loaded';
-})
 
 //need to add event listener to stop button
 stopButton.addEventListener('click', (e) => {
@@ -68,18 +63,21 @@ stopButton.addEventListener('click', (e) => {
     location.reload();
 })
 
+
+// THIS NEEDS WORK!
 let loopInterval;
 
-function loopThroughImageArray(imageArray) {
-    for (let i = 0; i < imageArray.length; i++) {
-        // for each iteration console.log a word
-        // and make a pause after it
-        (function (i) {
-            loopInterval = setTimeout(function () {
-                //console.log(imageArray[i]);
-                slide.src = imageArray[i];
-            }, 2000 * i);
-        })(i);
-    };
-}
+// function loopThroughImageArray(imageArray) {
+//     for (let i = 0; i < imageArray.length; i++) {
+//         // for each iteration console.log a word
+//         // and make a pause after it
+//         (function (i) {
+//             loopInterval = setTimeout(function () {
+//                 //console.log(imageArray[i]);
+//                 slide.src = imageArray[i];
+//             }, 2000 * i);
+//         })(i);
+//     };
+// }
 
+// try to make a slideshow!
