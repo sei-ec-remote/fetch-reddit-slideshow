@@ -1,4 +1,5 @@
 
+let iterator = 0
 
 // Step 1
 // Search bar and results
@@ -25,49 +26,34 @@ let i = 0
 const photoLoop = (arrayObject) => {    
     
     // const urlPath = arrayObject.data.children[i].data.preview.image[i].data.url
-    const urlPath2 = arrayObject.data.children[0].data.url
 
     // Loop to iterate through the stored images   
     let emptyArray = []
     for (let i = 0; i < 25; i++) {
         emptyArray[i] = arrayObject.data.children[i].data.url
         console.log("emptyArray" + emptyArray)
+    
     slideLoop(emptyArray)
     }}  
 
+
+// Step 3 
+//take the cleaned images and put them into the emptyArray to display in the slideshow div. 
 const slideLoop = (emptyArray) => {
-    // console.log(emptyArray[0])
-    const slidePhotoDivGrab = document.querySelector('#slideshow')
-    slidePhotoDivGrab.innerHTML = `<img src="${emptyArray[i]}" + width=300 + heigth=300 /img>`
-    document.querySelector('body').appendChild(slidePhotoDivGrab)
-    // iterator++
+    if (iterator <25) {
+        for (let i = 0; i < slideLoop.length; i++)
+        console.log("iterator:" + iterator)
+        const slidePhotoDivGrab = document.querySelector('#slideshow')
+        slidePhotoDivGrab.innerHTML = `<img src="${emptyArray[iterator]}" + width=300 + heigth=300 /img>`
+        
+        
+        document.querySelector('body').appendChild(slidePhotoDivGrab)
+        iterator++
+    }
 }
-// setInterval(slideLoop, 2000)
-//     const slidePhotoDivGrab = document.querySelector('#slideshow')
-// // have the pictures iterate through
-//     // let arrayObject = 0
-//     // for (let i = 0; i < 15; i++)
-//     let imageArray = arrayObject.data.children
-//     console.log(imageArray)
 
-//     const photoDiv = document.createElement('div')
-
-//     // console.log(arrayObject.data.children[0].data.url)
-
-//     photoDiv.innerHTML = `<img src="${arrayObject.data.children[1].data.url}" + width=600 + height=600 /img>` 
-
-//     document.querySelector('body').appendChild(photoDiv)
-//     console.log(arrayObject)
-// }
-
-
-    
-
-// const redditApiUrl = 'https://www.reddit.com/r/pics/.json?jsonp+nsfw:no'
-// const redditApiUrl1 =  https://www.reddit.com/r/aww.json
-
-// let imageSearch = "dogs"   // THIS WORKED 
-// const redditApiUrl2 =  `https://www.reddit.com/search.json?q="${imageSearch}"+nsfw:no+type:image`  // THIS WORKED
+setInterval(slideLoop, 2000)
+// Use this interval later
 
 
 // https://www.reddit.com/r/aww.json
