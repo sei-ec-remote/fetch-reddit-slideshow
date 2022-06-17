@@ -1,5 +1,4 @@
 // TO DO
-// (opt) show loading message
 // onclick stopButton"
     // images removed
     // user can enter new search term.
@@ -21,8 +20,7 @@ stopButton.setAttribute('id','stopButton');
 let currentImageURL;
 let currentDisplayURL;
 
-//create array for slideshow container
-const imageArray = [];
+
 
 // on click of submit button run this code
 form.addEventListener('submit', (event) => {
@@ -75,9 +73,24 @@ const onGetImageSuccess = (resultArray) => {
         //return console.log(correctURL);
         }
     })
-    for (let i=0; i<imageArray.length; i++) {
-        updateImage(i);
+// currently not working as intended
+    // for (let i=0; i<imageArray.length; i++) {
+    //     updateImage(i);
+    // }
+    function loopThroughImageArray(imageArray) {
+        for (let i = 0; i < imageArray.length; i++) {
+            // for each iteration console.log a word
+            // and make a pause after it
+            (function (i) {
+                setTimeout(function () {
+                    // thing to happen on timer
+                    console.log(imageArray[i]);
+                }, 2000 * i);
+            })(i);
+        };
     }
+    loopThroughImageArray(imageArray);
+
 }
 
 const onGetImageFailure = (resultArray) => {
@@ -91,18 +104,40 @@ container.addEventListener('DOMContentLoaded', () => {
 //need to add event listener to stop button
 stopButton.addEventListener('click', (e) => {
     console.log('stop button clicked!');
-    // onclick stopButton"
     // images removed
+    //imageArray = [];
     // form title desc shown again
     textDiv.style.display = 'block';
     // user can enter new search term.
 })
 
+//
 function updateImage(i) {
     setTimeout(function() {
             console.log(`${i}`)
             console.log(imageArray[i]);
             container.style = `background-image: url('${imageArray[i]}')`;
-    }, 5000 * i);
+    }, 4000 * i);
+    console.log(setTimeout());
 }
+
+let i = 0;
+//create array for slideshow container
+const imageArray = [];
+// time between switch
+let time = 3000;
+
+//function to change the image
+function changeImg() {
+    document.querySelector('#slide').src = imageArray[i];
+
+    if (i < imageArray.length - 1){
+        i++;
+    } else {
+        i = 0;
+    }
+
+    setTimeout(changeImg(), time);
+}
+
 
