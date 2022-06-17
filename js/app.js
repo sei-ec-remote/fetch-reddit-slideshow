@@ -11,6 +11,8 @@ const stopDiv = document.getElementById('stop');
 const stopButton = document.createElement('button');
 // set stopButton id
 stopButton.setAttribute('id','stopButton');
+// define container div for carousel
+const containerDiv = document.querySelector(".carousel-inner")
 // creates empty array in which to put useable images
 let imageArray = [];
 
@@ -65,19 +67,17 @@ stopButton.addEventListener('click', (e) => {
 
 
 // THIS NEEDS WORK!
-let loopInterval;
-
-// function loopThroughImageArray(imageArray) {
-//     for (let i = 0; i < imageArray.length; i++) {
-//         // for each iteration console.log a word
-//         // and make a pause after it
-//         (function (i) {
-//             loopInterval = setTimeout(function () {
-//                 //console.log(imageArray[i]);
-//                 slide.src = imageArray[i];
-//             }, 2000 * i);
-//         })(i);
-//     };
-// }
+function loopThroughImageArray(imageArray) {
+    for (let i = 0; i < imageArray.length; i++) {
+        const carousel = document.createElement('div');
+        if (i=0) {
+            carousel.setAttribute('class', 'carousel-item active');
+        } else {
+            const carousel = document.createElement('div');
+            carousel.setAttribute('class', 'carousel-item');
+        }
+        carousel.innerHTML = `<img class="d-block w-100" src="${imageArray[i]}" alt="${i} slide">`
+    };
+}
 
 // try to make a slideshow!
