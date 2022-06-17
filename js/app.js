@@ -41,7 +41,7 @@ const onGetImageSuccess = (resultArray) => {
     const listingArray = resultArray.data.children;
     listingArray.forEach(listing => {
         let shortURL = listing.data.url;
-        console.log(shortURL);
+        //console.log(shortURL);
         if (shortURL.includes('jpg') || shortURL.includes('png') || shortURL.includes('gif')) {
             imageArray.push(shortURL);
         }
@@ -73,17 +73,38 @@ stopButton.addEventListener('click', (e) => {
 // 23.10 notes: for whatever reason, it's looping through the array infinitely....why???
 function loopThroughImageArray(imageArray) {
     for (let i = 0; i < arrayLength; i++) {
-        console.log(imageArray[i]);
-        const carousel = document.createElement('div');
-        containerDiv.appendChild(carousel);
+        //console.log(imageArray[i]);
+        //const carousel = document.createElement('div');
+        //containerDiv.appendChild(carousel);
         // if (i = 0) {
         //     carousel.setAttribute('class', 'carousel-item active');
         // } else {
         //     const carousel = document.createElement('div');
         //     carousel.setAttribute('class', 'carousel-item');
         // }
-        carousel.innerHTML = `testing!`
+        //carousel.innerHTML = `testing!`
         };
 }
+
+// test timing interval functionality
+let curArrayIndex = -1;
+function advanceInterval() {
+    // this checks to see if there is anything in imageArray atm
+    if (!imageArray[0]) {
+        return;
+    } else {
+    // this moves us up one in the array index
+    ++curArrayIndex;
+    // this resets us in the array index if we're at the end
+    if (curArrayIndex >= imageArray.length) {
+        curArrayIndex = 0;
+    }
+    //setImage(imageArray[curArrayIndex]);
+    // console.log functionality!
+    console.log(imageArray[curArrayIndex]);
+    }
+}
+// ok! this is working!
+let intervalID = setInterval(advanceInterval, 3000);
 
 // try to make a slideshow!
