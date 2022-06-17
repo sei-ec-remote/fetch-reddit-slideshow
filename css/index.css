@@ -1,10 +1,38 @@
 body {
-    background-color: rgb(70,70,70);
+    /* background-color: rgb(70,70,70); */
     color: white;
+    background-image: url('https://lh3.googleusercontent.com/113XeS12KOVEDci4koLvoE-LFHlcHNB2tGwjlCausI2oYYl3-WFSF1IjajovRYQY4Q=s1280');
+    background-size: cover;
+    size: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+input[type=submit] {
+    background: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
 }
 
 #stop-button {
     display: none;
+    margin: 30px;
+    background: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+#stop-button:hover, input[type=submit]:hover {
+    color: gray;
+    border: 2px solid gray;
+}
+
+#start-container {
+    margin-top: 20%;
 }
 
 #slide-container {
@@ -18,3 +46,7 @@ body {
 .visible {
     display: block;
 }
+
+/* div {
+    border: 2px solid red;
+} */

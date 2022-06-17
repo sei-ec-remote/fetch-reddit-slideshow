@@ -3,27 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="css/index.css">
   <script src="js/index.js" defer></script>
   <!-- some sort of title -->
   <title>Reddit Slideshow</title>
 </head>
 <body>
-  <div id="start-container">
+  <div id="start-container" class="container">
     <!-- another sort of title -->
-    <h1>Reddit Slideshow</h1>
-
+    <div class="col">
+      <h1 class="text-center">Reddit Slideshow</h1>
+    </div>
     <!-- A short description telling the user what to do -->
-    <h2>Enter a search term and let us do the rest.</h2>
+    <h2 class="text-center">Enter a search term and let us do the rest.</h2>
     
     <!-- a blank text field -->
-    <form id="form">
+    <form id="form" class="text-center">
       <input id="input" minlength="1">
       <input type="submit" value="Begin">
     </form>
   </div>
-  <div id="slide-container"></div>
-  <!-- a button to stop the slideshow -->
-  <button id="stop-button">Stop Slideshow</button>
+  <div class="container">
+    <div id="slide-container" class="text-center">
+        <!-- a button to stop the slideshow -->
+      <div class="d-flex justify-content-center">
+        <button id="stop-button">Stop Slideshow</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

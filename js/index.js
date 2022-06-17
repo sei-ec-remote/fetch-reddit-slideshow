@@ -10,6 +10,9 @@ const stopButton = document.querySelector('#stop-button')
 // capture form element
 const form = document.querySelector('#form')
 
+// define variable to capture intervalID
+let slideStepID = 0
+
 // function to initiate gallery view
 const buildGallery = (array) => {
     array.forEach(picture => {
@@ -19,7 +22,7 @@ const buildGallery = (array) => {
         const imgDiv = document.createElement('div')
 
         // add image-slide class
-        imgDiv.classList.add('image-slide')
+        imgDiv.classList.add('image-slide', 'img-fluid')
 
         // set innerHTML of the div to the src URL of the array element
         imgDiv.innerHTML = `<img src="${picture}">`
@@ -41,7 +44,7 @@ const slideTransition = () => {
     // set the first image to visible by adding visible class
     images[step].classList.add('visible')
     // start interval for switching images
-    setInterval(() => {
+    slideStepID = setInterval(() => {
         // remove visible class from previous image
         images[step].classList.remove('visible')
         // if step exceeds the number of images in collection, go back to first
@@ -50,10 +53,10 @@ const slideTransition = () => {
         } else {
             step++
         }
-        console.log(step)
+        // console.log(step)
         // add visible class to image div at newly incremented index
         images[step].classList.add('visible')
-    }, 1000)
+    }, 4000)
 
 }
 
@@ -106,7 +109,7 @@ form.addEventListener('submit', (event) => {
     const userSearch = input.value
 
     // fetch from reddit API with user input
-    fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearch}&limit=10&restrict_sr=1&sr_nsfw=`)
+    fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearch}&limit=25&restrict_sr=1&sr_nsfw=`)
         .then(response => response.json())
         .then(onRedditFetchSuccess)
         .catch(onRedditFetchFailure)
@@ -115,7 +118,7 @@ form.addEventListener('submit', (event) => {
 // event listener to return to search menu
 stopButton.addEventListener('click', () => {
     // clear interval on slideshow function
-    clearInterval(slideTransition)
+    clearInterval(slideStepID)
 
     // remove children of slide container
     while (slideContainer.firstChild) {
@@ -128,6 +131,9 @@ stopButton.addEventListener('click', () => {
 
     // re-display the start container
     startContainer.style.display = 'block'
+
+    // clear form contents
+    form.reset()
 })
 
 // initialize fetch from reddit on DOM Content Loaded
