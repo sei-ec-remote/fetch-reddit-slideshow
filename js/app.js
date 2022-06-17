@@ -3,6 +3,8 @@ let globalImgUrlsArray = [] // global
 
 const form = document.querySelector('#form')  //global
 
+let iterator = 0 // glocal iterator
+
 
 // submit event kicks off the fetch
 form.addEventListener('submit', (event) => {
@@ -35,53 +37,148 @@ const photoLoopSuccess = (arrayObject) => {
 
     const x = 3
     const urlPath = arrayObject.data.children[x].data.url
-    const urlPathThumbnail = arrayObject.data.children[x].data.thumbnail
+    const urlPathThumbnail = arrayObject.data.children[x].data.thumbnail   // alt path
     
     console.log("urlPath:"+urlPath);
+    console.log("urlPath:"+urlPathThumbnail);
 
 
-    // gives the aray of list of URLs
+    // gives the aray of list of URLs, set to empty at first
     let arrayOfImgUrls = []
 
-
-    for (let i = 0;i < 25; i++){   // FIX 25
-        // console.log('FOR loop in photoloopSc:') //testing
+    //this for belongs to arrayOfImgUrls 
+    for (let i = 0;i < 25; i++){   // FIX i < 25
+        console.log('FOR loop in photoloopSc:') //testing
         arrayOfImgUrls[i] = arrayObject.data.children[i].data.url //does this work?
+    }    
+        // arrayOfImgUrls[i] = arrayObject.data.children[i].data.thumbnail // alt path
+        
+
+    // puts just the URL in an array
+    for (let x= 0; x < arrayOfImgUrls.length; x++){
+        console.log("arrayOfImgUrls-index:"+ x + ":" +  arrayOfImgUrls[x])
     }
 
-    
+
+    // CONSLE OUT test
+    let string1 = arrayOfImgUrls[5]
+    console.log("strINpls:"+string1)
+
+
 
     // console.log('arrayOfImgUrls:' + arrayOfImgUrls) // seems to work TESTING
 
-    slideLoop(arrayOfImgUrls)
+    // slideLoop(arrayOfImgUrls)  /// regular loop
 
-}
+    
+
+
+
+    setInterval(altLoop(arrayOfImgUrls),3000)  // ALT loop
+
+}    
 
 // this take the list of URLs , grabs a div and puts it in it
-const slideLoop = (arrayOfImgUrlsParam) => { 
-        console.log('SLDLParrayOfImgUrlsParam:' + arrayOfImgUrlsParam); // works
+// const slideLoop = (arrayOfImgUrlsParam) => { 
+//         console.log('SLDLParrayOfImgUrlsParam:' + arrayOfImgUrlsParam); // works
 
-        let iterator = 0
 
-        // get the div to hold slide photo
-        const slidePhotoDivGrab = document.querySelector("#slideshowContainer")
+//         // get the div to hold slide photo
+//         const slidePhotoDivGrab = document.querySelector("#slideshowContainer")
 
-        let slideUrlPath = arrayOfImgUrlsParam[iterator]
+//         let slideUrlPath = arrayOfImgUrlsParam[iterator]
 
-        // THIS IS WHERE IT FORKS
 
-        // set the photo with the img
-        slidePhotoDivGrab.innerHTML = `<img src="${slideUrlPath}" + width=300 + height=300 /img>`
+//         // set the photo with the img
+//         slidePhotoDivGrab.innerHTML = `<img alt="${slideUrlPath}" src="${slideUrlPath}" + width=300 + height=300 /img>` // added the ALT
         
-        //adds image to page
-        document.querySelector('body').appendChild(slidePhotoDivGrab)
+//         //adds image to page
+//         document.querySelector('body').appendChild(slidePhotoDivGrab)
 
 
 
 
-        // for the loop
-        iterator++
-}
+
+        ////// TESTING
+
+
+        const altLoop = (arrayOfImgUrlsParam) => {
+
+            // if (iterator < 25){
+
+            // console.log('altLoop:Iterator:' + iterator)
+                
+            // const slidePhotoDivGrab = document.querySelector("#slideshowContainer")
+
+            // let slideUrlPath = arrayOfImgUrlsParam[iterator]
+
+            // // slidePhotoDivGrab.innerHTML = `slideUrlPath`  
+            // slidePhotoDivGrab.innerHTML = `<img alt="${slideUrlPath}" src="${slideUrlPath}" + width=300 + height=300 /img>`
+            // // slidePhotoDivGrab.innerHTML = `<img src="${slideUrlPath}" + width=300 + height=300 /img>`  // alt
+
+            // document.querySelector('body').appendChild(slidePhotoDivGrab)  // THIS IS NECESSARY
+
+            // iterator++
+
+            // console.log('altLoop:IteratorPost++:' + iterator)
+
+            // } else{console.log("altLoop:iterator FAIL")}
+
+
+            // ALT ALT pass 1
+            setTimeout(() => {
+
+            const slidePhotoDivGrab = document.querySelector("#slideshowContainer")
+            console.log("iterator:"+iterator)
+            let slideUrlPath = arrayOfImgUrlsParam[iterator]
+            slidePhotoDivGrab.innerHTML = `${slideUrlPath}`  
+            document.querySelector('body').appendChild(slidePhotoDivGrab)
+            iterator++
+
+        },3000)
+
+
+
+            // Alt alt pass 2
+
+            setTimeout(() => {
+
+            const slidePhotoDivGrab1 = document.querySelector("#slideshowContainer")
+            console.log("iterator:"+iterator)
+            let slideUrlPath1 = arrayOfImgUrlsParam[iterator]
+            slidePhotoDivGrab1.innerHTML = `${slideUrlPath1}`  
+            document.querySelector('body').appendChild(slidePhotoDivGrab1)
+            iterator++
+
+            
+            },3000)
+
+            
+            // Alt alt pass 3
+
+
+            setTimeout(() => {
+
+            const slidePhotoDivGrab2 = document.querySelector("#slideshowContainer")
+            console.log("iterator:"+iterator)
+            let slideUrlPath2 = arrayOfImgUrlsParam[iterator]
+            slidePhotoDivGrab2.innerHTML = `${slideUrlPath2}`  
+            document.querySelector('body').appendChild(slidePhotoDivGrab2)
+            iterator++
+
+
+            },3000)
+
+
+        }
+
+        
+        
+        
+
+
+        // //for the loop
+        // iterator++
 
 
 
@@ -225,6 +322,3 @@ const photoLoopFail = () => {
 // }
 
 // ticker()
-
-
-
