@@ -15,6 +15,8 @@ stopButton.setAttribute('id','stopButton');
 const containerDiv = document.querySelector(".carousel-inner")
 // creates empty array in which to put useable images
 let imageArray = [];
+//this will let us get a solid number for the array length
+let arrayLength;
 
 // on click of submit button run this code
 form.addEventListener('submit', (event) => {
@@ -44,7 +46,8 @@ const onGetImageSuccess = (resultArray) => {
             imageArray.push(shortURL);
         }
     })
-    loopThroughImageArray(imageArray);
+    arrayLength = imageArray.length
+    //loopThroughImageArray(imageArray);
 }
 
 const onGetImageFailure = (resultArray) => {
@@ -67,17 +70,20 @@ stopButton.addEventListener('click', (e) => {
 
 
 // THIS NEEDS WORK!
+// 23.10 notes: for whatever reason, it's looping through the array infinitely....why???
 function loopThroughImageArray(imageArray) {
-    for (let i = 0; i < imageArray.length; i++) {
+    for (let i = 0; i < arrayLength; i++) {
+        console.log(imageArray[i]);
         const carousel = document.createElement('div');
-        if (i=0) {
-            carousel.setAttribute('class', 'carousel-item active');
-        } else {
-            const carousel = document.createElement('div');
-            carousel.setAttribute('class', 'carousel-item');
-        }
-        carousel.innerHTML = `<img class="d-block w-100" src="${imageArray[i]}" alt="${i} slide">`
-    };
+        containerDiv.appendChild(carousel);
+        // if (i = 0) {
+        //     carousel.setAttribute('class', 'carousel-item active');
+        // } else {
+        //     const carousel = document.createElement('div');
+        //     carousel.setAttribute('class', 'carousel-item');
+        // }
+        carousel.innerHTML = `testing!`
+        };
 }
 
 // try to make a slideshow!
