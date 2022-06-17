@@ -74,10 +74,6 @@ const onGetImageSuccess = (resultArray) => {
         //return console.log(correctURL);
         }
     })
-// currently not working as intended
-    // for (let i=0; i<imageArray.length; i++) {
-    //     updateImage(i);
-    // }
     loopThroughImageArray(imageArray);
 
 }
@@ -100,15 +96,6 @@ stopButton.addEventListener('click', (e) => {
     // user can enter new search term.
 })
 
-// not working as of 20.05 june 6
-// function updateImage(i) {
-//     setTimeout(function() {
-//             console.log(`${i}`)
-//             console.log(imageArray[i]);
-//             container.style = `background-image: url('${imageArray[i]}')`;
-//     }, 4000 * i);
-//     console.log(setTimeout());
-// }
 
 function loopThroughImageArray(imageArray) {
     for (let i = 0; i < imageArray.length; i++) {
@@ -116,9 +103,8 @@ function loopThroughImageArray(imageArray) {
         // and make a pause after it
         (function (i) {
             setTimeout(function () {
-                // thing to happen on timer
                 console.log(imageArray[i]);
-                container.style.backgroundImage = `url(imageArray[i])`;
+                //container.style.backgroundImage = `url(imageArray[i])`;
                 slide.src = imageArray[i];
             }, 2000 * i);
         })(i);
