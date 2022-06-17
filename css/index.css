@@ -8,8 +8,9 @@ body {
 }
 
 #input-box {
-    width: 40%;
+    width: 50%;
     height: 50px;
+    display: default;
     margin: auto;
     margin-top: 40px;
     margin-bottom: 20px;
@@ -18,7 +19,7 @@ body {
 }
 
 #search-button {
-    width: 85px;
+    width: 130px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -32,6 +33,28 @@ body {
     border-color: rgb(172, 46, 46)
 }
 
+#stop-button {
+    z-index: -1;
+    width: 250px;
+    margin: auto;
+    margin-left: 40%;
+    position: absolute;
+    top: 700px;
+    display: none;
+    justify-content: center;
+    background-color: rgb(66, 69, 71);
+    color: aliceblue;
+    font-size: 1.25em;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 30px;
+    border-width: 3px;
+    border-color: rgb(172, 46, 46)
+}
+
+#form {
+    display: default;
+}
+
 @media (max-width: 600px) {
     #input {
         font-size: 1em;
@@ -42,4 +65,9 @@ body {
     #input {
         width: 30%;
     }
+}
+
+.form-control:focus {
+    border-color: #c21414;
+    box-shadow: 0 0 0 0.2rem rgba(178, 34, 34, 0.617);
 }
