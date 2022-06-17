@@ -23,7 +23,6 @@ const onSucces = (stuff) => {
         }
     })
     goatArray = imageArr
-    console.log(goatArray)
     changeImage()
     searchHide()
 }
