@@ -13,24 +13,13 @@ const stopButton = document.createElement('button');
 // set stopButton id
 stopButton.setAttribute('id','stopButton');
 
-// create currentImageURL placeholder
-let currentImageURL;
-let currentDisplayURL;
-
 let imageArray = [];
 
 // on click of submit button run this code
 form.addEventListener('submit', (event) => {
-    // prevent default refresh
     event.preventDefault();
-    if (!imageArray[0] === undefined) {
-        imageArray = [];
-        currentDisplayURL = undefined;
-        currentImageURL = undefined;
-    }
-    // fetch is an interface of AJAX
+    // define the user query
     const inputText = input.value;
-    console.log('submit')
     fetch(`https://www.reddit.com/search.json?q=${inputText}+nsfw:no`)
         .then(res => res.json())
         .then(onGetImageSuccess)
