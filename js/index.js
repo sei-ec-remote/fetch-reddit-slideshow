@@ -109,7 +109,7 @@ form.addEventListener('submit', (event) => {
     const userSearch = input.value
 
     // fetch from reddit API with user input
-    fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearch}&limit=25&restrict_sr=1&sr_nsfw=`)
+    fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearch}&limit=50&restrict_sr=1&sr_nsfw=`)
         .then(response => response.json())
         .then(onRedditFetchSuccess)
         .catch(onRedditFetchFailure)
