@@ -23,19 +23,30 @@ const toggleSubmitButton = () => {
     //     submit.innerText = buttonMessage[0]
     // }
 }
-const slideShow = () => {
-    let slideindex = 0 
+const slideShow = (slideDeck, slideIndex) => {
+    //let slideindex = 0 
+    //And repeat slide
+    p("slideIndex: "+slideIndex)
+    if (slideIndex > 0) {slideDeck[slideIndex-1].style.display = 'none'}
+    // slideDeck[slideIndex-1].style.display = 'none'
+    p('hi')
+    slideDeck[slideIndex].style.display = 'block'
+    //slideDeck[slideIndex+1].style.display = 'block'
+    slideIndex++
+    p('hi again')
+    // slideDeck[slideIndex-1].style.display = 'block'
+    setTimeout(slideShow, 2000, slideDeck, slideIndex)
 }
 const onPicterFailure = () => {console.log('This has FAILED')}
 /////////////////Main Function
 const onPictureSeccess = (picture) => {
     
     //Clear out the old img if there is any.
-    const oldSlideDeck = document.querySelectorAll('.slide-deck')
-    if (oldSlideDeck) {
-        oldSlideDeck.forEach(img => {
+    let slideDeck = document.querySelectorAll('.slide-deck')
+    if (slideDeck) {
+        slideDeck.forEach(img => {
             img.remove()
-        })
+    })
     }
     const pictureURL = []
     for (let index = 0; index < picture.data.children.length; index++) {
@@ -44,11 +55,14 @@ const onPictureSeccess = (picture) => {
     for (let i = 0; i < pictureURL.length; i++) {
         const img = document.createElement('img')
         img.classList.add('slide-deck')
-        // img.style.display = 'none'
+        img.style.display = 'none'
         img.setAttribute('src', pictureURL[i])
         resaltsPanal.appendChild(img) 
     }
-    // slideShow() //slideshow alll <img> in <div.container>
+    let slideIndex = 0;
+    slideDeck = document.querySelectorAll('.slide-deck')
+    // slideDeck[3].style.display = 'block'
+    slideShow(slideDeck, slideIndex) //slideshow alll <img> in <div.container>
     //if !.backButton
         // fetches 
         // fill the container with <img>
