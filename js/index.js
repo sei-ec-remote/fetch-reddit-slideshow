@@ -25,18 +25,13 @@ const toggleSubmitButton = () => {
 }
 const slideShow = (slideDeck, slideIndex) => {
     if (stopSlideWhow) return
-    //let slideindex = 0 
-    //And repeat slide
-    // p("slideIndex: "+slideIndex)
+    if (slideIndex === slideDeck.length) {
+        slideDeck[slideIndex - 1].style.display = 'none'
+        slideIndex = 0}
     if (slideIndex > 0) {slideDeck[slideIndex-1].style.display = 'none'}
-    // slideDeck[slideIndex-1].style.display = 'none'
-    // p('hi')
     slideDeck[slideIndex].style.display = 'block'
-    //slideDeck[slideIndex+1].style.display = 'block'
     slideIndex++
-    // p('hi again')
-    // slideDeck[slideIndex-1].style.display = 'block'
-    setTimeout(slideShow, 2000, slideDeck, slideIndex)
+    setTimeout(slideShow, 3000, slideDeck, slideIndex)
 }
 const onPicterFailure = () => {console.log('This has FAILED')}
 /////////////////Main Function
@@ -62,7 +57,6 @@ const onPictureSeccess = (picture) => {
     }
     let slideIndex = 0;
     slideDeck = document.querySelectorAll('.slide-deck')
-    // slideDeck[3].style.display = 'block'
     slideShow(slideDeck, slideIndex) //slideshow alll <img> in <div.container>
     //if !.backButton
         // fetches 

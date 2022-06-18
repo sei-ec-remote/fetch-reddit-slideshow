@@ -5,8 +5,18 @@ img {
     /* height: 100px; */
     height: 200px;
     width: auto;
-
+    position: absolute;
+    top: 35px;
+    
+    animation-name: slide;
+    animation-duration: 5s; 
 }
+@keyframes slide {
+    from{ transform: translateX(-1000px)}
+    to{ transform: translateX(1000px)}
+  }
+  
+@keyframes {}
 form {
     display: inline-block;
 }
