@@ -37,22 +37,19 @@ const onPictureSeccess = (picture) => {
             img.remove()
     })}
 
-    //Retrieving the url from what has been fitched.
-    const pictureURL = []
-    for (let index = 0; index < picture.data.children.length; index++) {
-        pictureURL[index] = picture.data.children[index].data.url   
-    }
-    //Making the <img>s and appending them to the container.
+    //(map)Retrieving the url from what has been fitched.
+    //(forEatch)Making the <img>s and appending them to the container.
     //Added class 'slide-deck' will allow me to grab all img later.
     //I dont want to show the img right away so they are marked display non untill the right time.
-    for (let i = 0; i < pictureURL.length; i++) {
+    const pictureURL = picture.data.children.map(picture => {
+        return picture.data.url
+    }).forEach(url => {
         const img = document.createElement('img')
         img.classList.add('slide-deck')
         img.style.display = 'none'
-        img.setAttribute('src', pictureURL[i])
+        img.setAttribute('src', url)
         resaltsPanal.appendChild(img) 
-    }
-
+    })
     //With all set now time to slide show them.
     //querySelectorAll is static so it need be used again to grab the new <img>s
     //slide index is just there to make slideShow more readable.
