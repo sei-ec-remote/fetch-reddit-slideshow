@@ -3,7 +3,19 @@ let globalImgUrlsArray = [] // global
 
 const form = document.querySelector('#form')  //global
 
-let iterator = 0 // glocal iterator
+let iterator = 5 // glocal iterator
+
+// universal FUNCTION To pause   // cal is sleep(3000)
+function sleep(milliseconds) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
+  }
+
+
+
 
 
 // submit event kicks off the fetch
@@ -35,8 +47,8 @@ const photoLoopSuccess = (arrayObject) => {
     console.log('in:photoLoopSuccess') //testing
 
 
-    const x = 3
-    const urlPath = arrayObject.data.children[x].data.url
+    const x = 6
+    const urlPath = arrayObject.data.children[x].data.url               //orig path
     const urlPathThumbnail = arrayObject.data.children[x].data.thumbnail   // alt path
     
     console.log("urlPath:"+urlPath);
@@ -46,7 +58,7 @@ const photoLoopSuccess = (arrayObject) => {
     // gives the aray of list of URLs, set to empty at first
     let arrayOfImgUrls = []
 
-    //this for belongs to arrayOfImgUrls 
+    //this for belongs to arrayOfImgUrls. Adds IMG URLs to new array
     for (let i = 0;i < 25; i++){   // FIX i < 25
         console.log('FOR loop in photoloopSc:') //testing
         arrayOfImgUrls[i] = arrayObject.data.children[i].data.url //does this work?
@@ -54,7 +66,7 @@ const photoLoopSuccess = (arrayObject) => {
         // arrayOfImgUrls[i] = arrayObject.data.children[i].data.thumbnail // alt path
         
 
-    // puts just the URL in an array
+    // puts just the URL in a new Array
     for (let x= 0; x < arrayOfImgUrls.length; x++){
         console.log("arrayOfImgUrls-index:"+ x + ":" +  arrayOfImgUrls[x])
     }
@@ -74,7 +86,7 @@ const photoLoopSuccess = (arrayObject) => {
 
 
 
-    setInterval(altLoop(arrayOfImgUrls),3000)  // ALT loop
+    altLoop(arrayOfImgUrls)// ALT loop
 
 }    
 
@@ -103,6 +115,8 @@ const photoLoopSuccess = (arrayObject) => {
 
 
         const altLoop = (arrayOfImgUrlsParam) => {
+            console.log('in altLoop');
+        
 
             // if (iterator < 25){
 
@@ -125,59 +139,71 @@ const photoLoopSuccess = (arrayObject) => {
             // } else{console.log("altLoop:iterator FAIL")}
 
 
-            // ALT ALT pass 1
-            setTimeout(() => {
+            // ALT ALT pass 1 -SERIAL PAUSES 11111111111111111111111111111
+            // ISSUE WITH FILLING IMG DIVS
 
-            const slidePhotoDivGrab = document.querySelector("#slideshowContainer")
+            // const slidePhotoDivGrab = document.getElementById("#img1div") //grab attempt
+            const newImg1 = document.createElement('img')  // create new attempt
+
+            newImg1.setAttribute('id','img1')
             console.log("iterator:"+iterator)
+            console.log("in1stPASS")
             let slideUrlPath = arrayOfImgUrlsParam[iterator]
-            slidePhotoDivGrab.innerHTML = `${slideUrlPath}`  
-            document.querySelector('body').appendChild(slidePhotoDivGrab)
+            newImg1.src = slideUrlPath
+            document.querySelector('body').appendChild(newImg1)
             iterator++
 
-        },3000)
 
 
-
-            // Alt alt pass 2
-
-            setTimeout(() => {
-
-            const slidePhotoDivGrab1 = document.querySelector("#slideshowContainer")
-            console.log("iterator:"+iterator)
-            let slideUrlPath1 = arrayOfImgUrlsParam[iterator]
-            slidePhotoDivGrab1.innerHTML = `${slideUrlPath1}`  
-            document.querySelector('body').appendChild(slidePhotoDivGrab1)
-            iterator++
-
+            // Alt alt pass 2 22222222222222222222222222222222222
+           
+            // const slidePhotoDivGrab1 = document.querySelector("#testdiv2")
             
-            },3000)
+            // CLEARING TEST %%%%%%%%%%%%%%%
+            // if (slidePhotoDivGrab1) {
 
-            
-            // Alt alt pass 3
+            //     // remove this element from the dom
+            //     slidePhotoDivGrab1.remove()
+            // }
+            // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-            setTimeout(() => {
+            const newImg2 = document.createElement('img')  // create new attempt
 
-            const slidePhotoDivGrab2 = document.querySelector("#slideshowContainer")
+            newImg1.setAttribute('id','img2')
             console.log("iterator:"+iterator)
+            console.log("in2stPASS")
             let slideUrlPath2 = arrayOfImgUrlsParam[iterator]
-            slidePhotoDivGrab2.innerHTML = `${slideUrlPath2}`  
-            document.querySelector('body').appendChild(slidePhotoDivGrab2)
+            newImg2.src = slideUrlPath2
+            document.querySelector('body').appendChild(newImg2)
             iterator++
 
+            
+            // Alt alt pass 3  33333333333333333333333333    // ITS MAKING NO UPDATES THEN DOING IT ALL IN LAST
 
-            },3000)
 
+            const newImg3 = document.createElement('img')  // create new attempt
+            newImg1.setAttribute('id','img3')
+            console.log("iterator:"+iterator)
+            console.log("in2stPASS")
+            let slideUrlPath3 = arrayOfImgUrlsParam[iterator]
+            newImg3.src = slideUrlPath3
+            document.querySelector('body').appendChild(newImg3)
+            iterator++
+
+            console.log('end 3rd pass');
 
         }
 
         
         
+        // DO ALL PASSES in a LOOP
         
 
 
-        // //for the loop
+
+
+        // //for the big loop
         // iterator++
 
 
@@ -253,7 +279,7 @@ const photoLoopFail = () => {
 // }
 
 
-
+// sleep(5000)  DOESN'T WORK PROPERLY
 
 
 
