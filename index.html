@@ -9,17 +9,21 @@
 </head>
 <body>
   <h1 id="heading">Search for some cool photos to grab from reddit</h1>
-  <label for="search">Search for photo</label>
-  <input type="search" id="search" placeholder="Search..." value="">
-  <button type="submit">submit</button>
-  <button>Stop Slide</button>
+  <form id="form" onsubmit="return false  ">
+    <input    type="text" id="userInput">
+    <input   type="submit">
+    </form>
+  <!-- <label for="search">Search for photo</label>
+  <input type="search" id="search" placeholder="Search..." value=""> -->
+  <!-- <button type="submit">submit</button> -->
+  <button id="stop-slide">Stop Slide</button>
   <!-- <label id="form">Search
       <input id="input" type="search">
       <input type="submit">
   </label> -->
   <div id="container">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
+      <div class="carousel-inner" id="carousel-container">
       </div>
     </div>
   </div>
