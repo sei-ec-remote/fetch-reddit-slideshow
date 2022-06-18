@@ -8,29 +8,59 @@
   <title>Reddit Slideshow</title>
 </head>
 <body>
-  <h1>Reddit Search</h1>
-  <h2></h2>
-  <form id="form">
-    <input id="input" type="text">
-    <input type="submit" value="Search">
-  </form>
-<div id="carousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
+  <div class="container">
+    <div id="heading">
+      <h1>Reddit Search</h1>
+      <h4>Search an image below</h4>
+      <form id="form">
+        <input id="input" type="text">
+        <input type="submit" value="Search" onclick="onSubmit()" onfocus="clearF()">
+      </form>
+    </div>
+  <br />
+  <div id="carousel" onclick="showCarousel()">
+    <div id="carousel-fluid" class="carousel slide " data-interval="2000" data-ride="carousel">
+    <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="()" alt="First slide">
+      <img class="d-block w-100" id="img1" src="()" alt="First slide">
     </div>
-    <div class="carousel-item" src="()">
-      <!-- <img class="d-block w-100" src="..." alt="Second slide"> -->
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img2" src="()" alt="Second slide">
     </div>
-    <div class="carousel-item" src="()">
-      <!-- <img class="d-block w-100" src="..." alt="Third slide"> -->
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img3" src="()" alt="Third slide">
     </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img4" src="()" alt="Fourth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img5" src="()" alt="Fifth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img6" src="()" alt="Sixth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img7"src="()" alt="Seventh slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img8" src="()" alt="Eighth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img9" src="()" alt="Ninth slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" id="img10" src="()" alt="Tenth slide">
+    </div>
+  </div>
   </div>
 </div>
 </div>
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<br />
+<button type="button" id="button" onclick="onStopSlideshow()" class="btn btn-outline-info">Stop Slideshow</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 <script src="/js/index.js" defer></script>
 </html>

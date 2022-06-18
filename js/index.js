@@ -1,7 +1,8 @@
 
 const carousel = document.querySelector('#carousel')
-
 const form = document.querySelector('#form')
+const container = document.querySelector('.container')
+const heading = document.getElementById('heading')
 
 // // const seeAllImages = document.querySelector('')
 // const imageLoop = (arrayObject) => {
@@ -13,154 +14,86 @@ const form = document.querySelector('#form')
 
 
 const onShowRedditSuccess = (imageArray) => {
-    
-    let img = document.querySelector('.carousel-item')
-    for (let i=0; i < imageArray.data.children.length; i++){
-        img.innerHTML = `<img class= "d-block w-100 img-fluid" src="${imageArray.data.children[i].data.url}" />`
+
+    for (let i=0; i < imageArray.data.children.length-1;++i) {
+       
+        let img = document.getElementById(`img${i+1}`)
+        img.setAttribute("src", `${imageArray.data.children[i].data.url}`)
+        console.log('success through array')
+        console.log(img)
+        
     }
 
-    // console.log(imageArray.data.children[1].data.url)
-    // for (let i=0; i<images.length; i++){
-    //     const itemImage = document.querySelector('.item')
-    //     itemImage.classList.add('item-image')
-    //     itemImage.innerHTML=images.data.children[i].data.url
-        // i++
-    //     console.log(images.data.children[i].data.url)
-    // }
+   
+    // const carouselDiv = document.getElementById('carousel-fluid')
+    // console.log('got carousel')
+    // carouselDiv.innerHTML = `<div id="carousel-fluid" class="carousel slide" data-interval="2000" data-riding="carousel"></div>`
+
+    console.log('carousel working')
+   
 }
-// redditArray.data.children[1].data.url
-    // console.log(images)
-//     const itemImage = document.querySelector('.item')
-// itemImage.classList.add('item-image')
-
-
-    // const singleImage = document.querySelector('.single-image')
-    // if (itemImage) {
-    //     itemImage.remove()
-    // }
-
-    // carousel.style.display = 'none'
-    
-
-    // const imageDiv = document.createElement('div')
-
-    // const imageSrc = images.data.children[`${imageLoop}`].data.url
-    // imageDiv.innerHTML=`
-    // <img src= "${imageSrc}"/>
-    // `
-    // document.querySelector('body').appendChild(imageDiv)
-    console.log('success')
-
-// console.log(onShowRedditSuccess)
+console.log('success')
 
 const onShowRedditFailure = () => {
     console.log('failure')
 }
+function showCarousel(){
+    if(carousel.style.display === 'none'){
+        carousel.style.display = 'block'
+    } 
+}
 
-// const showImages = (event) => {
-//     const redditURL = event.target.getAttribute('data-url')
-//     console.log(redditURL)
-//     fetch(redditURL)
-//         .then(res => res.json())
-//         .then(onShowRedditSuccess)
-//         .catch(onShowRedditFailure)
-
-// }
-
-// (redditImages => {
-//         const imageDiv = document.getElementById('image-div')
-//         imageDiv.innerText= redditImages.data.children.data.preview.images.source.url
-//         imageDiv.setAttribute('data-url', redditImages.url)
-//     })
-// }
-
-
-
-
-
-// form.addEventListener('submit',(event) => {
-//     event.preventDefault()
-
-//     const searchImage = input.value
-
-//     fetch(`https://www.reddit.com/search.json?q=${searchImage}+nsfw:no`)
-//     .then(res => res.json())
-//     .then(onShowRedditSuccess)
-//     console.log('success')
-//     .catch(onShowRedditFailure)
-//     console.log(searchImage)
-// })
-
-
-const onGetRedditSearchSuccess = (redditArray) => {
-
-    let img = document.querySelector('.carousel-item')
-    for (let i=0; i < redditArray.data.children.length; i++){
-        img.innerHTML = `<img class="d-block w-100 img-fluid" src="${redditArray.data.children[i].data.url}" /img>`
+function onSubmit (){
+    if(heading.style.display === 'none'){
+        heading.style.display = 'block'
+    } else {
+        heading.style.display = 'none'
     }
-    console.log(redditArray.data.children[1].data.url)
 }
 
-    // children = redditArray.data.children
-
-    // const imageArray= children.filter((newImage) => {
-    //     if(newImage.data.url.includes('jpg')){
-    //         return newImage       
-    //     } else if (newImage.data.url.includes("png")){
-    //         return newImage
-    //     } else if (newImage.data.url.includes("gif")){
-    //         return newImage
-    //     } else if (newImage.data.url.includes("jpeg")){
-    //         return newImage
-    //     }
-console.log(onGetRedditSearchSuccess)
-    // redditArray.data.children[3].data.url.forEach(image =>{
-    //     const imageDiv = document.createElement('div')
-    //     imageDiv.classList.add('single-image')
-    //     const singleImage= document.querySelector('.single-image')
-    //     if(singleImage){
-    //         singleImage.remove()
-    //     }
-    //     imageDiv.setAttribute('data-url', image.url)
-    //     imageDiv.innerHTML = image.url
-    //     imageDiv.addEventListener('click', showImages)
-    //     container.appendChild(imageDiv)
-    // })
-    // // console.log(redditArray.data.children[`${imageLoop}`].data.url)
-    // console.log('success')
-
-
-
-
-const onGetRedditSearchFailure = () => {
-    console.log('failed')
+function onStopSlideshow (){
+    if(heading.style.display === 'block'){
+        heading.style.display = 'none'
+    } else {
+        heading.style.display = 'block'
+    }
+    
 }
-
-
-
-
-document.addEventListener('DOMContentLoaded',() => {
-    fetch(`https://www.reddit.com/search.json?q="Sushi"+nsfw:no+type:image`)
-        .then(res => res.json())
-        .then(onGetRedditSearchSuccess)
-        console.log('success')
-        .catch(onGetRedditSearchFailure)
-        console.log('failure')
-})
+// document.addEventListener('DOMContentLoaded',() => {
+//     function hideCarousel (){
+//         carousel.style.display="none"
+//         // if(heading.style.display === 'block'){
+//         //     heading.style.display = 'none'
+//         // } else {
+//         //     heading.style.display = 'block'
+//         // }
+//     }
+//     hideCarousel()
+// })
 
 form.addEventListener('submit', (event) =>{
     event.preventDefault()
     const imageSearch = input.value
     fetch (`https://www.reddit.com/search.json?q="${imageSearch}"+nsfw:no+type:image`)
-    //remember to take out kittens and put ${searchImage}
     .then(res => res.json())
     .then(onShowRedditSuccess)
     console.log(`success`)
     .catch(onShowRedditFailure)
     console.log(`failure`)
+    
 })
 
 
-//images gets the image 
-// reddit_video get the video
-// title gets the title
+const button = document.querySelector('#button')
+
+button.addEventListener('click',(event)=>{
+    event.preventDefault()
+    // console.log('button works')
+    const stopDiv = document.getElementById('carousel-fluid')
+    console.log('button works')
+    // stopDiv.setAttribute("data-interval", "false")
+    stopDiv.innerHTML = `<div id="carousel-fluid" class="carousel slide" data-interval="false"></div>`
+    console.log('button works')
+    document.getElementById('form').input.value=""
+    console.log(`success`)
+} )

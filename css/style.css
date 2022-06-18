@@ -6,3 +6,11 @@ body{
     max-width: 960px;
     
 }
+
+#carousel{
+    display: none;
+}
+/* #carousel-fluid{
+    visibility: hidden;
+}
+    */
