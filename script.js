@@ -1,6 +1,5 @@
 const search = document.getElementById("search")
 const imageDisplay = document.getElementById("scuz")
-const greeeting = document.getElementById("greeting")
 const stop = document.getElementById("stop")
 let goatArray = []
 let imageIndex = 0
