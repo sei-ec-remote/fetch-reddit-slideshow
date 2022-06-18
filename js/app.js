@@ -114,120 +114,42 @@ const photoLoopSuccess = (arrayObject) => {
 
 
         ////// TESTING
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+const altLoop = (arrayOfImgUrlsParam) => {
+    console.log('in altLoop');
 
 
-        const altLoop = (arrayOfImgUrlsParam) => {
-            console.log('in altLoop');
-        
+    console.log("hello")
 
-            // if (iterator < 25){
+    const picUrlArray1 = ["1.jpg"] 
+    const picUrlArray2 = ["1.jpg","2.jpg"] 
+    const picUrlArray3 = ["1.jpg","2.jpg","3.jpg"] 
+    
+    
+    const makeImg = document.querySelector('#imgDiv1')
+    
+    async function slideShow(){
+    
+        for(let i = 0; i < arrayOfImgUrlsParam.length; i++){
+    
+            let boxSize = "400px"
 
-            // console.log('altLoop:Iterator:' + iterator)
-                
-            // const slidePhotoDivGrab = document.querySelector("#slideshowContainer")
-
-            // let slideUrlPath = arrayOfImgUrlsParam[iterator]
-
-            // // slidePhotoDivGrab.innerHTML = `slideUrlPath`  
-            // slidePhotoDivGrab.innerHTML = `<img alt="${slideUrlPath}" src="${slideUrlPath}" + width=300 + height=300 /img>`
-            // // slidePhotoDivGrab.innerHTML = `<img src="${slideUrlPath}" + width=300 + height=300 /img>`  // alt
-
-            // document.querySelector('body').appendChild(slidePhotoDivGrab)  // THIS IS NECESSARY
-
-            // iterator++
-
-            // console.log('altLoop:IteratorPost++:' + iterator)
-
-            // } else{console.log("altLoop:iterator FAIL")}
-
-
-            // ALT ALT pass 1 -SERIAL PAUSES 11111111111111111111111111111
-            // ISSUE WITH FILLING IMG DIVS
-
-            // const slidePhotoDivGrab = document.getElementById("#img1div") //grab attempt
-            const newImg1 = document.createElement('img')  // create new attempt
-
-            newImg1.setAttribute('id','img1')
-            console.log("iterator:"+iterator)
-            console.log("in1stPASS")
-            let slideUrlPath = arrayOfImgUrlsParam[iterator]
-            newImg1.src = slideUrlPath
-            newImg1.style.width = "200px"
-            newImg1.style.height = "200px"
-            document.querySelector('body').appendChild(newImg1)
-            iterator++
-
-// universal FUNCTION To pause   // cal is sleep(3000)   //doesn't really work how i want
-// function sleep(milliseconds) {
-//     const date = Date.now();
-//     let currentDate = null;
-//     do {
-//       currentDate = Date.now();
-//     } while (currentDate - date < milliseconds);
-//   }
-
-            // Alt alt pass 2 22222222222222222222222222222222222
-           
-            // const slidePhotoDivGrab1 = document.querySelector("#testdiv2")
-            
-            // CLEARING TEST %%%%%%%%%%%%%%%
-            // if (slidePhotoDivGrab1) {
-
-            //     // remove this element from the dom
-            //     slidePhotoDivGrab1.remove()
-            // }
-            // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            // sleep(5000) // try to sleep for 5 seconds. Not returning correctly for divs, but iterator yes
-
-            const newImg2 = document.createElement('img')  // create new attempt
-
-            newImg1.setAttribute('id','img2')
-            console.log("iterator:"+iterator)
-            console.log("in2stPASS")
-            let slideUrlPath2 = arrayOfImgUrlsParam[iterator]
-            newImg2.src = slideUrlPath2
-            newImg2.style.width = "200px"
-            newImg2.style.height = "200px"
-
-            document.querySelector('body').appendChild(newImg2)
-            iterator++
-
-            
-            // Alt alt pass 3  33333333333333333333333333    // ITS MAKING NO UPDATES THEN DOING IT ALL IN LAST
-
-            // sleep(5000) 
-            const newImg3 = document.createElement('img')  // create new attempt
-            newImg1.setAttribute('id','img3')
-            console.log("iterator:"+iterator)
-            console.log("in3rdPASS")
-            let slideUrlPath3 = arrayOfImgUrlsParam[iterator]
-            newImg3.src = slideUrlPath3
-            newImg3.style.width = "200px"
-            newImg3.style.height = "200px"
-            document.querySelector('body').appendChild(newImg3)
-            iterator++
-
-            console.log('end 3rd pass');
-
+            makeImg.src= arrayOfImgUrlsParam[i] 
+            makeImg.style.height = boxSize
+            makeImg.style.width = boxSize
+            await new Promise(r => setTimeout(r, 5000));
+    
         }
-
-        
-        // console.log(arrayOfImgUrlsParam[2])
-        // // DO ALL PASSES in a LOOP
-        // arrayOfImgUrlsParam.foreach( url = () =>{
-        //     const ImG = document.createElement('div')
-        //     ImG.src = url
-        //     document.querySelector('body').appendChild(ImG)
-
-        // } )
+    
+    }
+    
+    slideShow()
 
 
 
+}
 
-        // //for the big loop
-        // iterator++
-
-
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 const photoLoopFail = () => {
     console.log('FAILED REQUEST')
