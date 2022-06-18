@@ -1,53 +1,50 @@
 const p = (str) => {console.log(str)}
 //js ingredients
-    //Message strArr for the submit button, when there no .backButton on it
-    // messageHolder = 
-    const form = document.querySelector('#actionButton')
+//search button to add an eventListener to it.
+const form = document.querySelector('#actionButton')
+//The div that the pictures will be added to.
+resaltsPanal = document.getElementById('container')
+//Used to end the slideshow
+let stopSlideWhow = false 
 
-    //The button #submit //To request the search Or go back
-    resaltsPanal = document.getElementById('container')
-    let stopSlideWhow = false
-// funct toggle my submit/back button
-const toggleSubmitButton = () => {
-    //if .backButton 
-    // if (submit.getAttribute('class', 'backButton')) {
-    //     //remove .backButton
-    //     submit.classList.toggle('back-button')
-    //     //change innerText = message[0]
-    //     submit.innerText = buttonMessage[1]
-    // } 
-    // else { //!.backButton 
-    //     //add .backButton
-    //     submit.classList.toggle('back-button')
-    //     //change innerText = message[1]
-    //     submit.innerText = buttonMessage[0]
-    // }
-}
+//This Displays the img one by one. CSS give it the animation.
 const slideShow = (slideDeck, slideIndex) => {
-    if (stopSlideWhow) return
-    if (slideIndex === slideDeck.length) {
+    if (stopSlideWhow) return //used to end the function loop.
+    //When the last img of the sideDeck has been shown.
+    if (slideIndex === slideDeck.length) { 
+        //Need to remove the last slide at the end.
         slideDeck[slideIndex - 1].style.display = 'none'
+        // Slide index need be set to 0, so the func will run like it was first called
         slideIndex = 0}
+    //This will remove the last slide, but if it run the first time, there is no "last slide" and the - 1 will crash it.
     if (slideIndex > 0) {slideDeck[slideIndex-1].style.display = 'none'}
+    //Setting this to block will undo the display = none on all img
     slideDeck[slideIndex].style.display = 'block'
-    slideIndex++
+    //This set up for the next slide in the deck before calling itself again.
+    slideIndex++ 
     setTimeout(slideShow, 3000, slideDeck, slideIndex)
 }
 const onPicterFailure = () => {console.log('This has FAILED')}
+
 /////////////////Main Function
 const onPictureSeccess = (picture) => {
+    //When you hit search you want the slide to run, so this will turn it back on if the slide has been turned off before.
     stopSlideWhow = false
     //Clear out the old img if there is any.
     let slideDeck = document.querySelectorAll('.slide-deck')
     if (slideDeck) {
         slideDeck.forEach(img => {
             img.remove()
-    })
-    }
+    })}
+
+    //Retrieving the url from what has been fitched.
     const pictureURL = []
     for (let index = 0; index < picture.data.children.length; index++) {
         pictureURL[index] = picture.data.children[index].data.url   
     }
+    //Making the <img>s and appending them to the container.
+    //Added class 'slide-deck' will allow me to grab all img later.
+    //I dont want to show the img right away so they are marked display non untill the right time.
     for (let i = 0; i < pictureURL.length; i++) {
         const img = document.createElement('img')
         img.classList.add('slide-deck')
@@ -55,28 +52,16 @@ const onPictureSeccess = (picture) => {
         img.setAttribute('src', pictureURL[i])
         resaltsPanal.appendChild(img) 
     }
+
+    //With all set now time to slide show them.
+    //querySelectorAll is static so it need be used again to grab the new <img>s
+    //slide index is just there to make slideShow more readable.
     let slideIndex = 0;
     slideDeck = document.querySelectorAll('.slide-deck')
-    slideShow(slideDeck, slideIndex) //slideshow alll <img> in <div.container>
-    //if !.backButton
-        // fetches 
-        // fill the container with <img>
-// tton
-    //else
-        // remove content of div
-        // toggle my submit/backbutton remove class name to .backButton 
-
-// funct toggle my submit/back button
-    //if .backButton 
-        //remove .backButton
-        //change innerText = message[0]
-    //else 
-        //add .backButton
-        //change innerText = message[1]
+    slideShow(slideDeck, slideIndex) 
 }
 
-//addEventL
-// // on #submit to start the search
+//This will be the main eventListener. Grab the user input and fetch.
 form.addEventListener('click',  (e) => {
     e.preventDefault()
     let picture = input.value
@@ -86,6 +71,7 @@ form.addEventListener('click',  (e) => {
         .then(onPictureSeccess)
         .catch(onPicterFailure)
 })
+//This used to stop the slideshow when the user needs it to.
 document.getElementById('stop-slideshow').addEventListener('click', ()=>{
     stopSlideWhow = true
 })
