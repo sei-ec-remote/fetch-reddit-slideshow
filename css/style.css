@@ -1,0 +1,47 @@
+body {
+    background-color:rgb(62, 60, 60);
+    text-align: center;
+    
+}
+
+#form {
+    position: left;
+}
+
+.top {
+    position: static;
+    display: inline;
+    margin-bottom: 0;
+}
+
+.bottom {
+    position:static;
+}
+.button {
+    background-color: rgb(39, 48, 144);
+    color:antiquewhite;
+    position: static;
+}
+
+.carousel-inner {
+    position: relative;
+    height: 50%;
+    width: 50%;
+}
+
+#myCarousel {
+    border: 5px solid rgb(19, 17, 17);
+    position: relative;
+    display: none;
+    justify-content: center;
+    width: 500px;
+}
+
+
+.carousel-inner .carousel-item {
+    transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+    padding: 20px;
+    margin: auto;
+}
