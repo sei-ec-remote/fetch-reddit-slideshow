@@ -6,7 +6,7 @@ const p = (str) => {console.log(str)}
 
     //The button #submit //To request the search Or go back
     resaltsPanal = document.getElementById('container')
-
+    let stopSlideWhow = false
 // funct toggle my submit/back button
 const toggleSubmitButton = () => {
     //if .backButton 
@@ -24,23 +24,24 @@ const toggleSubmitButton = () => {
     // }
 }
 const slideShow = (slideDeck, slideIndex) => {
+    if (stopSlideWhow) return
     //let slideindex = 0 
     //And repeat slide
-    p("slideIndex: "+slideIndex)
+    // p("slideIndex: "+slideIndex)
     if (slideIndex > 0) {slideDeck[slideIndex-1].style.display = 'none'}
     // slideDeck[slideIndex-1].style.display = 'none'
-    p('hi')
+    // p('hi')
     slideDeck[slideIndex].style.display = 'block'
     //slideDeck[slideIndex+1].style.display = 'block'
     slideIndex++
-    p('hi again')
+    // p('hi again')
     // slideDeck[slideIndex-1].style.display = 'block'
     setTimeout(slideShow, 2000, slideDeck, slideIndex)
 }
 const onPicterFailure = () => {console.log('This has FAILED')}
 /////////////////Main Function
 const onPictureSeccess = (picture) => {
-    
+    stopSlideWhow = false
     //Clear out the old img if there is any.
     let slideDeck = document.querySelectorAll('.slide-deck')
     if (slideDeck) {
@@ -90,4 +91,7 @@ form.addEventListener('click',  (e) => {
         .then(res => res.json())
         .then(onPictureSeccess)
         .catch(onPicterFailure)
+})
+document.getElementById('stop-slideshow').addEventListener('click', ()=>{
+    stopSlideWhow = true
 })
