@@ -5,14 +5,14 @@ const form = document.querySelector('#form')  //global
 
 let iterator = 5 // glocal iterator
 
-// universal FUNCTION To pause   // cal is sleep(3000)
-function sleep(milliseconds) {
-    const date = Date.now();
-    let currentDate = null;
-    do {
-      currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
-  }
+// universal FUNCTION To pause   // cal is sleep(3000)   //doesn't really work how i want
+// function sleep(milliseconds) {
+//     const date = Date.now();
+//     let currentDate = null;
+//     do {
+//       currentDate = Date.now();
+//     } while (currentDate - date < milliseconds);
+//   }
 
 
 
@@ -25,9 +25,15 @@ form.addEventListener('submit', (event) => {
 
     const userSearchTerm = input.value
 
-    fetch(`https://www.reddit.com/search.json?q="${userSearchTerm}"+nsfw:no+type:image`)
+    // new fetch
+    // fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearchTerm}&limit=22&t=1&nsfw:no`)
+    // old fetch below
+    fetch(`https://www.reddit.com/search.json?q="${userSearchTerm}"+nsfw:no+type:image&limit=50`)
+        
+
 
     .then(res => res.json())  // formates redditqueryobject to json 
+
 
     .then(photoLoopSuccess,photoLoopFail) // WORKING
 
@@ -81,10 +87,6 @@ const photoLoopSuccess = (arrayObject) => {
     // console.log('arrayOfImgUrls:' + arrayOfImgUrls) // seems to work TESTING
 
     // slideLoop(arrayOfImgUrls)  /// regular loop
-
-    
-
-
 
     altLoop(arrayOfImgUrls)// ALT loop
 
@@ -150,10 +152,19 @@ const photoLoopSuccess = (arrayObject) => {
             console.log("in1stPASS")
             let slideUrlPath = arrayOfImgUrlsParam[iterator]
             newImg1.src = slideUrlPath
+            newImg1.style.width = "200px"
+            newImg1.style.height = "200px"
             document.querySelector('body').appendChild(newImg1)
             iterator++
 
-
+// universal FUNCTION To pause   // cal is sleep(3000)   //doesn't really work how i want
+// function sleep(milliseconds) {
+//     const date = Date.now();
+//     let currentDate = null;
+//     do {
+//       currentDate = Date.now();
+//     } while (currentDate - date < milliseconds);
+//   }
 
             // Alt alt pass 2 22222222222222222222222222222222222
            
@@ -166,7 +177,7 @@ const photoLoopSuccess = (arrayObject) => {
             //     slidePhotoDivGrab1.remove()
             // }
             // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+            // sleep(5000) // try to sleep for 5 seconds. Not returning correctly for divs, but iterator yes
 
             const newImg2 = document.createElement('img')  // create new attempt
 
@@ -175,19 +186,24 @@ const photoLoopSuccess = (arrayObject) => {
             console.log("in2stPASS")
             let slideUrlPath2 = arrayOfImgUrlsParam[iterator]
             newImg2.src = slideUrlPath2
+            newImg2.style.width = "200px"
+            newImg2.style.height = "200px"
+
             document.querySelector('body').appendChild(newImg2)
             iterator++
 
             
             // Alt alt pass 3  33333333333333333333333333    // ITS MAKING NO UPDATES THEN DOING IT ALL IN LAST
 
-
+            // sleep(5000) 
             const newImg3 = document.createElement('img')  // create new attempt
             newImg1.setAttribute('id','img3')
             console.log("iterator:"+iterator)
-            console.log("in2stPASS")
+            console.log("in3rdPASS")
             let slideUrlPath3 = arrayOfImgUrlsParam[iterator]
             newImg3.src = slideUrlPath3
+            newImg3.style.width = "200px"
+            newImg3.style.height = "200px"
             document.querySelector('body').appendChild(newImg3)
             iterator++
 
@@ -196,9 +212,14 @@ const photoLoopSuccess = (arrayObject) => {
         }
 
         
-        
-        // DO ALL PASSES in a LOOP
-        
+        // console.log(arrayOfImgUrlsParam[2])
+        // // DO ALL PASSES in a LOOP
+        // arrayOfImgUrlsParam.foreach( url = () =>{
+        //     const ImG = document.createElement('div')
+        //     ImG.src = url
+        //     document.querySelector('body').appendChild(ImG)
+
+        // } )
 
 
 
@@ -252,7 +273,24 @@ const photoLoopFail = () => {
 
 
 
+// TESTING @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// attempt to use map. function
 
+// const jsonParse = (redditJSONobj) => {
+
+// const dataInfo = redditJSONobj.map(function(data) {
+//  if( data.status !== false){
+//      let info = { "data.data": data.data,
+//                   "data.data.children": data.data.children
+//                  }
+//      return info;
+//  }
+// });
+
+
+// console.log(dataInfo);
+// }
+////////////@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
 
