@@ -1,9 +1,36 @@
+///&&&&&& LOCAL FILE I/O
+const downloadToFile = (content, filename, contentType) => {
+    const a = document.createElement('a');
+    const file = new Blob([content], {type: contentType});
+    
+    a.href= URL.createObjectURL(file);
+    a.download = filename;
+    a.click();
+  
+      URL.revokeObjectURL(a.href);
+  };
 
-let globalImgUrlsArray = [] // global
+  let text = "test stuff here"
+      
+/// how to call:  downloadToFile(text, 'my-new-file.txt', 'text/plain');
+
+
+//&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+var globalImgUrlsArray = [] // global USED VAR TO keep it globally scoped
 
 const form = document.querySelector('#form')  //global
 
-let iterator = 5 // glocal iterator
+var iterator = 5 // global iterator
+
+var iterator2 = 3
+
+var A = ''
+
+var timerIDtoEnd = 0 
+
+var endLoop = false /// testing for altloop
+
 
 // universal FUNCTION To pause   // cal is sleep(3000)   //doesn't really work how i want
 // function sleep(milliseconds) {
@@ -15,6 +42,7 @@ let iterator = 5 // glocal iterator
 //   }
 
 
+var timerID = undefined
 
 
 
@@ -29,6 +57,9 @@ form.addEventListener('submit', (event) => {
     // fetch(`https://www.reddit.com/r/pics/search.json?q=${userSearchTerm}&limit=22&t=1&nsfw:no`)
     // old fetch below
     fetch(`https://www.reddit.com/search.json?q="${userSearchTerm}"+nsfw:no+type:image&limit=50`)
+
+    // alt fetch
+    // fetch(`https://www.reddit.com/search.json?q="${userSearchTerm}"+nsfw:no+type:image`)
         
 
 
@@ -38,7 +69,8 @@ form.addEventListener('submit', (event) => {
     .then(photoLoopSuccess,photoLoopFail) // WORKING
 
     
-    .catch(console.log("FAIL:HIT CATCH"))
+    .catch( console.log("FAIL:HIT CATCH"))
+
 })
 
 ///////////////////////******************************************** */
@@ -66,27 +98,34 @@ const photoLoopSuccess = (arrayObject) => {
 
     //this for belongs to arrayOfImgUrls. Adds IMG URLs to new array
     for (let i = 0;i < 25; i++){   // FIX i < 25
-        console.log('FOR loop in photoloopSc:') //testing
+        // console.log('FOR loop in photoloopSc:') //testing
         arrayOfImgUrls[i] = arrayObject.data.children[i].data.url //does this work?
     }    
-        // arrayOfImgUrls[i] = arrayObject.data.children[i].data.thumbnail // alt path
-        
 
-    // puts just the URL in a new Array
-    for (let x= 0; x < arrayOfImgUrls.length; x++){
-        console.log("arrayOfImgUrls-index:"+ x + ":" +  arrayOfImgUrls[x])
-    }
+    A = arrayObject.data.children[2].data.url
+        // arrayOfImgUrls[i] = arrayObject.data.children[i].data.thumbnail // alt path
+    console.log(A);
+
+
+
 
 
     // CONSLE OUT test
-    let string1 = arrayOfImgUrls[5]
-    console.log("strINpls:"+string1)
+    let string1 = arrayOfImgUrls[0]
+    console.log("strINpls:84:"+string1)
 
 
 
     // console.log('arrayOfImgUrls:' + arrayOfImgUrls) // seems to work TESTING
 
     // slideLoop(arrayOfImgUrls)  /// regular loop
+
+    const setOutsideArray = (arrayOfImgUrls) => {
+        globalImgUrlsArray = arrayOfImgUrls
+
+    }
+
+    setOutsideArray()
 
     altLoop(arrayOfImgUrls)// ALT loop
 
@@ -115,37 +154,53 @@ const photoLoopSuccess = (arrayObject) => {
 
         ////// TESTING
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-const altLoop = (arrayOfImgUrlsParam) => {
-    console.log('in altLoop');
+// NEED TO COPY THE arrayOfImgUrlsParam then use it inside loop
 
 
-    console.log("hello")
 
-    const picUrlArray1 = ["1.jpg"] 
-    const picUrlArray2 = ["1.jpg","2.jpg"] 
-    const picUrlArray3 = ["1.jpg","2.jpg","3.jpg"] 
-    
-    
-    const makeImg = document.querySelector('#imgDiv1')
-    
-    async function slideShow(){
-    
-        for(let i = 0; i < arrayOfImgUrlsParam.length; i++){
-    
-            let boxSize = "400px"
 
-            makeImg.src= arrayOfImgUrlsParam[i] 
-            makeImg.style.height = boxSize
-            makeImg.style.width = boxSize
-            await new Promise(r => setTimeout(r, 5000));
+const altLoop = (arrayOfImgUrls) => {
+
+
+        // GRAB ARRAY CONTENT FOR DLing to see whats in file
+        downloadToFile(arrayOfImgUrls[7], 'my-new-file.txt', 'text/plain');
+
+    let iterator2 = 0
     
+    
+    ////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    
+    const mainLoop = (arrayOfImgUrls) => {
+
+        console.log('inMainLoop:iterator2:'+iterator2);
+    
+        if (iterator2 === 24 ){
+            clearInterval(timerIDtoEnd)
         }
+      
+        console.log('IN TIMER MAINLOOP');
+
+        // DO STUFF HERE EVERY 1 second
+
+        const makeImg = document.querySelector('#imgDiv1')
+        makeImg.src = arrayOfImgUrls[0] 
     
+        iterator2++
+
+        console.log('inMainLoop:iterator2:POST:'+iterator2);
+    }
+
+    ///AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    
+    
+    const ticker = (iterator2) => {
+        
+        let intervalID = setInterval(mainLoop(arrayOfImgUrls),3000)
+        timerIDtoEnd = intervalID
+        console.log("timerIDin:"+timerID)
     }
     
-    slideShow()
-
-
+    ticker(arrayOfImgUrls)
 
 }
 
@@ -154,6 +209,11 @@ const altLoop = (arrayOfImgUrlsParam) => {
 const photoLoopFail = () => {
     console.log('FAILED REQUEST')
 }
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     // const photoDiv = document.createElement('div') //WORKS
 
