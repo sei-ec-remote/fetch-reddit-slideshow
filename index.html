@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <link href="css/index.css" rel="stylesheet"/>
+  <title>Images of Reddit</title>
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <h1 id='page'>Reddit Image Search</h1>
+  
+  <form id='form'>
+    <input id='input' type='words'>
+    <input type="submit">
+  </form>
+  <button id='startSlideShow' onclick="start_scroll()">start</button>
+  <button id='stopSlideShow' onclick="stop_scroll()">Stop</button>
+  <img id='image'>
+  <div id='container' class='slideshow-container'></div>
+  
+
 </body>
+<script src='css/index.js'></script>
 </html>
+

@@ -1,0 +1,28 @@
+body {
+    margin:0;
+    background-color: black;
+    color: white;
+}
+
+
+.slideshow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    overflow: hidden;
+}
+
+.form-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    display: block;
+}
+
+.inactive {
+    display: none;
+}
