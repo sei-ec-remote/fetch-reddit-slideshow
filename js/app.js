@@ -197,9 +197,7 @@ const altLoop = () => {
     ticker()
 }
 
-const stopSlideShow = ()=>{
-    addEventListener.
-}
+
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
