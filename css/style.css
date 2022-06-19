@@ -1,32 +1,22 @@
 body {
-    background-color:rgb(62, 60, 60);
+    background-color:rgb(118, 115, 115);
     text-align: center;
-    
 }
 
-#form {
-    position: left;
-}
-
-.top {
-    position: static;
-    display: inline;
-    margin-bottom: 0;
-}
-
-.bottom {
-    position:static;
-}
 .button {
     background-color: rgb(39, 48, 144);
     color:antiquewhite;
-    position: static;
+    border: 2px solid black;
 }
 
+#input {
+    border: 2px solid black;
+}
 .carousel-inner {
     position: relative;
     height: 50%;
     width: 50%;
+    margin: auto;
 }
 
 #myCarousel {
@@ -34,14 +24,6 @@ body {
     position: relative;
     display: none;
     justify-content: center;
-    width: 500px;
-}
-
-
-.carousel-inner .carousel-item {
-    transition: -webkit-transform 0.5s ease;
-    transition: transform 0.5s ease;
-    transition: transform 0.5s ease, -webkit-transform 0.5s ease;
-    padding: 20px;
+    width: 750px;
     margin: auto;
 }
