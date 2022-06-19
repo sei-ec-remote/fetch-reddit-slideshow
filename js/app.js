@@ -23,11 +23,12 @@ const form = document.querySelector('#form')  //global
 
 var iterator = 5 // global iterator
 
-var iterator2 = 3
+var iterator2 = 4
 
 var A = ''
 
 var timerIDtoEnd = 0 
+console.log('31:timerIDtoEnd'+timerIDtoEnd);
 
 var endLoop = false /// testing for altloop
 
@@ -42,7 +43,7 @@ var endLoop = false /// testing for altloop
 //   }
 
 
-var timerID = undefined
+// var timerID = undefined
 
 
 
@@ -69,7 +70,8 @@ form.addEventListener('submit', (event) => {
     .then(photoLoopSuccess,photoLoopFail) // WORKING
 
     
-    .catch( console.log("FAIL:HIT CATCH"))
+    .catch((error)=>{
+           console.log("Oh no, there's been an error!", error)})
 
 })
 
@@ -99,33 +101,21 @@ const photoLoopSuccess = (arrayObject) => {
     //this for belongs to arrayOfImgUrls. Adds IMG URLs to new array
     for (let i = 0;i < 25; i++){   // FIX i < 25
         // console.log('FOR loop in photoloopSc:') //testing
-        arrayOfImgUrls[i] = arrayObject.data.children[i].data.url //does this work?
+        arrayOfImgUrls.push(arrayObject.data.children[i].data.url) //does this work?
     }    
 
-    A = arrayObject.data.children[2].data.url
-        // arrayOfImgUrls[i] = arrayObject.data.children[i].data.thumbnail // alt path
-    console.log(A);
+    console.log("107:"+arrayOfImgUrls);
 
-
-
-
-
-    // CONSLE OUT test
-    let string1 = arrayOfImgUrls[0]
-    console.log("strINpls:84:"+string1)
-
-
-
-    // console.log('arrayOfImgUrls:' + arrayOfImgUrls) // seems to work TESTING
-
-    // slideLoop(arrayOfImgUrls)  /// regular loop
 
     const setOutsideArray = (arrayOfImgUrls) => {
-        globalImgUrlsArray = arrayOfImgUrls
+        globalImgUrlsArray = [...arrayOfImgUrls]
 
     }
+    console.log("114:"+arrayOfImgUrls)
 
-    setOutsideArray()
+    setOutsideArray(arrayOfImgUrls)
+
+    console.log("118:"+globalImgUrlsArray)
 
     altLoop(arrayOfImgUrls)// ALT loop
 
@@ -159,23 +149,22 @@ const photoLoopSuccess = (arrayObject) => {
 
 
 
-const altLoop = (arrayOfImgUrls) => {
-
+const altLoop = () => {
 
         // GRAB ARRAY CONTENT FOR DLing to see whats in file
-        downloadToFile(arrayOfImgUrls[7], 'my-new-file.txt', 'text/plain');
+        // downloadToFile(arrayOfImgUrls[7], 'my-new-file.txt', 'text/plain');
 
-    let iterator2 = 0
+    
     
     
     ////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     
-    const mainLoop = (arrayOfImgUrls) => {
+   function mainLoop(){
 
-        console.log('inMainLoop:iterator2:'+iterator2);
-    
-        if (iterator2 === 24 ){
-            clearInterval(timerIDtoEnd)
+        console.log('mainloop:iterator2:'+iterator2);
+        if (iterator2 === globalImgUrlsArray.length ){
+            console.log('timerIDtoEnd:mainloop:'+timerIDtoEnd)
+            clearInterval(timerIDtoEnd)  // DOUBLE CHECK THIS ID TO MAKE SURE IT MATCHES
         }
       
         console.log('IN TIMER MAINLOOP');
@@ -183,25 +172,33 @@ const altLoop = (arrayOfImgUrls) => {
         // DO STUFF HERE EVERY 1 second
 
         const makeImg = document.querySelector('#imgDiv1')
-        makeImg.src = arrayOfImgUrls[0] 
+        makeImg.src = globalImgUrlsArray[iterator2] 
     
         iterator2++
 
-        console.log('inMainLoop:iterator2:POST:'+iterator2);
+        console.log('mainloopEND:iterator2:'+iterator2);
+
     }
 
     ///AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-    
-    
-    const ticker = (iterator2) => {
-        
-        let intervalID = setInterval(mainLoop(arrayOfImgUrls),3000)
+       
+    const ticker = () => {
+
+
+
+        let intervalID = setInterval(mainLoop,3000)     
+
+
         timerIDtoEnd = intervalID
-        console.log("timerIDin:"+timerID)
+        console.log('timerIDtoEnd:ticker:'+timerIDtoEnd);
+
     }
     
-    ticker(arrayOfImgUrls)
+    ticker()
+}
 
+const stopSlideShow = ()=>{
+    addEventListener.
 }
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
