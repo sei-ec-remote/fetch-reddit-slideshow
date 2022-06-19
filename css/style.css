@@ -11,14 +11,14 @@ img {
     
     /* used to make the slide work. */
     animation-name: slide;
-    animation-duration: 3s; 
+    animation-duration: 5s; 
 }
 /* -100% has the image start directly on the left side off the screen regardless of the width of the picture. Sinse the width of the pictures are diffent everytime this is good. */
 /* From what I cant tell em is relative to the container size. This fetl better. though the number is made up. 
 this may brake on other size screens */
 @keyframes slide {
     from{ transform: translateX(-100%)}
-    to{ transform: translateX(90em)}
+    to{ transform: translateX(130em)}
   }
 
 /* Give the container hight so when it page is firsst loaded it has the right layout for when the img tag is put inside it from the DOM */

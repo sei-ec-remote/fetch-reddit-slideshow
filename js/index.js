@@ -22,7 +22,7 @@ const slideShow = (slideDeck, slideIndex) => {
     slideDeck[slideIndex].style.display = 'block'
     //This set up for the next slide in the deck before calling itself again.
     slideIndex++ 
-    setTimeout(slideShow, 3000, slideDeck, slideIndex)
+    setTimeout(slideShow, 5000, slideDeck, slideIndex)
 }
 const onPicterFailure = () => {console.log('This has FAILED')}
 
