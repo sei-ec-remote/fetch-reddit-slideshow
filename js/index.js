@@ -23,34 +23,7 @@
         // const carouselInner = document.querySelector(".carousel-inner")
         container.style.display = "none"
         removeAllChildNodes(carousel)
-        //input = null;
-        //console.log(document.getElementsByClassName(".carousel-item active"))
-       // console.log(document.querySelectorAll(".carousel-item"))
-        // const catDivActive = document.getElementById("catDivA")
-        // console.log(catDivActive)
-       // document.querySelectorAll(".carousel-item").remove()  
-    //    carouselInner.appendChild(catDivActive)
-       //catDivActive.innerHTML = `<img src="${catImg}" class = "w-100 d-block img-fluid" alt="">`
-
-    //   catDivActive.innerHTML = ``
-
-    //   const catArray = array.data.children
-    //   //const testArray = []
-
-    //   catArray.forEach(cat => {
-    //       const catDiv = document.querySelector('.carousel-item')            
-    //       console.log(catDiv)
-
-    //       if (!cat.data.is_video && cat.data.thumbnail) {
-    //           //const catImg = cat.data.thumbnail
-    //           const catImg = cat.data.thumbnail
-    //           console.log(catImg)
-    //           //const catImg = cat.data.preview.images[i],source.url
-    //         //   catDiv.innerHTML = `<img src="${catImg}" class = "w-100 d-block img-fluid" alt="">`
-    //         //   carouselInner.appendChild(catDiv)
-    //       }  
-                
-    //    })
+ 
     }
     stopButton.addEventListener('click', stopSlide)
 
@@ -61,12 +34,11 @@
          //console.log(array.data.children[0].data)
          const carouselInner = document.querySelector(".carousel-inner")
          const catDivActive = document.createElement('div')
-         catDivActive.setAttribute('id', 'CatDivA')
+         catDivActive.setAttribute('id', 'catDivA')
          catDivActive.setAttribute('class', 'carousel-item active')
          carouselInner.appendChild(catDivActive)
          //catDivActive.innerHTML = `<img src="${catImg}" class = "w-100 d-block img-fluid" alt="">`
          let input = document.getElementById("userInput").value
-
         catDivActive.innerHTML = `<div class = "w-100 d-block img-fluid" alt="">${input}</div>`
 
         const catArray = array.data.children
