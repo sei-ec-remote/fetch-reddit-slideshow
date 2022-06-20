@@ -8,7 +8,7 @@ function stop_scroll() {
 }
 
 function start_scroll(){
-    //calling the slideShow() function every 5 seconds
+    //calling the slideShow() function every 3 seconds
     global_start_stop = 1;
     //slideShow();
     setInterval(function() {
@@ -17,7 +17,7 @@ function start_scroll(){
 }
 
 
-// #3) Div to store images
+// #3) creating the div that will store the images 
 const load_photos = (arrayObject) => {    
     //const slidePhotoDivGrab = document.querySelector('#slideshow')
     let slideShowElement = document.querySelector('.slideshow-container');
@@ -30,7 +30,7 @@ const load_photos = (arrayObject) => {
     let arr_len = imageArray.length;
     
 
-    //Load in the first N of images
+    //Load in the first of images
     i = 0
     counter = 0
     while (i < arr_len) {
@@ -60,17 +60,16 @@ const load_photos = (arrayObject) => {
 
          //console.log(arrayObject.data.children[0].data.url)
 
-        //photoDiv.innerHTML = `<img src="${imageArray[0].data.url}" + width=600 + height=600 /img>` 
-
-
+      
         // #5)  Setting image to active or inactive
+        //active shows current image, inactive hides the rest of the images 
         if (i === 0) {
             imgTag.className = "active";
         } else {
             imgTag.className = "inactive";
         }
 
-        //Giving the last item the loop back id
+        //Giving the last item the loop back id so program knows when its the last slide and to loop back to the first
         if (i === (arr_len - 1)){
         //imageArray.lenght//
             imgTag.setAttribute('data-last', 0);
@@ -84,18 +83,7 @@ const load_photos = (arrayObject) => {
 
     }
 
-    //console.log(slideShowElement)
 
-    //console.log('this is the final count: ' + imageArray.length) 
-    //console.log(imageArray[0].data.url)
-
-    //const photoDiv = document.createElement('div')
-
-    //const x = 1
-    //const previewPath = data.children[x].data.preview.image[x].source.url
-
-    //document.querySelector('body').appendChild(photoDiv)
-    //console.log(arrayObject)
 }
 
 
@@ -131,7 +119,6 @@ let slideShow = function () {
         //console.log(newId)
 
         //Adding the new element to the screen by making it active
-        //Not tested
         document.querySelector('[data-id="' + newId + '"]').className = 'active';
  
         
@@ -156,7 +143,6 @@ form.addEventListener('submit', (event) => {
 
     const API_URL = `https://www.reddit.com/search.json?q="${userSearchTerm}"+nsfw:no+type:image`
 
-    //fetch(`https://www.reddit.com/search.json?q="${userSearchTerm}"+nsfw:no+type:image`)
 //#2)
     fetch(API_URL)
     .then(response => response.json())
@@ -164,7 +150,7 @@ form.addEventListener('submit', (event) => {
     //.then(imageData => load_photos(imageData));
     .then(load_photos)
     
-    //.catch()
+    .catch()
 })
 
 
