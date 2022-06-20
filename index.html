@@ -8,14 +8,15 @@
   <title>Reddit Search</title>
 </head>
 <body>
-  <h1 id="heading">Search for some cool photos to grab from reddit</h1>
+  <h1 id="heading">Slide-Show Maker</h1>
+  <p id="description">Pick a theme to make a great slide show</p>
   <form id="form">
     <input    type="text" id="userInput" placeholder="Search...">
     <input   type="submit">
     </form>
     <button id="stop-slide">Stop Slide</button>
   <div id="container">
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-interval="3000" data-ride="carousel">
       <div class="carousel-inner" id="carousel-container">
       </div>
     </div>

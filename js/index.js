@@ -22,6 +22,12 @@
     function stopSlide() {
         // const carouselInner = document.querySelector(".carousel-inner")
         container.style.display = "none"
+        const heading = document.getElementById('heading')
+        heading.style.display = 'flex'
+        const paragraph = document.getElementById('description')
+        paragraph.style.display = 'flex'
+        const form = document.getElementById('form')
+        form.style.display = 'flex'
         removeAllChildNodes(carousel)
  
     }
@@ -35,7 +41,8 @@
          const carouselInner = document.querySelector(".carousel-inner")
          const catDivActive = document.createElement('div')
          catDivActive.setAttribute('id', 'catDivA')
-         catDivActive.setAttribute('class', 'carousel-item active')
+         catDivActive.setAttribute('class', 'carousel-item active') 
+         catDivActive.setAttribute('data-interval', '1000')  
          carouselInner.appendChild(catDivActive)
          //catDivActive.innerHTML = `<img src="${catImg}" class = "w-100 d-block img-fluid" alt="">`
          let input = document.getElementById("userInput").value
@@ -58,8 +65,12 @@
             }  
                   
          })
-
-         //console.log("here is the testArray" + testArray)
+         const heading = document.getElementById('heading')
+         heading.style.display = 'none'
+         const paragraph = document.getElementById('description')
+         paragraph.style.display = 'none'
+         const form = document.getElementById('form')
+         form.style.display = 'none'
     }
     
     const onGetCatsFailure = (failure) => {
