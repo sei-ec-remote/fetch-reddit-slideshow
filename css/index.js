@@ -29,7 +29,7 @@ const load_photos = (arrayObject) => {
 
     let arr_len = imageArray.length;
     
-
+    document.querySelector('.slideshow-container').innerHTML = ""
     //Load in the first of images
     i = 0
     counter = 0
