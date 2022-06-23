@@ -1,15 +1,13 @@
-
+let globalImgUrlArray = []
 let iterator = 0
+let timerIdtoEnd = 0
 
 // Step 1
 // Search bar and results
-const form = document.getElementById('inputform')
-console.log(form)
+const form = document.querySelector('#inputform')
 // add a listener to my submit button
 form.addEventListener('submit', (event) => {
-
     event.preventDefault()
-
     const userSearchTerm = input.value
     console.log(userSearchTerm)
     // insert the userSearchTerm into the API fetch request
@@ -29,30 +27,43 @@ const photoLoop = (arrayObject) => {
 
     // Loop to iterate through the stored images   
     let emptyArray = []
-    for (let i = 0; i < 25; i++) {
-        emptyArray[i] = arrayObject.data.children[i].data.url
+    for (let i = 0; i < arrayObject.data.children.length; i++) {
+        emptyArray.push(arrayObject.data.children[i].data.url)
         console.log("emptyArray" + emptyArray)
-    
-    slideLoop(emptyArray)
-    }}  
+    }
+    const setOutsideArray = (emptyArray) => {
+        globalImgUrlArray = [...emptyArray]
+        return emptyArray
+    }
+    setOutsideArray(emptyArray)
+    console.log(globalImgUrlArray[0])
+    loopContainer()
+    }  
 
 
 // Step 3 
 //take the cleaned images and put them into the emptyArray to display in the slideshow div. 
-const slideLoop = (emptyArray) => {
-    if (iterator <25) {
-        for (let i = 0; i < slideLoop.length; i++)
-        console.log("iterator:" + iterator)
-        const slidePhotoDivGrab = document.querySelector('#slideshow')
-        slidePhotoDivGrab.innerHTML = `<img src="${emptyArray[iterator]}" + width=300 + heigth=300 /img>`
-        
-        
-        document.querySelector('body').appendChild(slidePhotoDivGrab)
-        iterator++
+const loopContainer = () => {
+const slideLoop = () => {
+    console.log('slideLoop')
+    if (iterator === globalImgUrlArray.length) {
+        clearInterval(timerIdtoEnd)  
     }
-}
+    const makeImg = document.querySelector('#image')
+    makeImg.src = globalImgUrlArray[iterator]
+    iterator++ 
 
-setInterval(slideLoop, 2000)
+    document.querySelector('#stopSlideShow').addEventListener('click', event => {
+        clearInterval(timerIdtoEnd)
+    })
+}
+const startInterval = () => {
+    console.log('startinterval')
+    let intervalID = setInterval(slideLoop,2000)
+    timerIdtoEnd = intervalID
+}
+startInterval()
+}
 // Use this interval later
 
 
