@@ -1,3 +1,5 @@
+// RD FIN
+
 
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 let globalImgUrlsArray = [] // global USED VAR TO keep it globally scoped
