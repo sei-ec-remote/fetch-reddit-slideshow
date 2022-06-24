@@ -1,0 +1,27 @@
+.cat-pictures {
+    border: 1px solid black;
+}
+#container {
+    display: flexbox;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+
+body {
+    font-size: xx-large;
+    text-align: center;
+    font-family: fantasy;
+    color: chartreuse;
+    background-color: black;
+}
+
+#show-cats {
+    font-size: large;
+    padding: 5px;
+    margin: 10px
+}
+#stop-cats {
+    padding: 5px;
+    margin: 10px;
+}
