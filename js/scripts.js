@@ -62,7 +62,7 @@ function loadImg(){
 
     const newImg = document.createElement('img')
     newImg.src = image[currentIndex].url
-    newImg.style.width = "350"
+    newImg.style.width = "350px"
     newImg.style.height = "auto"
     container.append(newImg)
     
