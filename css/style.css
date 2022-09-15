@@ -1,0 +1,40 @@
+
+body{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+#container{
+    flex-direction: column;
+    justify-content: center;
+    border:5px solid  blue;
+    height: 700px;
+    width: 100%;
+    margin: auto;
+
+}
+#search-and-start{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+#photo{
+    height: 200px;
+    width: 50%;
+    border: solid 2px tomato;
+    margin: 50px auto ;
+    justify-content: center;
+}
+#photobox{
+    border: 2px green solid;
+    flex-direction:column;
+    height: 50%;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+}
+

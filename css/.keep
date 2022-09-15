@@ -1,0 +1,8 @@
+#photobox{
+    border: solid blue 5px;
+}
+div {
+    border: solid 5px blue;
+    height:300px;
+    width:300px;
+}
