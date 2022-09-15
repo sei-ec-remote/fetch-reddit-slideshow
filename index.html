@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/style.css" rel="stylesheet" />
   <script src="js/index.js" defer></script>
-  <title>Hello Front-End</title>
+  <title>Reddit Slide Show</title>
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <div id="slide-show">
+    <h1>Your Personal Slideshow</h1>
+    <h2>Pick a word, and see photos of it!</h2>
+    <form id="form">
+      <label for="input">Search for image</label>
+      <input id="input" type="text">
+      <input type="submit">
+    </form>
+    <div id="photo-display">
+      <img src="" alt="" id="slide">
+    </div>
+  </div>
 </body>
 </html>
