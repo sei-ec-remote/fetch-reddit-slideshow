@@ -1,0 +1,22 @@
+body {
+    background-color: rosybrown;
+    
+    
+}
+
+#slideshow {
+    display:flex;
+    flex-wrap:wrap;
+    border: black solid;
+    height: 500px;
+
+}
+
+#search {
+    padding: 10px 10px 10px 10px;
+}
+/* 
+img {
+    display: none;
+    width: 100%
+} */
