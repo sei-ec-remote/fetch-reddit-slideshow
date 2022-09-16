@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    background-color: rgb(67, 63, 63);
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    height: 90vh;
+    overflow: hidden;
+}
+
+/* img {
+    display: block;
+    width:100%;
+  } */
