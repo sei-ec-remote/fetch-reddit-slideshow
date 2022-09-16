@@ -86,7 +86,7 @@ form.addEventListener("submit", event => {
     const userInput = input.value
     //fix spaces between words
     const searchTerm = userInput.replace(" ", "%20")
-    fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
+    fetch(`https://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
     .then(response => response.json())
     .then(makeLinkArray)
     .catch(console.error)
