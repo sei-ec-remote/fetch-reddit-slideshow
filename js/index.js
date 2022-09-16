@@ -1,46 +1,112 @@
-const currPhotoArr = []
-const photobox = document.body.querySelector('#photo')
-console.log(photobox)
+let currPhotoArr = []
+
+const currPhoto = document.querySelector('.photobox')
+const photobox = document.querySelector('#photo')
+const stopButton = document.querySelector('#stop')
+stopButton.style.visibility = 'hidden'
+
+
+const form = document.querySelector('#form')
+
+
+// startButton.addEventListener('click', event => {
+//     event.target
+// })
+
+
 const onGetPhotoSuccess = (photoArray)=>{
-    // console.log(photoArray)
-    const newArr = photoArray.data
-    newArr.children.forEach(photo => {
+    const levelTwo = photoArray.data
+    levelTwo.children.forEach(photo => {
+    currPhotoArr.push(photo.data.thumbnail)
+    })
+    // createFirstImage(currPhotoArr)
+    // const photoBucket = document.createElement('img')
+    // photoBucket.classList.add('photobucket')
+    // photoBucket.setAttribute('src', currPhotoArr[imageIndex])
+    // photoBucket.setAttribute('alt', 'an image of /constname/ from reddit')
+    // photobox.appendChild(photoBucket)
+    // const image = document.querySelector('#photo')
+    // console.log(image)
+}
+
+let imageIndex = 0
+const advanceImage = () => {
+
+    const image = document.querySelector('#photo')
+    if (image == null){
+        const photoBucket = document.createElement('img')
+        photoBucket.classList.add('photobucket')
+        photoBucket.setAttribute('src', currPhotoArr[imageIndex])
+        photoBucket.setAttribute('alt', 'an image of /constname/ from reddit')
+        photobox.appendChild(photoBucket)
+     
+    } else if (image.innerHTML === 'self'){
+        imageIndex++
+    }
+    image.removeChild(image.firstChild)
+    imageIndex++
     const photoBucket = document.createElement('img')
-    console.log(photo.data.url)
     photoBucket.classList.add('photobucket')
-    photoBucket.setAttribute('src', photo.data.url)
+    photoBucket.setAttribute('src', currPhotoArr[imageIndex])
+    photoBucket.setAttribute('alt', 'an image of /constname/ from reddit')
     photobox.appendChild(photoBucket)
 
-    })
+    if (imageIndex>20){
+        imageIndex = 0
+    }
 }
 
 
+
 document.addEventListener('DOMContentLoaded',()=>{
-    fetch('http://www.reddit.com/search.json?q=cats+nsfw:no')
+    fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
     //returning the json response from this request
         .then(res => res.json())
         //naming it res 
-        // .then(console.log)
+
         .then(onGetPhotoSuccess)
-        //if we have 2 params or args that needs to be passed in to a function we cannot do the above
-        // .then(res => console.log(res, 'something else'))
-        //hand the error
+
         .catch(console.error)
 })
 
+const showStop = () => {
+    stopButton.style.visibility = 'visible'
+    console.log('helpp!')
+}
 
-// form.addEventListener('submit', event => {
-//     //prevent default submit behavior
-//     //you will have to do this 99.99% of the time
-//     event.preventDefault()
+const startShow = () => {
+    setInterval(advanceImage,3000);
+}
+const stopShow = () => {clearInterval(startShow)}
 
-//     //can access inputs with their `id`s
-//     // console.log(input.value)
-//     const pokeNumber = input.value
-//     console.log(pokeNumber)
-//     fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
-//     .then(res => res.json())
-//     .then(onShowPokemonSuccess)
-//     .catch(console.error)
+stopButton.addEventListener('click', showStop)
+// startButton.addEventListener('click'), event =>{
+//     if (event.target.innerText === 'Stop'){
+//         clearInterval(startShow)
+//     }
+// }
+const hideForm = ()=> {
+    form.style.visibility = 'hidden'
+}
 
-// })
+// console.log(searchTerm)
+form.addEventListener('submit', event => {
+    event.preventDefault()
+    const searchTerm = input.value
+    // const searchTerm = form.elements['0']
+    // const searchValue = searchTerm
+    console.log(searchTerm)
+    fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
+    //returning the json response from this request
+        .then(res => res.json())
+        //naming it res 
+
+        .then(onGetPhotoSuccess)
+        .then(advanceImage)
+        .then(startShow)
+        // .then(hideForm)
+        .then(showStop)
+
+        .catch(console.error)
+    return searchTerm
+} )

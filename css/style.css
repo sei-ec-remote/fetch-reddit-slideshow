@@ -7,20 +7,24 @@ body{
 
 }
 #container{
+    display: flex;
     flex-direction: column;
     justify-content: center;
     border:5px solid  blue;
     height: 700px;
     width: 100%;
     margin: auto;
-
 }
-#search-and-start{
+.photobucket{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     margin: auto;
+    flex-direction: column;
+    height: 200px;
+    margin-left: 0;
+    padding: 0;
 }
+
 #photo{
     height: 200px;
     width: 50%;
@@ -29,6 +33,7 @@ body{
     justify-content: center;
 }
 #photobox{
+    display:flex;
     border: 2px green solid;
     flex-direction:column;
     height: 50%;
@@ -36,5 +41,13 @@ body{
     justify-content: center;
     align-items: center;
     margin: 50px auto;
+}
+#search-and-start{
+    /* height: 400px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+
 }
 
