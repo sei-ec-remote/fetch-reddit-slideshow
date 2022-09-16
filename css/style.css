@@ -23,8 +23,11 @@ h1{
 .photobucket{
     display: flex;
     justify-content: center;
+    align-items: center;
+    align-content: center;
     margin: auto;
     flex-direction: column;
+    flex-wrap: wrap;
     height: 200px;
     margin-left: 0;
     padding: 0;
@@ -32,10 +35,12 @@ h1{
 
 #photo{
     height: 400px;
-    width: 50%;
+    width: 100%;
     border: solid 2px tomato;
     margin: 50px auto ;
     justify-content: center;
+    align-items: center;
+    align-self: flex-start;
 }
 #photobox{
     display:flex;

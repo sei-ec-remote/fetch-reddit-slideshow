@@ -33,7 +33,7 @@ let imageIndex = 0
 const advanceImage = () => {
 
     const image = document.querySelector('#photo')
-    if (image === null|| image.src === self || image === undefined){
+    if (image === null|| image.src === self || image.innerText === 'undefined'){
         const photoBucket = document.createElement('img')
         photoBucket.classList.add('photobucket')
         photoBucket.setAttribute('src', currPhotoArr[imageIndex])
@@ -49,6 +49,7 @@ const advanceImage = () => {
     photoBucket.classList.add('photobucket')
     photoBucket.setAttribute('src', currPhotoArr[imageIndex])
     photoBucket.setAttribute('alt', `an image of ${searchTerm} from reddit`)
+    photoBucket.style.alignItems = 'center'
     photobox.appendChild(photoBucket)
 
     if (imageIndex>20){
