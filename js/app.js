@@ -11,6 +11,9 @@ let imageUrls = []
 let currentSlide = 0
 let interval = null
 
+// this function changes the src of an image tag using setAttribute()
+// the src comes from the array of image urls created through fetch and push
+// currentSlide is used to keep track of the index of the image urls in the array, go through them in order and then resets when it reaches the length of the array
 const displaySlideshow = () => {
     console.log(currentSlide)
     slide.setAttribute('src', `${imageUrls[currentSlide]}`)
@@ -21,6 +24,9 @@ const displaySlideshow = () => {
     }
 }
 
+// this function is used to populate the imageUrls array with urls
+// the conditional checks whether each 'url' is actually an image (.jpg/.png) before pushing them to the imageUrls array
+// it then displays the pictures at a set interval by calling displaySlideshow()
 const handleRedditPosts = (post) => {
     slideshowContainer.classList.remove('hide')
     for (let i = 0; i < post.data.children.length; i++) {
@@ -29,10 +35,11 @@ const handleRedditPosts = (post) => {
             imageUrls.push(imgUrl)
         }
     }
-    displaySlideshow()
+    displaySlideshow()// calling it first ensures there is no 3 sec delay before the first image appears
     interval = setInterval(displaySlideshow, 3000)
 }
 
+// .hide is set to display: none in css, so adding and removing the class will "hide" or "show" corresponding html elements
 form.addEventListener('submit', event => {
     event.preventDefault()
     formContainer.classList.add('hide')
