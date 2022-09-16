@@ -3,9 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="index.js" defer></script>
+  <title>Abdiresac Sheikdon</title>
 </head>
-<body>
-  <h1>Hello Front-End</h1>
+    <div id="prompts">
+      <div class="container">
+        <h1 id="title">Reddit Slideshow Generator</h1>
+        <p id="instructions"> Welcome</p>
+        <p id="instruct">Hit "Type here to start..." to see a Reddit API slideshow</p>
+      </div>
+      <div class="container">
+        <form id="search">
+          <input id="term" type="text" placeholder="Type here to start...">
+          <input type="submit" value="Search">
+      </form>
+      </div>
+    </div>
+    <div id="slideshow">
+      <div class="container">
+        <div class="container-center" id="photo-div">
+        </div>
+      </div>
+      <div class="container-center">
+        <button id="stop">Stop Slideshow</button>
+        <p id="instructed-end">You can click this stop button once the show begins if you decide to return to this form</p>
+      </div>
+    </div>
 </body>
 </html>
