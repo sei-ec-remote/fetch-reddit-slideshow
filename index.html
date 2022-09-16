@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <link href="./index.css" rel="stylesheet" />
+  <script src="./index.js" defer></script>
+  <title>Slide Show</title>
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <form id="search-form" action="/action_page.php">
+    <label for="fname">What would you like to see?</label><br>
+    <input type="text" id="search-text" name="fname"><br>
+    <input id="search-button"type="submit" value="Search">
+  </form> 
+  <div id="img-div">
+    <img id="imageid">
+  </div>
+  <input id="reset-button"type="submit" value="Reset">
 </body>
 </html>

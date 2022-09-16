@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+    background: darkgray;
+}
+
+#search-form{
+    margin: 0 auto;
+    margin-top: 30vh;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+div {
+    margin: 50px auto;
+    height: 400px;
+    width: 400px;
+}
+
+#img-div > img {
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+}
+
+#reset-button{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    justify-content: center;
+}
