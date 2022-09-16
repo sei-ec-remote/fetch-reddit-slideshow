@@ -1,0 +1,43 @@
+body {
+    color: aliceblue;
+    background-color: darkgray;
+    font-family: 'Times New Roman', Times, serif;
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 10em;
+}
+
+h1 {
+    margin: 10px;
+}
+
+
+h3 {
+    margin-top: 50px;
+    border: 50px;
+    padding: 50px;
+}
+/* margins aren't moving anything right now :( */
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 50%;
+
+}
+
+#input {
+    margin-top: 25px;
+}
+
+#clickMe {
+    margin-top: 10px;
+}
+
+#stop {
+    margin-top: 10px;
+}
