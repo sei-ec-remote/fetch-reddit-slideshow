@@ -3,9 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script src="./js/app.js" defer></script>
+  <title>Slideshow</title>
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <div id="prompts">
+    <div class="container">
+      <h1 id="title">Reddit Slideshow Generator</h1>
+      <p id="instructions">Enter a search term below and click "search" to see a slide show of thumbnails pulled from reddit. You can click the stop button once the show begins to return to this form.</p>
+    </div>
+    <div class="container">
+      <form id="search">
+        <input id="term" type="text" placeholder="Type here...">
+        <input type="submit" value="search">
+    </form>
+    </div>
+  </div>
+  <div id="slideshow">
+    <div class="container">
+      <div class="container-center" id="photo-div">
+      </div>
+    </div>
+    <div class="container-center">
+      <button id="stop">Stop Slideshow</button>
+    </div>
+  </div>
 </body>
 </html>
