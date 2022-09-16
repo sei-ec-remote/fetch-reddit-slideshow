@@ -3,6 +3,7 @@ const slide = document.getElementById("slide")
 const title = document.querySelector("h1")
 const message = document.querySelector("h2")
 const display = document.getElementById("photo-display")
+const button = document.querySelector("button")
 
 let linkArray = []
 let imageIdArray = []
@@ -17,12 +18,26 @@ const makeImages = () => {
         display.appendChild(image)
         imageIdArray.push(index)
     })
-    setInterval(runSlideshow, 2000) 
+    window.slideInterval = setInterval(runSlideshow, 2000)
+    message.innerText = ""
 }
 
+
+const resetSearch = () => {
+    clearInterval(slideInterval)
+    button.style.display = "none"
+    imageIdArray.forEach(id => {
+        document.getElementById(`${id}`).remove()
+    })
+    imageIdArray.length = 0
+    linkArray.length = 0
+    title.style.display = "block"
+    form.style.display = "block"
+    message.innerText = "Try another search!"
+}
+
+
 const runSlideshow = () => {
-    message.style.display = "none"
-    console.log(imageIdArray)
     imageIdArray.forEach((id) => {
         if (document.getElementById(`${id}`).style.display = "block") {
             document.getElementById(`${id}`).style.display = "none"
@@ -36,6 +51,9 @@ const runSlideshow = () => {
     } else {
         currentSlide++
     }
+    button.innerText = "Stop"
+    button.style.display = "block"
+    button.addEventListener("click", resetSearch)
 }
 
 
@@ -70,4 +88,12 @@ form.addEventListener("submit", event => {
     .then(makeLinkArray)
     .catch(console.error)
 })
+
+
+
+
+
+
+
+
 
