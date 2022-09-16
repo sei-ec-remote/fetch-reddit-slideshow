@@ -1,0 +1,25 @@
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.slideshow-box{
+border: blue solid;
+}
+
+h1{
+    color: pink;
+}
+h2 {
+    font-size: 15px;
+}
+
+#imagecontainer{
+    border: black solid;
+    padding: 20%;
+}
+footer{
+    padding: 5px;
+    position: relative;
+}
