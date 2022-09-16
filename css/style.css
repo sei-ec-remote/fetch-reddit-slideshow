@@ -41,7 +41,7 @@ button {
 #mag-img {
     position: relative;
     top: -20em;
-    right: -6em;
+    right: -5.5em;
     transition-property: top;
     transition-duration: 1s;
     transition-delay: 0s;
