@@ -35,7 +35,7 @@ const resetSearch = () => {
     title.style.display = "block"
     form.style.display = "block"
     message.innerText = "Try another search!"
-    magImg.style.top = "50vh"
+    magImg.style.top = "-20em"
 }
 
 
@@ -53,7 +53,7 @@ const runSlideshow = () => {
     } else {
         currentSlide++
     }
-    magImg.style.top = "20vh"
+    magImg.style.top = "-35em"
     button.innerText = "Stop"
     button.style.display = "inline-block"
     button.addEventListener("click", resetSearch)
