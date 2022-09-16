@@ -10,6 +10,7 @@ body{
 }
 h1{
     text-align: center;
+
 }
 #container{
     display: flex;
@@ -18,7 +19,8 @@ h1{
     /* border:5px solid  blue; */
     height: 700px;
     width: 100%;
-    margin: auto;
+    margin: auto 0;
+    padding-top: 0;
 }
 .photobucket{
     display: flex;
@@ -36,7 +38,7 @@ h1{
 #photo{
     height: 400px;
     width: 100%;
-    border: solid 2px tomato;
+    /* border: solid 2px tomato; */
     margin: 50px auto ;
     justify-content: center;
     align-items: center;

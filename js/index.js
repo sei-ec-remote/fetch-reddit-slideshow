@@ -19,6 +19,8 @@ const onGetPhotoSuccess = (photoArray)=>{
     levelTwo.children.forEach(photo => {
     currPhotoArr.push(photo.data.thumbnail)
     })
+    stopButton.style.visibility = 'visible'
+    advanceImage()
     // createFirstImage(currPhotoArr)
     // const photoBucket = document.createElement('img')
     // photoBucket.classList.add('photobucket')
@@ -55,6 +57,7 @@ const advanceImage = () => {
     if (imageIndex>20){
         imageIndex = 0
     }
+    console.log("jump")
 }
 
 
@@ -70,7 +73,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     //     .catch(console.error)
 })
 
-const showStop = () => {
+const showStopButton = () => {
     stopButton.style.visibility = 'visible'
 
 }
@@ -78,19 +81,27 @@ const showStop = () => {
 const startShow = () => {
     setInterval(advanceImage,3000);
 }
-const stopShow = () => {clearInterval(startShow)}
+const stopShow = () => {
+    const image = document.querySelector('#photo')
+    clearInterval(advanceImage)
+    console.log("test")
+    image.removeChild(image.firstChild)
+    showForm()
+    hideStop()
+}
 
-stopButton.addEventListener('click', showStop)
-// startButton.addEventListener('click'), event =>{
-//     if (event.target.innerText === 'Stop'){
-//         clearInterval(startShow)
-//     }
-// }
+stopButton.addEventListener('click', stopShow)
+    
+const hideStop = () => {
+    stopButton.style.visibility = 'hidden'
+}
 const hideForm = ()=> {
     form.style.visibility = 'hidden'
 }
+const showForm = () => {
+    form.style.visibility = 'visible'
+}
 
-// console.log(searchTerm)
 form.addEventListener('submit', event => {
     event.preventDefault()
     const searchTerm = input.value
@@ -106,9 +117,10 @@ form.addEventListener('submit', event => {
             //naming it res 
 
         .then(onGetPhotoSuccess)
-        .then(advanceImage)
+
         .then(startShow)
-        .then(showStop)
+        .then(hideForm)
+
 
         .catch(console.error)
     return searchTerm
