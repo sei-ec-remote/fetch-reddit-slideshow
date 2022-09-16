@@ -1,0 +1,95 @@
+body {
+    background-color: lightskyblue;
+    align-items: center;
+    border: 20px; 
+  }
+
+  h1 {
+    text-align: center;
+    color: darkcyan;
+    font: sans-serif;
+    margin: 50px; 
+  }
+  
+  .description {
+    padding: 5px; 
+    text-align: center; 
+    font: monospace; 
+    font-weight: bold;
+    font-style: oblique;
+    color: lightcyan;
+  }
+
+  #imagebox {
+
+    border: 25px; 
+    height: auto; 
+    width: auto; 
+    text-align: center;
+    display: block; 
+  }
+
+  form {
+    background-color: lightblue;
+    width: 300px;
+    height: 35px;
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    color: lightcyan;
+    display: flex; 
+    justify-content:center; 
+    margin-left: 1000px; 
+    margin-top: 400px;
+  }
+
+  input {
+    all: unset;
+    font: 16px;
+    height: 100%;
+    width: 100%;
+    padding: 6px 10px;
+  }
+
+  
+  svg {
+    color: darkcyan;
+    fill: currentColor;
+    width: 14px;
+    height: 14px;
+    padding: 10px;
+  }
+  
+  button {
+    all: unset;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+  }
+
+  #next {
+    padding: 10px; 
+  }
+
+  #stop {
+    padding: 10px; 
+  }
+
+  img {
+    display:none;
+    opacity:100; 
+    width:100%;
+    position: absolute;
+    top:0;
+    left:0;
+    border: 25px; 
+  }
+
+.fade-in-image {
+  animation: fadeIn 2s;
+}
+
+.fade-out-image {
+  animation: fadeOut 2s;
+}
