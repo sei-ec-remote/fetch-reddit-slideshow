@@ -12,23 +12,26 @@ header {
 }
 
 #slide-show {
-    width: 50vw;
+    width: 100vw;
     height: 500px;
     top: 1em;
     margin: auto;
 }
 
 #photo-display {
-    display: inline-block;
-    width: 50vw;
+    display: block;
+    margin: auto;
+    width: 100vw;
     height: 300px;
 }
 
 form {
-    display: inline-block;
+    display: block;
+    margin: auto;
     margin-top: 4em;
     font-size: 2em;
     width: max-content;
+    max-width: 100vw;
 }
 
 input {
@@ -57,3 +60,36 @@ input {
     transition-delay: 0s;
     z-index: 2;
 }
+
+@media (max-width: 750px) {
+    header {
+        margin-top: 1em;
+        height: 5em;
+        font-size: 1em;
+    }
+    form {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 425px) {
+    #mag-img {
+        max-width: 360px;
+        right: -20vw;
+
+    }
+    header {
+        margin-top: 1em;
+        height: 5em;
+        font-size: .7em;
+    }
+}
+
+@media (max-width: 290px) {
+    #mag-img {
+        max-width: 360px;
+        right: -7vw;
+
+    }
+}
+
