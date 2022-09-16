@@ -4,6 +4,7 @@ const title = document.querySelector("h1")
 const message = document.querySelector("h2")
 const display = document.getElementById("photo-display")
 const button = document.querySelector("button")
+const magImg = document.getElementById("mag-img")
 
 let linkArray = []
 let imageIdArray = []
@@ -34,16 +35,17 @@ const resetSearch = () => {
     title.style.display = "block"
     form.style.display = "block"
     message.innerText = "Try another search!"
+    magImg.style.top = "50vh"
 }
 
 
 const runSlideshow = () => {
     imageIdArray.forEach((id) => {
-        if (document.getElementById(`${id}`).style.display = "block") {
+        if (document.getElementById(`${id}`).style.display = "inline-block") {
             document.getElementById(`${id}`).style.display = "none"
         }
         if (id == currentSlide) {
-            document.getElementById(`${id}`).style.display = "block"
+            document.getElementById(`${id}`).style.display = "inline-block"
         }
     })
     if (currentSlide === (imageIdArray.length - 1)) {
@@ -51,8 +53,9 @@ const runSlideshow = () => {
     } else {
         currentSlide++
     }
+    magImg.style.top = "20vh"
     button.innerText = "Stop"
-    button.style.display = "block"
+    button.style.display = "inline-block"
     button.addEventListener("click", resetSearch)
 }
 

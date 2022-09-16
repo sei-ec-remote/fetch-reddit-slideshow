@@ -1,28 +1,44 @@
 body{
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
+    box-sizing: border-box;
     background-color: rgba(255, 99, 71, 0.217);
-}
-
-header {
     text-align: center;
 }
 
+header {
+    margin-top: 5vh;
+    height: 20vh;
+}
+
 #slide-show {
-    margin-left: auto;
-    margin-right: auto;
+    width: 30vw;
+    height: 40vh;
+    top: 20vh;
+    margin: auto;
 }
 
 #photo-display {
-    margin: auto;
+    display: inline-block;
 }
 
 form {
-    margin: auto;
+    display: inline-block;
+    margin-top: 5vh;
+    font-size: 2em;
+    
 }
 
 button {
+    width: 100px;
+    font-size: 2em;
     display: none;
-    margin: auto;
+}
+
+#mag-img {
+    position: absolute;
+    top: 50vh;
+    transition-property: top;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    right: 25vw;
+    z-index: 2;
 }
