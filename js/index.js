@@ -6,7 +6,7 @@ const display = document.getElementById("photo-display")
 
 let linkArray = []
 let imageIdArray = []
-let currentSlide = 1
+let currentSlide = 0
 
 const makeImages = () => {
     linkArray.forEach((link, index) => {
@@ -21,6 +21,8 @@ const makeImages = () => {
 }
 
 const runSlideshow = () => {
+    message.style.display = "none"
+    console.log(imageIdArray)
     imageIdArray.forEach((id) => {
         if (document.getElementById(`${id}`).style.display = "block") {
             document.getElementById(`${id}`).style.display = "none"
@@ -28,8 +30,8 @@ const runSlideshow = () => {
         if (id == currentSlide) {
             document.getElementById(`${id}`).style.display = "block"
         }
-    }
-    if (currentSlide === (imageIdArray.length - 1){
+    })
+    if (currentSlide === (imageIdArray.length - 1)) {
         currentSlide = 0
     } else {
         currentSlide++
@@ -37,7 +39,7 @@ const runSlideshow = () => {
 }
 
 
-//a function to make an array of thumbnail links, then run them through slideshow function
+//a function to make an array of thumbnail links
 const makeLinkArray = (responseArray) => {
     const dataArray = responseArray.data
     const postsArray = dataArray.children
@@ -48,7 +50,7 @@ const makeLinkArray = (responseArray) => {
             linkArray.push(thumbLink)
         }
     })
-    message.style.display = "none"
+    makeImages()
 }
 
 
@@ -66,7 +68,6 @@ form.addEventListener("submit", event => {
     fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
     .then(response => response.json())
     .then(makeLinkArray)
-    .then(makeImages())
     .catch(console.error)
 })
 
