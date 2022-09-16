@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Front-End</title>
+  <link href="css/styles.css" rel="stylesheet" />
+  <script src="js/app.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Hammersmith+One&display=swap" rel="stylesheet">
+  <title>Reddit Photo Slideshow</title>
 </head>
+
 <body>
-  <h1>Hello Front-End</h1>
+  <div id="form-container">
+    <h1>Reddit Photo Slideshow</h1>
+    <p>This search displays a slideshow of photos from reddit! </p>
+    <form id="form">
+      <label for="input">What do you want to see?</label>
+      <input id="input" type="text" placeholder="search">
+      <button id="start">Start</button>
+  </div>
+  </form>
+  <div id="slideshow-container" class="hide">
+    <img id="slide" src="">
+  </div>
+  <button id="stop" class="hide">Stop Slideshow</button>
 </body>
+
 </html>
