@@ -8,7 +8,7 @@ body{
 header {
     margin-top: 2em;
     height: 5em;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 #slide-show {
@@ -25,9 +25,14 @@ header {
 }
 
 form {
-    display: inline-block;
+    display: flex;
     margin-top: 4em;
-    font-size: 2em;  
+    font-size: 2em;
+    width: 100vw;
+}
+
+input {
+    box-shadow: 1em .5em 1em grey;
 }
 
 button {
