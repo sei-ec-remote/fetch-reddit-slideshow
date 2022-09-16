@@ -1,6 +1,6 @@
 body{
     box-sizing: border-box;
-    /* background-color: rgba(255, 99, 71, 0.217); */
+    background-color: rgba(255, 99, 71, 0.478);
     background-image: linear-gradient(tomato, white 80%);
     text-align: center;
 }
@@ -25,22 +25,27 @@ header {
 }
 
 form {
-    display: flex;
+    display: inline-block;
     margin-top: 4em;
     font-size: 2em;
-    width: 100vw;
+    width: max-content;
 }
 
 input {
+    font-size: .7em;
+    height: 1.1em;
     box-shadow: 1em .5em 1em grey;
 }
 
-button {
+#submit {
+   height: 1.5em;
+}
+
+#stop {
     width: 200px;
     font-size: 20px;
     display: none;
     margin: auto;
-
 }
 
 #mag-img {

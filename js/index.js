@@ -3,7 +3,7 @@ const slide = document.getElementById("slide")
 const title = document.querySelector("h1")
 const message = document.querySelector("h2")
 const display = document.getElementById("photo-display")
-const button = document.querySelector("button")
+const button = document.querySelector("#stop")
 const magImg = document.getElementById("mag-img")
 
 let linkArray = []
