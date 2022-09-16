@@ -2,26 +2,43 @@ const form = document.getElementById("form")
 const slide = document.getElementById("slide")
 const title = document.querySelector("h1")
 const message = document.querySelector("h2")
-const image = document.querySelector("img")
+// const image = document.querySelector("img")
+const display = document.getElementById("photo-display")
 
-linkArray = []
+let linkArray = []
+let currentSlide = 0
+
+
 
 // a function to change the image urls of the img
+// const runSlideshow = () => {
+//     const image = display.firstElementChild
+//     const newImage = document.createElement("img")
+//     let currentLinkIndex = linkArray.find((link, index) => {
+//         if (link === image.src) {
+//             return index
+//         }
+//     })
+//     let newLinkIndex = currentLinkIndex++
+//     if (newLinkIndex === linkArray.length) {
+//         newLinkIndex = 0
+//     }
+//     console.log(linkArray[1])
+//     newImage.src = linkArray[newLinkIndex]
+//     image.remove()
+//     display.appendChild(newImage)
+// }
+
+
 const runSlideshow = () => {
-    const currentLinkIndex = linkArray.find((link, index) => {
-        if (link === image.src) {
-            return index
-        }
-    })
-    let newLinkIndex = currentLinkIndex +1
-    if (newLinkIndex == linkArray.length) {
-        newLinkIndex = 0
+    document.getElementById(`${currentSlide - 1}`).style.display = "none"
+    document.getElementById(`${currentSlide}`).style.display = "block"
+    if (currentSlide < (linkArray.length - 1)) {
+        currentSlide++
+    } else { 
+        currentSlide = 0
     }
-    image.src = newLinkIndex
 }
-
-
-
 //a function to make an array of thumbnail links, then run them through slideshow function
 const makeLinkArray = (responseArray) => {
     const dataArray = responseArray.data
@@ -29,17 +46,27 @@ const makeLinkArray = (responseArray) => {
     postsArray.forEach(post => {
         const childData = post.data
         const thumbLink = childData.thumbnail
-        if (thumbLink !== "self") {
+        if (thumbLink !== "self" && thumbLink !== "default") {
             linkArray.push(thumbLink)
         }
     })
-    image.src = linkArray[0]
-    setInterval(runSlideshow, 5000)
+    message.style.display = "none"
+    // const image = document.createElement("img")
+    // image.src = linkArray[0]
+    // display.appendChild(image)
+    setInterval(runSlideshow, 2000)
 }
 
-
-
-
+//a function to make an array of images
+const makeImages = () => {
+    linkArray.forEach((link, index) => {
+        const image = document.createElement("img")
+        image.style.display = "none"
+        image.src = link
+        image.setAttribute("id", index)
+        display.appendChild(image)
+    })
+}
 
 
 
@@ -49,9 +76,10 @@ form.addEventListener("submit", event => {
 // The form / title / description should hide
     title.style.display = "none"
     form.style.display = "none"
-     // Show a loading message (optional)
+     // Show a loading message
     message.innerText = "Loading..."
     const userInput = input.value
+    //fix spaces between words
     const searchTerm = userInput.replace(" ", "%20")
     fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
     .then(response => response.json())
@@ -59,32 +87,3 @@ form.addEventListener("submit", event => {
     .catch(console.error)
 })
 
-
-
-
-
-
-// Fetch related posts from reddit (with fetch)
-// Display animation / slideshow of images (with DOM manipulation)
-// Show a button to stop slideshow
-// Repeat animation until user clicks "stop", then redisplay the original form/title/description
-// When the user clicks the "stop" button
-// Animation stops / images are removed
-// Form / title / description are shown again
-// User can enter a new search term
-
-
-// Use AJAX to make a request. Show data in console
-// Create an array of image URLs (tip: use filter and map).
-// Make the form / title / description hide
-// Cycle through images
-// tip: use setInterval
-// Either add images, or change the src of a single image tag
-// Add some interesting style / animation
-// Create button to stop animation (tip: use clearInterval).
-
-
-
-//url stored @   /children/data/thumnail  : "http..." not "self"
-// { ..., data:[..., children: [data: {..., thumnail: ,...},...],...],...}
-//
