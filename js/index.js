@@ -2,43 +2,41 @@ const form = document.getElementById("form")
 const slide = document.getElementById("slide")
 const title = document.querySelector("h1")
 const message = document.querySelector("h2")
-// const image = document.querySelector("img")
 const display = document.getElementById("photo-display")
 
 let linkArray = []
-let currentSlide = 0
+let imageIdArray = []
+let currentSlide = 1
 
-
-
-// a function to change the image urls of the img
-// const runSlideshow = () => {
-//     const image = display.firstElementChild
-//     const newImage = document.createElement("img")
-//     let currentLinkIndex = linkArray.find((link, index) => {
-//         if (link === image.src) {
-//             return index
-//         }
-//     })
-//     let newLinkIndex = currentLinkIndex++
-//     if (newLinkIndex === linkArray.length) {
-//         newLinkIndex = 0
-//     }
-//     console.log(linkArray[1])
-//     newImage.src = linkArray[newLinkIndex]
-//     image.remove()
-//     display.appendChild(newImage)
-// }
-
+const makeImages = () => {
+    linkArray.forEach((link, index) => {
+        const image = document.createElement("img")
+        image.style.display = "none"
+        image.src = link
+        image.setAttribute("id", index)
+        display.appendChild(image)
+        imageIdArray.push(index)
+    })
+    setInterval(runSlideshow, 2000) 
+}
 
 const runSlideshow = () => {
-    document.getElementById(`${currentSlide - 1}`).style.display = "none"
-    document.getElementById(`${currentSlide}`).style.display = "block"
-    if (currentSlide < (linkArray.length - 1)) {
-        currentSlide++
-    } else { 
+    imageIdArray.forEach((id) => {
+        if (document.getElementById(`${id}`).style.display = "block") {
+            document.getElementById(`${id}`).style.display = "none"
+        }
+        if (id == currentSlide) {
+            document.getElementById(`${id}`).style.display = "block"
+        }
+    }
+    if (currentSlide === (imageIdArray.length - 1){
         currentSlide = 0
+    } else {
+        currentSlide++
     }
 }
+
+
 //a function to make an array of thumbnail links, then run them through slideshow function
 const makeLinkArray = (responseArray) => {
     const dataArray = responseArray.data
@@ -51,23 +49,7 @@ const makeLinkArray = (responseArray) => {
         }
     })
     message.style.display = "none"
-    // const image = document.createElement("img")
-    // image.src = linkArray[0]
-    // display.appendChild(image)
-    setInterval(runSlideshow, 2000)
 }
-
-//a function to make an array of images
-const makeImages = () => {
-    linkArray.forEach((link, index) => {
-        const image = document.createElement("img")
-        image.style.display = "none"
-        image.src = link
-        image.setAttribute("id", index)
-        display.appendChild(image)
-    })
-}
-
 
 
 // When the user enters a search term and presses enter
@@ -84,6 +66,7 @@ form.addEventListener("submit", event => {
     fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
     .then(response => response.json())
     .then(makeLinkArray)
+    .then(makeImages())
     .catch(console.error)
 })
 
