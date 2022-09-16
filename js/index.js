@@ -1,5 +1,5 @@
 let currPhotoArr = []
-
+let searchTerm 
 const currPhoto = document.querySelector('.photobox')
 const photobox = document.querySelector('#photo')
 const stopButton = document.querySelector('#stop')
@@ -33,11 +33,11 @@ let imageIndex = 0
 const advanceImage = () => {
 
     const image = document.querySelector('#photo')
-    if (image == null){
+    if (image === null|| image.src === self || image === undefined){
         const photoBucket = document.createElement('img')
         photoBucket.classList.add('photobucket')
         photoBucket.setAttribute('src', currPhotoArr[imageIndex])
-        photoBucket.setAttribute('alt', 'an image of /constname/ from reddit')
+        photoBucket.setAttribute('alt', `an image of ${searchTerm} from reddit`)
         photobox.appendChild(photoBucket)
      
     } else if (image.innerHTML === 'self'){
@@ -48,7 +48,7 @@ const advanceImage = () => {
     const photoBucket = document.createElement('img')
     photoBucket.classList.add('photobucket')
     photoBucket.setAttribute('src', currPhotoArr[imageIndex])
-    photoBucket.setAttribute('alt', 'an image of /constname/ from reddit')
+    photoBucket.setAttribute('alt', `an image of ${searchTerm} from reddit`)
     photobox.appendChild(photoBucket)
 
     if (imageIndex>20){
@@ -59,19 +59,19 @@ const advanceImage = () => {
 
 
 document.addEventListener('DOMContentLoaded',()=>{
-    fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
-    //returning the json response from this request
-        .then(res => res.json())
-        //naming it res 
+    // fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
+    // //returning the json response from this request
+    //     .then(res => res.json())
+    //     //naming it res 
 
-        .then(onGetPhotoSuccess)
+    //     .then(onGetPhotoSuccess)
 
-        .catch(console.error)
+    //     .catch(console.error)
 })
 
 const showStop = () => {
     stopButton.style.visibility = 'visible'
-    console.log('helpp!')
+
 }
 
 const startShow = () => {
@@ -93,20 +93,24 @@ const hideForm = ()=> {
 form.addEventListener('submit', event => {
     event.preventDefault()
     const searchTerm = input.value
-    // const searchTerm = form.elements['0']
+    if (searchTerm === ''){
+        alert("Search for something please!")
+    } else {
+        // const searchTerm = form.elements['0']
     // const searchValue = searchTerm
-    console.log(searchTerm)
-    fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
-    //returning the json response from this request
-        .then(res => res.json())
-        //naming it res 
+        console.log(searchTerm)
+        fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
+        //returning the json response from this request
+            .then(res => res.json())
+            //naming it res 
 
         .then(onGetPhotoSuccess)
         .then(advanceImage)
         .then(startShow)
-        // .then(hideForm)
         .then(showStop)
 
         .catch(console.error)
     return searchTerm
+    }
+    
 } )

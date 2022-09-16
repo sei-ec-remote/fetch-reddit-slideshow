@@ -4,13 +4,18 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
+}
+h1{
+    text-align: center;
 }
 #container{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border:5px solid  blue;
+    /* border:5px solid  blue; */
     height: 700px;
     width: 100%;
     margin: auto;
@@ -26,7 +31,7 @@ body{
 }
 
 #photo{
-    height: 200px;
+    height: 400px;
     width: 50%;
     border: solid 2px tomato;
     margin: 50px auto ;
@@ -34,10 +39,10 @@ body{
 }
 #photobox{
     display:flex;
-    border: 2px green solid;
+    /* border: 2px green solid; */
     flex-direction:column;
-    height: 50%;
-    width: 50%;
+    /* height: 50%;
+    width: 50%; */
     justify-content: center;
     align-items: center;
     margin: 50px auto;
