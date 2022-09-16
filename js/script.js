@@ -20,11 +20,11 @@ const nextImage = () => {
         
     display.appendChild(display.firstChild)
 }
-const goToLink = (event) => {
-   const externalSite = event.target.getAttribute('data-url')
-   console.log(event.target.getAttribute('data-url'))
-   window.open(externalSite)
-}
+// const goToLink = (event) => {
+//    const externalSite = event.target.getAttribute('data-url')
+   
+//    window.location = externalSite
+// }
 
 const onGetImageSuccess = (imageArray) => {
     
@@ -35,9 +35,8 @@ const onGetImageSuccess = (imageArray) => {
                 picture.classList.add('picture')
                 picture.innerHTML = `<img src="${image.data.thumbnail}">`
                 picture.setAttribute('data-url', image.data.url)
-                console.log(picture.getAttribute('data-url'))
                 display.appendChild(picture)
-                picture.addEventListener('click', goToLink)
+                // picture.addEventListener('click', goToLink)
             }
         })
         console.log(info)
