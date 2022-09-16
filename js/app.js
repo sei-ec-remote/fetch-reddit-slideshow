@@ -15,7 +15,6 @@ let interval = null
 // the src comes from the array of image urls created through fetch and push
 // currentSlide is used to keep track of the index of the image urls in the array, go through them in order and then resets when it reaches the length of the array
 const displaySlideshow = () => {
-    console.log(currentSlide)
     slide.setAttribute('src', `${imageUrls[currentSlide]}`)
     if (currentSlide >= imageUrls.length - 1) {
         currentSlide = 0
@@ -45,7 +44,7 @@ form.addEventListener('submit', event => {
     formContainer.classList.add('hide')
     stopButton.classList.remove('hide')
     const searchTerm = input.value
-    fetch(`http://www.reddit.com/search.json?q=${searchTerm}`)
+    fetch(`http://www.reddit.com/search.json?q=${searchTerm}+nsfw:no`)
         .then(res => res.json())
         .then(handleRedditPosts)
         .catch(console.error)
