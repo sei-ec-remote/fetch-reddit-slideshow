@@ -13,14 +13,13 @@ let interval = null
 
 const displaySlideshow = () => {
     console.log(currentSlide)
-    slide.setAttribute('src', `${imageUrls[currentSlide]}`) 
+    slide.setAttribute('src', `${imageUrls[currentSlide]}`)
     if (currentSlide >= imageUrls.length - 1) {
         currentSlide = 0
     } else {
-       currentSlide += 1  
+        currentSlide += 1
     }
 }
-
 
 const handleRedditPosts = (post) => {
     slideshowContainer.classList.remove('hide')
@@ -33,7 +32,6 @@ const handleRedditPosts = (post) => {
     displaySlideshow()
     interval = setInterval(displaySlideshow, 3000)
 }
-
 
 form.addEventListener('submit', event => {
     event.preventDefault()
