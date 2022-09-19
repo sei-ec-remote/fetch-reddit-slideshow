@@ -1,0 +1,13 @@
+ body {
+    background-color: dimgray;
+    height: 700px;
+}
+form {
+    text-align: center;
+    margin-top: 400px;
+}
+#window {
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+}
