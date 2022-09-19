@@ -2,7 +2,7 @@ let count = 4
 const newImg = document.createElement('img')
 document.addEventListener("DOMContentLoaded", () => {
   
-  fetch('https://www.reddit.com/search.json?q=pets+nsfw:no')
+  fetch('https://www.reddit.com/search.json?q=cats')
   .then(res => res.json())
   .then(data => {
     console.log(data)
@@ -25,23 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
           clearInterval(interval)
         })
         })
-        // document.querySelector('#stop').addEventListener('click', ()=> {
-        //   newImg.src=""
-        //   clearInterval(interval)
-        // })
     })
-    // document.querySelector('#start').addEventListener('click', () => {
-    //   img()
-    //   })
-    // document.querySelector('#stop').addEventListener('click', ()=> {
-    //   newImg.src=""
-    // })
-    // document.querySelector('start-btn').addEventListener('click', img)
-    
-    
-    
-  
-    // document.getElementById('img').innerHTML.='https://b.thumbs.redditmedia.com/1BCF9_RhHGW6ey65N4kIeeFZJDoINM7I0idajXV42lo.jpg'
   })
   .catch(error => {
     console.log('Error', error)
