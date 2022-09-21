@@ -8,11 +8,16 @@
 </head>
 <body>
   <main>
-    <button id="next-picture">Next</button>
-    <div id="container">test</div>
-    <form id="form">
-      <input id="input" type="word" >
-      <input type="submit">
+    <div class="display-area">
+      <h3 id="title">Enter a word for a image slideshow: </h3>
+      
+      <input id="inpt-box" type="text" placeholder="Enter a keyword...">
+      <button id="submit-btn" onclick="makePicsArray();"> Submit </button>
+      <br>
+      <button id="stop-picture" onclick="stopSlide();" >STOP</button>
+      <br>
+      <img id="search-img" src="">
+    </div>
   </main>
   <script src="index.js"></script>
 </body>

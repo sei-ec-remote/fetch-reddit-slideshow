@@ -11,7 +11,12 @@ body {
     overflow: hidden;
 }
 
-/* img {
-    display: block;
-    width:100%;
-  } */
+.display-area {
+    justify-content: center;
+    text-align: center;
+    margin-top: 400px;
+}
+
+#search-img {
+    margin-top: 50px;
+}
