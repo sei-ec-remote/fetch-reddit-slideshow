@@ -15,6 +15,8 @@ const initalArray = ()=>{
     // .then(res => console.log(res.thumbnail))
     .catch(console.error)
 }
+
+
 const makeImageArray = (jsonArray) =>{
    
     const imageArray = jsonArray.data.children.map((element) =>{
@@ -34,6 +36,7 @@ const makeImageArray = (jsonArray) =>{
         let slides = document.querySelectorAll(".imageSlides")
         let slideIndex = 0;
         showSlides();
+        
         function showSlides() {
             let i;
         for (i = 0; i < slides.length; i++) {
@@ -41,9 +44,11 @@ const makeImageArray = (jsonArray) =>{
         slideIndex++;
         if (slideIndex > slides.length) {slideIndex = 1}
         slides[slideIndex-1].style.display = "block";
-        setTimeout(showSlides, 3000); // Change image every 2 seconds
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
     }
     }) 
+ 
+        
     
      
 }
@@ -58,5 +63,11 @@ searchButton.addEventListener('click',(e) =>{
     e.preventDefault()
     
     initalArray()
+    pictureFrame.style.visibility="visible"
+    beginningInfo.style.visibility = "hidden"
 })
 
+stopButton.addEventListener('click', (e)=>{
+    beginningInfo.style.visibility = "visible"
+    pictureFrame.style.visibility="hidden"
+})
