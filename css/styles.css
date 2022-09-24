@@ -1,0 +1,27 @@
+body{
+    text-align: center;
+}
+
+#middle-container{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 700px;
+    width: 700px;
+    
+}
+
+img {
+    width: 75%;
+    height: 75%;
+}
+
+form{
+    height: 200px;
+    width: 200px;
+}
+
+#button-container{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: larger;
+}
