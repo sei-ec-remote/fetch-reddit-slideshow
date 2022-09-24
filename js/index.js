@@ -1,9 +1,11 @@
-const form = document.querySelector('#search-form')
-const slideShow = document.querySelector('#slideshow')
+const form = document.getElementById('search-form')
+const slideShow = document.getElementById('slideshow')
+const stopButton = document.getElementById('stop-show')
 
 let imageArray = []
 let imageCount = 0
 
+let startSlideShow
 
 const showInitialImage = (responseArray) => {
     let array = responseArray.data.children.map( data => data.data)
@@ -19,11 +21,11 @@ const showInitialImage = (responseArray) => {
     picBox.setAttribute('src', imageArray[imageCount].url)
     slideShow.appendChild(picBox)   
     imageCount++
+    startSlideshow = setInterval(showNextImage, 2000)
 }
 
 
 const showNextImage = () => {
-    setInterval(showNextImage, 2000);
     while(slideShow.firstChild) {
         slideShow.removeChild(slideShow.firstChild)
     }
@@ -36,6 +38,13 @@ const showNextImage = () => {
     } 
 } 
 
+const stopSlideShow = () => {
+    imageArray = []
+    clearInterval(startSlideShow)
+}
+
+stopButton.addEventListener('click', stopSlideShow);
+
 form.addEventListener('submit', event => {
 
     let userInput = document.getElementById('user-search').value
@@ -46,4 +55,5 @@ form.addEventListener('submit', event => {
     .then(showInitialImage)
     .catch(console.error)
 })
+
 
