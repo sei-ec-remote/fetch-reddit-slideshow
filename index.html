@@ -7,28 +7,22 @@
   <script src="index.js" defer></script>
   <title>Abdiresac Sheikdon</title>
 </head>
-    <div id="prompts">
-      <div class="container">
+    <!-- title section -->
         <h1 id="title">Reddit Slideshow Generator</h1>
-        <p id="instructions"> Welcome</p>
-        <p id="instruct">Hit "Type here to start..." to see a Reddit API slideshow</p>
-      </div>
-      <div class="container">
-        <form id="search">
+        <p> Welcome</p>
+        <p>Hit "Type here to start..." to see a Reddit API slideshow</p>
+        <form id="searchtext" action="/action_page.php">
+    <!-- For JS     -->
+          <form id="search-tab">
           <input id="term" type="text" placeholder="Type here to start...">
-          <input type="submit" value="Search">
-      </form>
-      </div>
-    </div>
-    <div id="slideshow">
-      <div class="container">
-        <div class="container-center" id="photo-div">
-        </div>
+          <input id="search-button" type="submit" value="Search">   
+      </form> 
+      <div id="img-div">
+        <img id="image-id">
       </div>
       <div class="container-center">
-        <button id="stop">Stop Slideshow</button>
-        <p id="instructed-end">You can click this stop button once the show begins if you decide to return to this form</p>
+       <input id="stop" type="submit" value="Stop Slideshow">
       </div>
-    </div>
-</body>
-</html>
+      <footer>@2022 Abdiresac Sheikdon V1 API Test</footer>
+      
+    
