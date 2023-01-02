@@ -1,0 +1,19 @@
+body{
+    background-color:rgb(105, 22, 22);
+}
+
+h1{
+    
+}
+
+button {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 40px;
+    width: 200px;
+    border-radius: 10px;
+    font-size: 25px;
+    background-color: goldenrod;
+    font-family: inherit;
+}
