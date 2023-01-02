@@ -3,9 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css">
   <title>Hello Front-End</title>
 </head>
 <body>
-  <h1>Hello Front-End</h1>
+  <h1>Hello search for Photos</h1>
+  <form id ="myForm" autocomplete="off">
+  <div class = "form-group">
+    <input type="text" class ="form-control" id="search" placeholder="search photos" required>
+    
+  </div>
+  <div class ="form-group"
+  <button class="btn btn-danger btn-block">
+    search Photos
+    
+  </form>
+  <div id ="result"></div>
+  <script src="https://www.reddit.com/r/dogpictures/"></script>
+  <script>   
+$("#myform").submit(function(event){
+  event.preventDefault()
+  
+  var search = $("#search").val()
+  
+  var url"https://www.reddit.com/r/dogpictures/"
+  $.ajax({
+    method"GET",
+    url:'url',
+    success:function(data)
+    console.log(data)
+
+    data.results.foreach(photo => {
+      $("#result").append(`
+      <img src="${photo.url.regular}/>
+      `)
+    })
+  
+  }
+  
+  
+})
+
+</script>
 </body>
+
 </html>
